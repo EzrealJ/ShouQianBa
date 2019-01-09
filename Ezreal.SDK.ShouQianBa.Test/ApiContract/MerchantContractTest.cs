@@ -89,6 +89,7 @@ namespace Ezreal.SDK.ShouQianBa.Test.ApiContract
             Assert.NotNull(result);
             Assert.True(result.ResultCode == Enums.ResponseResultCodeEnum.OK);
             Assert.NotEmpty(result.BusinessResponseContent.FileURI);
+
         }
 
 
