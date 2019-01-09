@@ -12,7 +12,6 @@ namespace Ezreal.SDK.ShouQianBa.Test
             {
                 config.DefaultShouQianBaServiceProviderSettings = new ServiceProviderSettings()
                 {
-
                     ServiceProviderSerialNo = "91800129",
                     ServiceProviderKey = "bf6a1021f1e788e8c9affd1f4ae0e982",
                 };
