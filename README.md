@@ -12,6 +12,16 @@ This project is a simple library for ShouQianBa (WosaiPay) WebApi which based cr
 * [System.Drawing.Common【v4.5.1】](https://www.newtonsoft.com/json)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://licenses.nuget.org/MIT) 
 
+
+#### Package Manager
+```shell
+Install-Package Ezreal.SDK.ShouQianBa -Version 0.1.0-preview
+```
+#### .NET CLI
+```bash
+dotnet add package Ezreal.SDK.ShouQianBa --version 0.1.0-preview
+```
+
 ## Use:
 * Add initialized code before use
 ```C#
