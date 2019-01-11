@@ -1,4 +1,7 @@
 ﻿using Ezreal.SDK.ShouQianBa.Attributes;
+using Ezreal.SDK.ShouQianBa.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +54,7 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Generic
         /// 支付方式
         /// </summary>
         [ApiParameterName("payway")]
+        [JsonConverter(typeof(EnumValueStringConverter))]
         public Enums.PaywayEnum Payway { get; set; }
 
         /// <summary>
@@ -63,6 +67,7 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Generic
         /// 二级支付方式
         /// </summary>
         [ApiParameterName("sub_payway")]
+        [JsonConverter(typeof(EnumValueStringConverter))]
         public Enums.SubPaywayEnum SubPayway { get; set; }
 
         /// <summary>
@@ -84,14 +89,16 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Generic
         /// </summary>
 
         [ApiParameterName("total_amount")]
-        public string TotalAmountByCent { get; set; }
+        [JsonConverter(typeof(CentStringConverter))]
+        public decimal TotalAmount { get; set; }
 
         /// <summary>
         /// 实收金额,以分计
         /// </summary>
 
         [ApiParameterName("net_amount")]
-        public string RealAmountByCent { get; set; }
+        [JsonConverter(typeof(CentStringConverter))]
+        public decimal RealAmount { get; set; }
 
         /// <summary>
         /// 交易摘要
@@ -106,14 +113,16 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Generic
         /// </summary>
 
         [ApiParameterName("finish_time")]
-        public string FinishTime { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public TimeSpan FinishTime { get; set; }
 
         /// <summary>
         /// 付款动作在支付提供商的完成时间(时间戳)
         /// </summary>
 
         [ApiParameterName("channel_finish_time")]
-        public string PayProviderFinishTime { get; set; }
+
+        public TimeSpan PayProviderFinishTime { get; set; }
         /// <summary>
         /// 操作员
         /// </summary>

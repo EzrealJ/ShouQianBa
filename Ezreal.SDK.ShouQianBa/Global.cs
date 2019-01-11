@@ -13,7 +13,6 @@ namespace Ezreal.SDK.ShouQianBa
         public static void AddDefaultConfig(Action<GlobalConfig> action)
         {
             action.Invoke(GlobalConfig);
-
             HttpApiFactory.Add<ApiContract.IMerchantContract>().ConfigureHttpApiConfig(c =>
            {
                c.HttpHost = new Uri(GlobalConfig.ApiUri);

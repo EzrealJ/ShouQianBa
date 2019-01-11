@@ -4,6 +4,8 @@ using Ezreal.SDK.ShouQianBa.ApiParameterModels.Generic;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
+using Ezreal.SDK.ShouQianBa.Converters;
 
 namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Request.Merchant
 {
@@ -20,6 +22,7 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Request.Merchant
         /// 证件类型
         /// </summary>
         [ApiParameterName("id_type")]
+        [JsonConverter(typeof(EnumValueStringConverter))]
         public CertificateTypeEnum CertificateType { get; set; }
         /// <summary>
         /// 扩展信息
@@ -35,6 +38,7 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Request.Merchant
         /// 账户类型
         /// </summary>
         [ApiParameterName("account_type")]
+        [JsonConverter(typeof(EnumValueStringConverter))]
         public AccountTypeEnum AccountType { get; set; }
         /// <summary>
         /// 外部商户号

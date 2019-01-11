@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ezreal.SDK.ShouQianBa.DataConvert
+namespace Ezreal.SDK.ShouQianBa.Converters
 {
     public class CentStringConverter : JsonConverter
     {

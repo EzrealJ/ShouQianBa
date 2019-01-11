@@ -1,4 +1,6 @@
 ﻿using Ezreal.SDK.ShouQianBa.Attributes;
+using Ezreal.SDK.ShouQianBa.Converters;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,12 +27,14 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Request.Pay
         /// </summary>
 
         [ApiParameterName("total_amount")]
-        public string TotalAmountByCent { get; set; }
+        [JsonConverter(typeof(CentStringConverter))]
+        public decimal TotalAmount { get; set; }
         /// <summary>
         /// 【非必须】支付方式，一旦设置，将限定为指定的支付方式
         /// </summary>
         [ApiParameterName("payway")]
-        public Enums.PaywayEnum Payway { get; set; }
+        [JsonConverter(typeof(EnumValueStringConverter))]
+        public Enums.PaywayEnum? Payway { get; set; }
 
 
         /// <summary>
@@ -40,7 +44,8 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Request.Pay
         /// </para>
         /// </summary>
         [ApiParameterName("sub_payway")]
-        public Enums.SubPaywayEnum SubPayway { get; set; }
+        [JsonConverter(typeof(EnumValueStringConverter))]
+        public Enums.SubPaywayEnum? SubPayway { get; set; }
 
         /// <summary>
         /// 【*】付款人在支付提供商平台上的ID

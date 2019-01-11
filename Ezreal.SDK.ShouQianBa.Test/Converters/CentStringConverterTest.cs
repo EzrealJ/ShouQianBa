@@ -1,8 +1,5 @@
-﻿using Ezreal.SDK.ShouQianBa.DataConvert;
+﻿using Ezreal.SDK.ShouQianBa.Converters;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace Ezreal.SDK.ShouQianBa.Test.DataConvert

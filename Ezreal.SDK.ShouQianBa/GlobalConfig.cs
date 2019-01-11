@@ -26,7 +26,7 @@ namespace Ezreal.SDK.ShouQianBa
 
         public bool UseSandbox { get; set; } = false;
 
-
+        public IJsonFormatter DefaultJsonFormatter { get; set; } = new ApiJsonFormatter();
         public List<IApiActionFilter> ApiActionFilters { get; set; } = new List<IApiActionFilter>();
     }
 }

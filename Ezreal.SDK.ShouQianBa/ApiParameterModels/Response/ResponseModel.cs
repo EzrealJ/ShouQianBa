@@ -1,5 +1,7 @@
 ﻿using Ezreal.SDK.ShouQianBa.Attributes;
+using Ezreal.SDK.ShouQianBa.Converters;
 using Ezreal.SDK.ShouQianBa.Enums;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +14,7 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Response
         /// 响应码
         /// </summary>
         [ApiParameterName("result_code")]
+        [JsonConverter(typeof(EnumValueStringConverter))]
         public ResponseResultCodeEnum ResultCode { get; set; }
         /// <summary>
         /// 错误码

@@ -1,4 +1,6 @@
 ﻿using Ezreal.SDK.ShouQianBa.Attributes;
+using Ezreal.SDK.ShouQianBa.Converters;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,7 +51,8 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Request.Pay
         /// </summary>
 
         [ApiParameterName("refund_amount")]
-        public string RefundAmountByCent { get; set; }
+        [JsonConverter(typeof(CentStringConverter))]
+        public decimal RefundAmount { get; set; }
 
 
         /// <summary>
