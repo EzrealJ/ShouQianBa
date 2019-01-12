@@ -32,8 +32,7 @@ namespace Ezreal.SDK.ShouQianBa.Converters
             {
                 throw new TypeAccessException(fromType.ToString());
             }
-
-            serializer.Serialize(writer, ((int)(Math.Round(decimal.Parse(value.ToString()), 2) * 100)).ToString());
+            writer.WriteValue(((int)(Math.Round(decimal.Parse(value.ToString()), 2) * 100)).ToString());
 
         }
     }

@@ -26,7 +26,7 @@ namespace Ezreal.SDK.ShouQianBa.Converters
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             Type targetType = Enum.GetUnderlyingType(value.GetType());
-            serializer.Serialize(writer, Convert.ChangeType((value as ValueType), targetType).ToString());
+            writer.WriteValue(Convert.ChangeType(value as ValueType, targetType).ToString());
         }
     }
 }

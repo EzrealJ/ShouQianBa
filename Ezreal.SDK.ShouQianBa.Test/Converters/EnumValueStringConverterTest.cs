@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Xunit;
 
-namespace Ezreal.SDK.ShouQianBa.Test.DataConvert
+namespace Ezreal.SDK.ShouQianBa.Test.Converters
 {
     public class EnumValueStringConverterTest
     {

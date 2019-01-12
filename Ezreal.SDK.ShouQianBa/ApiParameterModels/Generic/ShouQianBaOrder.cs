@@ -113,32 +113,28 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Generic
         /// </summary>
 
         [ApiParameterName("finish_time")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        public TimeSpan FinishTime { get; set; }
+        [JsonConverter(typeof(MillisecondTimestampStringConverter))]
+        public DateTime? FinishTime { get; set; }
 
         /// <summary>
         /// 付款动作在支付提供商的完成时间(时间戳)
         /// </summary>
 
         [ApiParameterName("channel_finish_time")]
-
-        public TimeSpan PayProviderFinishTime { get; set; }
+        [JsonConverter(typeof(MillisecondTimestampStringConverter))]
+        public DateTime? PayProviderFinishTime { get; set; }
         /// <summary>
         /// 操作员
         /// </summary>
 
         [ApiParameterName("operator")]
         public string Operator { get; set; }
-
-
         /// <summary>
         /// 任何希望原样返回的内容
         /// </summary>
 
         [ApiParameterName("reflect")]
         public string Tag { get; set; }
-
-
 
         /// <summary>
         /// 扩展信息

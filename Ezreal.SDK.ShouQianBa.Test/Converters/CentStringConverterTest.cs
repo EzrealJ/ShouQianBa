@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Xunit;
 
-namespace Ezreal.SDK.ShouQianBa.Test.DataConvert
+namespace Ezreal.SDK.ShouQianBa.Test.Converters
 {
     public class CentStringConverterTest
     {
@@ -18,6 +18,7 @@ namespace Ezreal.SDK.ShouQianBa.Test.DataConvert
         [Fact]
         public void SerializeObject()
         {
+
             TestClass testClass = new TestClass()
             {
                 MyProperty = 12.3f,
@@ -26,9 +27,10 @@ namespace Ezreal.SDK.ShouQianBa.Test.DataConvert
             };
 
             string str = JsonConvert.SerializeObject(testClass);
-            Assert.Contains("\"1230\"",str);
+            Assert.Contains("\"1230\"", str);
             Assert.Contains("\"1120\"", str);
             Assert.Contains("\"5230\"", str);
+
         }
         [Fact]
         public void DeserializeObject()
