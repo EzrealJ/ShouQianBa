@@ -10,9 +10,8 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Request.Merchant
     /// <summary>
     /// 商户禁用接口请求模型
     /// <para>
-    /// 
+    /// https://doc.shouqianba.com/zh-cn/api/interface/merchantClose.html
     /// </para>
-    /// <seealso cref="https://doc.shouqianba.com/zh-cn/api/interface/merchantClose.html"/>
     /// </summary>
     public class MerchantCloseRequestModel : RequestModel
     {

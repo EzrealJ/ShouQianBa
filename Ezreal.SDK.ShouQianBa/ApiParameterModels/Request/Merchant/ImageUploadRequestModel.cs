@@ -9,9 +9,8 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Request.Merchant
     /// <summary>
     /// 开户银行接口请求模型
     /// <para>
-    ///
+    ///https://doc.shouqianba.com/zh-cn/api/interface/merchantUpload.html
     /// </para>
-    /// <seealso cref="https://doc.shouqianba.com/zh-cn/api/interface/merchantUpload.html"/>
     /// </summary>
     public class ImageUploadRequestModel : RequestModel
     {

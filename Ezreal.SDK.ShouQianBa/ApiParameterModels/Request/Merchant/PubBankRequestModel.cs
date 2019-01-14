@@ -8,9 +8,8 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Request.Merchant
     /// <summary>
     /// 对公银行搜索接口请求模型
     /// <para>
-    ///
+    ///https://doc.shouqianba.com/zh-cn/api/interface/merchantPubBanks.html
     /// </para>
-    /// <seealso cref="https://doc.shouqianba.com/zh-cn/api/interface/merchantPubBanks.html"/>
     /// </summary>
     public class PubBankRequestModel : RequestModel
     {

@@ -8,9 +8,8 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Request.Merchant
     /// <summary>
     /// 银行支行接口请求模型
     /// <para>
-    ///
+    ///https://doc.shouqianba.com/zh-cn/api/interface/merchantBranches.html
     /// </para>
-    /// <seealso cref="https://doc.shouqianba.com/zh-cn/api/interface/merchantBranches.html"/>
     /// </summary>
     public class BankBranchesRequestModel : RequestModel
     {

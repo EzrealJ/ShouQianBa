@@ -11,6 +11,11 @@
     <PackageTags>preview</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>LICENSE:https://github.com/EzrealJ/ShouQianBa/blob/master/LICENSE</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
+    <DocumentationFile>C:\Users\Ezreal\Documents\GitHub\ShouQianBa\Ezreal.SDK.ShouQianBa\Ezreal.SDK.ShouQianBa.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

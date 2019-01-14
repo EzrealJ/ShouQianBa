@@ -10,9 +10,8 @@ namespace Ezreal.SDK.ShouQianBa.ApiParameterModels.Request.Merchant
     /// <summary>
     /// 商户信息接口请求模型
     /// <para>
-    /// 
+    /// https://doc.shouqianba.com/zh-cn/api/interface/merchantInfo.html
     /// </para>
-    /// <seealso cref="https://doc.shouqianba.com/zh-cn/api/interface/merchantInfo.html"/>
     /// </summary>
     public class MerchantInfoRequestModel : RequestModel
     {
