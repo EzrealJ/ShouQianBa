@@ -7,6 +7,15 @@ using System.Threading.Tasks;
 
 namespace Ezreal.SDK.ShouQianBa.Converters
 {
+    /// <summary>
+    /// 以分计的金额字符串转换器
+    /// <para>
+    /// 将浮点类型<see cref="float"/>,<see cref="double"/>十进制类型<see cref="decimal"/>的金额值转换为以分计的金额字符串
+    /// </para>
+    /// <para>
+    /// 收钱吧约定所有的金额均采用以分计的整数字符串来传递
+    /// </para>
+    /// </summary>
     public class CentStringConverter : JsonConverter
     {
         private static List<Type> allowTypes = new List<Type>() { typeof(float), typeof(double), typeof(decimal) };

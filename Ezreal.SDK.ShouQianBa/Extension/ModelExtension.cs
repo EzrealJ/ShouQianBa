@@ -56,7 +56,7 @@ namespace Ezreal.SDK.ShouQianBa.Extension
         /// <summary>
         /// 获取double类型金额以分计的字符串形式
         /// <para>
-        /// 收钱吧接口参数全部定义为string,使用此扩展获取double类型金额以分计的字符串形式,应避免直接在调用接口之外的位置使用此扩展
+        /// 收钱吧接口参数全部定义为string,使用此扩展获取double类型金额以分计的字符串形式
         /// </para>
         /// </summary>
         /// <param name="value"></param>
@@ -68,7 +68,7 @@ namespace Ezreal.SDK.ShouQianBa.Extension
         /// <summary>
         /// 获取decimal类型金额以分计的字符串形式
         /// <para>
-        /// 收钱吧接口参数全部定义为string,使用此扩展获取decimal类型金额以分计的字符串形式,应避免直接在调用接口之外的位置使用此扩展
+        /// 收钱吧接口参数全部定义为string,使用此扩展获取decimal类型金额以分计的字符串形式
         /// </para>
         /// </summary>
         /// <param name="value"></param>
@@ -81,7 +81,7 @@ namespace Ezreal.SDK.ShouQianBa.Extension
         /// <summary>
         /// 获取枚举的基类型值的字符串形式
         /// <para>
-        /// 收钱吧接口参数全部定义为string,使用此扩展获取枚举的基类型值的字符串形式,应避免直接在调用接口之外的位置使用此扩展
+        /// 收钱吧接口参数全部定义为string,使用此扩展获取枚举的基类型值的字符串形式
         /// </para>
         /// </summary>
         /// <param name="value"></param>

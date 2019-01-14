@@ -4,6 +4,7 @@ using WebApiClient;
 
 namespace Ezreal.SDK.ShouQianBa.ApiParameterModels
 {
+
     public class ApiParameterModelBase
     {
         public virtual string ToApiParameterJsonString()
