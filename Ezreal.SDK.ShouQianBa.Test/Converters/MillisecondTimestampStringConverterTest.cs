@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Ezreal.SDK.ShouQianBa.Test.Converters
 {
-    public class UnixDateTimeStringConverterTest
+    public class MillisecondTimestampStringConverterTest
     {
 
         public class TestClass
