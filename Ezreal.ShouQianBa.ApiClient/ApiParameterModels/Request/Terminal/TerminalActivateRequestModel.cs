@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal
 {
-    public class TerminalActivateRequestModel : RequestModel
+    public class TerminalActivateRequestModel : RequestModel, Sign.IServiceSignable
     {
         /// <summary>
         /// 【必须】从服务商平台获取

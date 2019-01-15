@@ -12,7 +12,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay
     /// <summary>
     /// 退款请求模型
     /// </summary>
-    public class OrderRefundRequestModel : RequestModel
+    public class OrderRefundRequestModel : RequestModel, Sign.ITerminalSignable
     {
         /// <summary>
         /// 【必须】收钱吧终端ID

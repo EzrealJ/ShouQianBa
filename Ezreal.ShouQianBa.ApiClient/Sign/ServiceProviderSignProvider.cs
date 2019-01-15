@@ -1,10 +1,13 @@
-﻿using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Ezreal.ShouQianBa.ApiClient.Sign
 {
+    /// <summary>
+    /// 服务商签名提供者
+    /// </summary>
     public class ServiceProviderSignProvider : SignProvider
     {
 
@@ -29,24 +32,29 @@ namespace Ezreal.ShouQianBa.ApiClient.Sign
 
 
 
-        public ServiceProviderSignProvider Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel) where TRequestParameterModel : RequestModel
+        public new Sign<ServiceProviderSignProvider, TRequestParameterModel> Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel) where TRequestParameterModel : IServiceSignable
         {
             if (requestParameterModel == null)
             {
                 throw new ArgumentNullException(nameof(requestParameterModel));
             }
-            base.Sign(requestParameterModel);
-            return this;
+            return new Sign<ServiceProviderSignProvider, TRequestParameterModel>()
+            {
+                SerialNo = this.SerialNo,
+                SignContent = this.GetSignContent(requestParameterModel),
+                DataObject = requestParameterModel,
+                SignProvider = this
+            };
         }
 
-        public ServiceProviderSignProvider Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel, ServiceProviderSignSettings serviceProviderSignSetting) where TRequestParameterModel : RequestModel
+        public Sign<ServiceProviderSignProvider, TRequestParameterModel> Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel, ServiceProviderSignSettings serviceProviderSignSetting) where TRequestParameterModel : IServiceSignable
         {
             this.ServiceProviderSignSetting = serviceProviderSignSetting;
-            this.Sign(requestParameterModel);
-            return this;
+            return this.Sign(requestParameterModel);
+
         }
 
-        public ServiceProviderSignProvider Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel, string serviceProviderSerialNo, string serviceProviderKey) where TRequestParameterModel : RequestModel
+        public Sign<ServiceProviderSignProvider, TRequestParameterModel> Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel, string serviceProviderSerialNo, string serviceProviderKey) where TRequestParameterModel : IServiceSignable
         {
 
 
@@ -62,9 +70,11 @@ namespace Ezreal.ShouQianBa.ApiClient.Sign
 
             this.SerialNo = serviceProviderSerialNo;
             this.Key = serviceProviderKey;
-            this.Sign(requestParameterModel);
-            return this;
+            return this.Sign(requestParameterModel);
         }
+
+
+
 
         public static ServiceProviderSignProvider CreateFromServiceProviderSettings(ServiceProviderSettings serviceProviderSettings = null)
         {
@@ -75,6 +85,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Sign
                 ServiceProviderSerialNo = serviceProviderSettings.ServiceProviderSerialNo
             });
         }
+
 
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay
 {
-    public class OrderPrecreateRequestModel : RequestModel
+    public class OrderPrecreateRequestModel : RequestModel, Sign.ITerminalSignable
     {
         /// <summary>
         /// 【必须】收钱吧终端ID

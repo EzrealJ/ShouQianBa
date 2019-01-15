@@ -35,7 +35,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(50 * 1000)]
         [HttpPost("upay/v2/pay")]
         [JsonReturn]
-        ITask<Response<OrderGenericResponseModel>> Pay([Headers]TerminalSignProvider<OrderCreateRequestModel> terminalSignProvider, [JsonContent]OrderCreateRequestModel orderCreateRequestModel, Timeout timeout = null);
+        ITask<Response<OrderGenericResponseModel>> Pay([Headers]Sign<TerminalSignProvider,OrderCreateRequestModel> sign, [JsonContent]OrderCreateRequestModel orderCreateRequestModel, Timeout timeout = null);
         /// <summary>
         /// 订单预创建接口
         /// <para>
@@ -49,7 +49,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("upay/v2/precreate")]
         [JsonReturn]
-        ITask<Response<OrderPrecreateSyncResponseModel>> Precreate([Headers]TerminalSignProvider<OrderPrecreateRequestModel> terminalSignProvider, [JsonContent]OrderPrecreateRequestModel orderPrecreateRequestModel, Timeout timeout = null);
+        ITask<Response<OrderPrecreateSyncResponseModel>> Precreate([Headers]Sign<TerminalSignProvider,OrderPrecreateRequestModel> sign, [JsonContent]OrderPrecreateRequestModel orderPrecreateRequestModel, Timeout timeout = null);
         /// <summary>
         /// 查询订单接口
         /// </summary>
@@ -60,7 +60,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("upay/v2/query")]
         [JsonReturn]
-        ITask<Response<OrderGenericResponseModel>> Query([Headers]TerminalSignProvider<OrderTokenRequestModel> terminalSignProvider, [JsonContent]OrderTokenRequestModel orderTokenRequestModel, Timeout timeout = null);
+        ITask<Response<OrderGenericResponseModel>> Query([Headers]Sign<TerminalSignProvider,OrderTokenRequestModel> sign, [JsonContent]OrderTokenRequestModel orderTokenRequestModel, Timeout timeout = null);
         /// <summary>
         /// 取消订单
         /// </summary>
@@ -71,11 +71,11 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("upay/v2/cancel")]
         [JsonReturn]
-        ITask<Response<OrderGenericResponseModel>> Cancel([Headers]TerminalSignProvider<OrderTokenRequestModel> terminalSignProvider, [JsonContent]OrderTokenRequestModel orderTokenRequestModel, Timeout timeout = null);
+        ITask<Response<OrderGenericResponseModel>> Cancel([Headers]Sign<TerminalSignProvider,OrderTokenRequestModel> sign, [JsonContent]OrderTokenRequestModel orderTokenRequestModel, Timeout timeout = null);
         /// <summary>
         /// 手动撤单
         /// <para>
-        /// 整体和<seealso cref="IPayContract.Cancel(TerminalSignProvider{OrderTokenRequestModel}, OrderTokenRequestModel, Timeout)"/>的结果没有任何差异,但执行人工撤单时建议使用此接口，这样会在收钱吧方的数据上体现出区别
+        /// 整体和Cancel方法的结果没有任何差异,但执行人工撤单时建议使用此接口，这样会在收钱吧方的数据上体现出区别
         /// </para>
         /// </summary>
         /// <param name="terminalSignProvider">签名对象</param>
@@ -85,7 +85,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("upay/v2/revoke")]
         [JsonReturn]
-        ITask<Response<OrderGenericResponseModel>> Revoke([Headers]TerminalSignProvider<OrderTokenRequestModel> terminalSignProvider, [JsonContent]OrderTokenRequestModel orderTokenRequestModel, Timeout timeout = null);
+        ITask<Response<OrderGenericResponseModel>> Revoke([Headers]Sign<TerminalSignProvider,OrderTokenRequestModel> sign, [JsonContent]OrderTokenRequestModel orderTokenRequestModel, Timeout timeout = null);
         /// <summary>
         /// 退款
         /// </summary>
@@ -96,6 +96,6 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("upay/v2/refund")]
         [JsonReturn]
-        ITask<Response<OrderGenericResponseModel>> Refund([Headers]TerminalSignProvider<OrderRefundRequestModel> terminalSignProvider, [JsonContent]OrderRefundRequestModel orderRefundRequestModel, Timeout timeout = null);
+        ITask<Response<OrderGenericResponseModel>> Refund([Headers]Sign<TerminalSignProvider,OrderRefundRequestModel> sign, [JsonContent]OrderRefundRequestModel orderRefundRequestModel, Timeout timeout = null);
     }
 }

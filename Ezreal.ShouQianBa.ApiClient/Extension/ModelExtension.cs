@@ -6,6 +6,7 @@ using System.Text;
 using Ezreal.ShouQianBa.ApiClient.Attributes;
 using System.Reflection;
 using System.Diagnostics;
+using Ezreal.ShouQianBa.ApiClient.Sign;
 
 namespace Ezreal.ShouQianBa.ApiClient.Extension
 {
@@ -86,10 +87,22 @@ namespace Ezreal.ShouQianBa.ApiClient.Extension
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static string GetStringValue(this Enum value) 
+        public static string GetStringValue(this Enum value)
         {
             Type type = Enum.GetUnderlyingType(value.GetType());
             return Convert.ChangeType((value as ValueType), type).ToString();
+        }
+
+        public static Sign<ServiceProviderSignProvider, TModel> SignByServiceProviderSignProvider<TModel>(this TModel model, ServiceProviderSignProvider serviceProviderSignProvider)
+            where TModel:IServiceSignable
+        {
+            return serviceProviderSignProvider.Sign(model);
+        }
+
+        public static Sign<TerminalSignProvider, TModel> SignByTerminalSignProvider<TModel>(this TModel model, TerminalSignProvider terminalSignProvider)
+             where TModel : ITerminalSignable
+        {
+            return terminalSignProvider.Sign(model);
         }
     }
 }

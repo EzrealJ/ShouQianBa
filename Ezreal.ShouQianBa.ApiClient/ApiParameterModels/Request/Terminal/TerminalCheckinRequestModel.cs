@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal
 {
-    public class TerminalCheckinRequestModel : RequestModel
+    public class TerminalCheckinRequestModel : RequestModel, Sign.ITerminalSignable
     {
         /// <summary>
         /// 【必须】终端号

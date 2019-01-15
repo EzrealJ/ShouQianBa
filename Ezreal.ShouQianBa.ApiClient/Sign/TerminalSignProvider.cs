@@ -31,22 +31,28 @@ namespace Ezreal.ShouQianBa.ApiClient.Sign
 
 
 
-        public void Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel) where TRequestParameterModel : RequestModel
+        public new Sign<TerminalSignProvider, TRequestParameterModel> Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel) where TRequestParameterModel : ITerminalSignable
         {
             if (requestParameterModel == null)
             {
                 throw new ArgumentNullException(nameof(requestParameterModel));
             }
-            base.Sign(requestParameterModel);
+            return new Sign<TerminalSignProvider, TRequestParameterModel>()
+            {
+                SerialNo = this.SerialNo,
+                SignContent = this.GetSignContent(requestParameterModel),
+                DataObject = requestParameterModel,
+                SignProvider = this
+            };
         }
 
-        public void Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel, TerminalSignSettings terminalSignSettings) where TRequestParameterModel : RequestModel
+        public Sign<TerminalSignProvider, TRequestParameterModel> Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel, TerminalSignSettings terminalSignSettings) where TRequestParameterModel : ITerminalSignable
         {
             this.TerminalSignSettings = terminalSignSettings;
-            this.Sign(requestParameterModel);
+            return this.Sign(requestParameterModel);
         }
 
-        public void Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel, string terminalSerialNo, string terminalKey) where TRequestParameterModel : RequestModel
+        public Sign<TerminalSignProvider, TRequestParameterModel> Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel, string terminalSerialNo, string terminalKey) where TRequestParameterModel : ITerminalSignable
         {
 
 
@@ -62,7 +68,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Sign
 
             this.SerialNo = terminalSerialNo;
             this.Key = terminalKey;
-            this.Sign(requestParameterModel);
+            return this.Sign(requestParameterModel);
         }
     }
 }

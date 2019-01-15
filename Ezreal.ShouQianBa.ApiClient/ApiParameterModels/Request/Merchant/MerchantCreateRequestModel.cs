@@ -12,11 +12,10 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant
     /// <summary>
     /// 商户入网接口请求模型
     /// <para>
-    /// 
+    /// https://doc.shouqianba.com/zh-cn/api/interface/merchantCreate.html
     /// </para>
-    /// <seealso cref="https://doc.shouqianba.com/zh-cn/api/interface/merchantCreate.html"/>
     /// </summary>
-    public class MerchantCreateRequestModel : RequestModel
+    public class MerchantCreateRequestModel : RequestModel, Sign.IServiceSignable
     {
         /// <summary>
         /// 证件类型

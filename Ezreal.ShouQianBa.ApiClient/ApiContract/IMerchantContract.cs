@@ -28,7 +28,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(10 * 1000)]
         [HttpPost("v2/merchant/create")]
         [JsonReturn]
-        ITask<Response<MerchantCreateResponseModel>> Create([Headers]ServiceProviderSignProvider serviceProviderSigner, [JsonContent]MerchantCreateRequestModel createMerchantRequestModel, Timeout timeout = null);
+        ITask<Response<MerchantCreateResponseModel>> Create([Headers]Sign<ServiceProviderSignProvider, MerchantCreateRequestModel> sign, [JsonContent]MerchantCreateRequestModel createMerchantRequestModel, Timeout timeout = null);
         /// <summary>
         /// 查询商户信息
         /// </summary>
@@ -39,7 +39,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("v2/merchant/info")]
         [JsonReturn]
-        ITask<Response<MerchantInfoResponseModel>> Info([Headers]ServiceProviderSignProvider serviceProviderSigner, [JsonContent]MerchantInfoRequestModel merchantInfoRequestModel, Timeout timeout = null);
+        ITask<Response<MerchantInfoResponseModel>> Info([Headers]Sign<ServiceProviderSignProvider, MerchantInfoRequestModel> sign, [JsonContent]MerchantInfoRequestModel merchantInfoRequestModel, Timeout timeout = null);
         /// <summary>
         /// 禁用商户
         /// </summary>
@@ -50,7 +50,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("v2/merchant/close")]
         [JsonReturn]
-        ITask<Response<MerchantCloseResponseModel>> Close([Headers]ServiceProviderSignProvider serviceProviderSigner, [JsonContent]MerchantCloseRequestModel closeMerchantRequestModel, Timeout timeout = null);
+        ITask<Response<MerchantCloseResponseModel>> Close([Headers]Sign<ServiceProviderSignProvider, MerchantCloseRequestModel> sign, [JsonContent]MerchantCloseRequestModel closeMerchantRequestModel, Timeout timeout = null);
 
         /// <summary>
         /// 根据银行卡号获取银行信息
@@ -62,7 +62,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("v2/merchant/banks")]
         [JsonReturn]
-        ITask<Response<BankResponseModel>> Banks([Headers]ServiceProviderSignProvider serviceProviderSigner, [JsonContent]BankRequestModel bankRequestModel, Timeout timeout = null);
+        ITask<Response<BankResponseModel>> Banks([Headers]Sign<ServiceProviderSignProvider, BankRequestModel> sign, [JsonContent]BankRequestModel bankRequestModel, Timeout timeout = null);
         /// <summary>
         /// 模糊查询银行支行
         /// </summary>
@@ -73,7 +73,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("v2/merchant/branches")]
         [JsonReturn]
-        ITask<Response<BankBranchesResponseModel>> BankBranches([Headers]ServiceProviderSignProvider serviceProviderSigner, [JsonContent]BankBranchesRequestModel bankBranchesRequestModel, Timeout timeout = null);
+        ITask<Response<BankBranchesResponseModel>> BankBranches([Headers]Sign<ServiceProviderSignProvider, BankBranchesRequestModel> sign, [JsonContent]BankBranchesRequestModel bankBranchesRequestModel, Timeout timeout = null);
         /// <summary>
         /// 上传图片
         /// </summary>
@@ -84,7 +84,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(10 * 1000)]
         [HttpPost("v2/merchant/upload")]
         [JsonReturn]
-        ITask<Response<ImageUploadResponseModel>> ImageUpload([Headers]ServiceProviderSignProvider serviceProviderSigner, [JsonContent]ImageUploadRequestModel imageUploadRequestModel, Timeout timeout = null);
+        ITask<Response<ImageUploadResponseModel>> ImageUpload([Headers]Sign<ServiceProviderSignProvider, ImageUploadRequestModel> sign, [JsonContent]ImageUploadRequestModel imageUploadRequestModel, Timeout timeout = null);
 
         /// <summary>
         /// 对公银行查询接口
@@ -96,7 +96,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("v2/merchant/pub_banks")]
         [JsonReturn]
-        ITask<Response<PubBankResponseModel>> PubBank([Headers]ServiceProviderSignProvider serviceProviderSigner, [JsonContent]PubBankRequestModel pubBankRequestModel, Timeout timeout = null);
+        ITask<Response<PubBankResponseModel>> PubBank([Headers]Sign<ServiceProviderSignProvider, PubBankRequestModel> sign, [JsonContent]PubBankRequestModel pubBankRequestModel, Timeout timeout = null);
 
     }
 }

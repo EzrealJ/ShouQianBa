@@ -3,6 +3,7 @@ using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant;
 using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response;
 using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant;
 using Ezreal.ShouQianBa.ApiClient.Sign;
+using Ezreal.ShouQianBa.ApiClient.Extension;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -26,9 +27,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
 
 
             BankRequestModel requestModel = new BankRequestModel() { BankCard = bankCardNo };
-            ServiceProviderSignProvider shouQianBaServiceProviderSigner = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);
-
-            Response<BankResponseModel> result = await apiInstense.Banks(shouQianBaServiceProviderSigner, requestModel);
+            Response<BankResponseModel> result = await apiInstense.Banks(requestModel.SignByServiceProviderSignProvider(ServiceProviderSignProvider.CreateFromServiceProviderSettings()), requestModel);
 
             Assert.NotNull(result);
             Assert.True(result.ResultCode == Enums.ResponseResultCodeEnum.OK);
@@ -45,9 +44,9 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
 
 
             PubBankRequestModel requestModel = new PubBankRequestModel() { BankName = bankName };
-            ServiceProviderSignProvider shouQianBaServiceProviderSigner = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);
+            var sign = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);
 
-            Response<PubBankResponseModel> result = await apiInstense.PubBank(shouQianBaServiceProviderSigner, requestModel);
+            Response<PubBankResponseModel> result = await apiInstense.PubBank(sign, requestModel);
 
             Assert.NotNull(result);
             Assert.True(result.ResultCode == Enums.ResponseResultCodeEnum.OK);
@@ -64,9 +63,9 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
 
 
             BankBranchesRequestModel requestModel = new BankBranchesRequestModel() { BankName = bankName, BankArea = bankArea };
-            ServiceProviderSignProvider shouQianBaServiceProviderSigner = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);
+            var sign = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);
 
-            Response<BankBranchesResponseModel> result = await apiInstense.BankBranches(shouQianBaServiceProviderSigner, requestModel);
+            Response<BankBranchesResponseModel> result = await apiInstense.BankBranches(sign, requestModel);
 
             Assert.NotNull(result);
             Assert.True(result.ResultCode == Enums.ResponseResultCodeEnum.OK);
@@ -82,9 +81,9 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
             var apiInstense = Global.Create<IMerchantContract>();
             Image image = Image.FromFile(filePath);
             ImageUploadRequestModel requestModel = ImageUploadRequestModel.FromImage(image);
-            ServiceProviderSignProvider shouQianBaServiceProviderSigner = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);
+            var sign = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);
 
-            Response<ImageUploadResponseModel> result = await apiInstense.ImageUpload(shouQianBaServiceProviderSigner, requestModel);
+            Response<ImageUploadResponseModel> result = await apiInstense.ImageUpload(sign, requestModel);
 
             Assert.NotNull(result);
             Assert.True(result.ResultCode == Enums.ResponseResultCodeEnum.OK);

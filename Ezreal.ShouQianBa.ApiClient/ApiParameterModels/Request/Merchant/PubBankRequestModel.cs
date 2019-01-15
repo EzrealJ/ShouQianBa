@@ -11,7 +11,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant
     ///https://doc.shouqianba.com/zh-cn/api/interface/merchantPubBanks.html
     /// </para>
     /// </summary>
-    public class PubBankRequestModel : RequestModel
+    public class PubBankRequestModel : RequestModel, Sign.IServiceSignable
     {
         /// <summary>
         /// 银行名称,支持模糊查询
