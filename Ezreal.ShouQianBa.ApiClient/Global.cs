@@ -27,6 +27,7 @@ namespace Ezreal.ShouQianBa.ApiClient
                  config.HttpHost = new Uri(GlobalConfig.ApiUri);
                  GlobalConfig.ApiActionFilters.ToList().ForEach(filter => config.GlobalFilters.Add(filter));
                  config.FormatOptions.DateTimeFormat = WebApiClient.DateTimeFormats.ISO8601_WithMillisecond;
+                 config.JsonFormatter = GlobalConfig.DefaultJsonFormatter;
              };
 
             HttpApiFactory.Add<ApiContract.IMerchantContract>().ConfigureHttpApiConfig(configAction);

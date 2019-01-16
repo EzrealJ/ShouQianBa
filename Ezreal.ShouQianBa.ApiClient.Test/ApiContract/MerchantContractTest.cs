@@ -23,12 +23,10 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
         [InlineData(@"6217790001073282390")]
         public async void Banks(string bankCardNo)
         {
-            var apiInstense = Global.Create<IMerchantContract>();
-
-
             BankRequestModel requestModel = new BankRequestModel() { BankCard = bankCardNo };
-            Response<BankResponseModel> result = await apiInstense.Banks(requestModel.SignByServiceProviderSignProvider(ServiceProviderSignProvider.CreateFromServiceProviderSettings()), requestModel);
-
+            var apiInstense = Global.Create<IMerchantContract>();
+            var sign = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);          
+            Response<BankResponseModel> result = await apiInstense.Banks(sign, requestModel);
             Assert.NotNull(result);
             Assert.True(result.ResultCode == Enums.ResponseResultCodeEnum.OK);
         }
