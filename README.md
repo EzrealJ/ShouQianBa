@@ -14,23 +14,23 @@
 
 * 配置
 ```C#
-            //这是收钱吧方面提供的测试环境的信息，但使用范围是有限的 大多数接口都需要在生产环境调试
-            Global.InitializeDefaultConfig(config =>
-            {
-                config.DefaultShouQianBaServiceProviderSettings = new ServiceProviderSettings()
-                {
-                    ServiceProviderSerialNo = "@vendor_sn",
-                    ServiceProviderKey = "@vendor_key",
-                };
-                config.UseSandbox = true;
-            });
+    //这是收钱吧方面提供的测试环境的信息，但使用范围是有限的 大多数接口都需要在生产环境调试
+    Global.InitializeDefaultConfig(config =>
+    {
+        config.DefaultShouQianBaServiceProviderSettings = new ServiceProviderSettings()
+        {
+            ServiceProviderSerialNo = "@vendor_sn",
+            ServiceProviderKey = "@vendor_key",
+        };
+        config.UseSandbox = true;
+    });
 ```
 * 开始使用
 ```C#
-            BankRequestModel requestModel = new BankRequestModel() { BankCard = bankCardNo };
-            var apiInstense = Global.Create<IMerchantContract>();
-            var sign = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);          
-            Response<BankResponseModel> result = await apiInstense.Banks(sign, requestModel);
+   BankRequestModel requestModel = new BankRequestModel() { BankCard = bankCardNo };
+   var apiInstense = Global.Create<IMerchantContract>();
+   var sign = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);          
+   Response<BankResponseModel> result = await apiInstense.Banks(sign, requestModel);
 ```
 * 更多使用方式尽情期待
 ## 下一步计划:添加DI支持
