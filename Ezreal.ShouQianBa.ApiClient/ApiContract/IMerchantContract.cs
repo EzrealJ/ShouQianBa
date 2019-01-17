@@ -10,6 +10,7 @@ using Ezreal.ShouQianBa.ApiClient.Sign;
 using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant;
 using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant;
 using WebApiClient.Parameterables;
+using System.Threading;
 
 namespace Ezreal.ShouQianBa.ApiClient.ApiContract
 {
@@ -28,7 +29,11 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(10 * 1000)]
         [HttpPost("v2/merchant/create")]
         [JsonReturn]
-        ITask<Response<MerchantCreateResponseModel>> Create([Headers]Sign<ServiceProviderSignProvider, MerchantCreateRequestModel> sign, [JsonContent]MerchantCreateRequestModel createMerchantRequestModel, Timeout timeout = null);
+        ITask<Response<MerchantCreateResponseModel>> Create(
+            [Headers]Sign<ServiceProviderSignProvider, MerchantCreateRequestModel> sign,
+            [JsonContent]MerchantCreateRequestModel createMerchantRequestModel,
+            WebApiClient.Parameterables.Timeout timeout = null,
+            CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// 查询商户信息
         /// </summary>
@@ -39,7 +44,11 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("v2/merchant/info")]
         [JsonReturn]
-        ITask<Response<MerchantInfoResponseModel>> Info([Headers]Sign<ServiceProviderSignProvider, MerchantInfoRequestModel> sign, [JsonContent]MerchantInfoRequestModel merchantInfoRequestModel, Timeout timeout = null);
+        ITask<Response<MerchantInfoResponseModel>> Info(
+            [Headers]Sign<ServiceProviderSignProvider, MerchantInfoRequestModel> sign,
+            [JsonContent]MerchantInfoRequestModel merchantInfoRequestModel,
+            WebApiClient.Parameterables.Timeout timeout = null,
+            CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// 禁用商户
         /// </summary>
@@ -50,7 +59,11 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("v2/merchant/close")]
         [JsonReturn]
-        ITask<Response<MerchantCloseResponseModel>> Close([Headers]Sign<ServiceProviderSignProvider, MerchantCloseRequestModel> sign, [JsonContent]MerchantCloseRequestModel closeMerchantRequestModel, Timeout timeout = null);
+        ITask<Response<MerchantCloseResponseModel>> Close(
+            [Headers]Sign<ServiceProviderSignProvider, MerchantCloseRequestModel> sign,
+            [JsonContent]MerchantCloseRequestModel closeMerchantRequestModel,
+            WebApiClient.Parameterables.Timeout timeout = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// 根据银行卡号获取银行信息
@@ -62,7 +75,11 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("v2/merchant/banks")]
         [JsonReturn]
-        ITask<Response<BankResponseModel>> Banks([Headers]Sign<ServiceProviderSignProvider, BankRequestModel> sign, [JsonContent]BankRequestModel bankRequestModel, Timeout timeout = null);
+        ITask<Response<BankResponseModel>> Banks(
+            [Headers]Sign<ServiceProviderSignProvider, BankRequestModel> sign,
+            [JsonContent]BankRequestModel bankRequestModel,
+            WebApiClient.Parameterables.Timeout timeout = null,
+            CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// 模糊查询银行支行
         /// </summary>
@@ -73,7 +90,12 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("v2/merchant/branches")]
         [JsonReturn]
-        ITask<Response<BankBranchesResponseModel>> BankBranches([Headers]Sign<ServiceProviderSignProvider, BankBranchesRequestModel> sign, [JsonContent]BankBranchesRequestModel bankBranchesRequestModel, Timeout timeout = null);
+        ITask<Response<BankBranchesResponseModel>> BankBranches(
+            [Headers]Sign<ServiceProviderSignProvider, BankBranchesRequestModel> sign,
+            [JsonContent]BankBranchesRequestModel bankBranchesRequestModel,
+            WebApiClient.Parameterables.Timeout timeout = null,
+            CancellationToken cancellationToken = default(CancellationToken)
+            );
         /// <summary>
         /// 上传图片
         /// </summary>
@@ -84,7 +106,11 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(10 * 1000)]
         [HttpPost("v2/merchant/upload")]
         [JsonReturn]
-        ITask<Response<ImageUploadResponseModel>> ImageUpload([Headers]Sign<ServiceProviderSignProvider, ImageUploadRequestModel> sign, [JsonContent]ImageUploadRequestModel imageUploadRequestModel, Timeout timeout = null);
+        ITask<Response<ImageUploadResponseModel>> ImageUpload(
+            [Headers]Sign<ServiceProviderSignProvider, ImageUploadRequestModel> sign,
+            [JsonContent]ImageUploadRequestModel imageUploadRequestModel,
+            WebApiClient.Parameterables.Timeout timeout = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// 对公银行查询接口
@@ -96,7 +122,11 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("v2/merchant/pub_banks")]
         [JsonReturn]
-        ITask<Response<PubBankResponseModel>> PubBank([Headers]Sign<ServiceProviderSignProvider, PubBankRequestModel> sign, [JsonContent]PubBankRequestModel pubBankRequestModel, Timeout timeout = null);
+        ITask<Response<PubBankResponseModel>> PubBank(
+            [Headers]Sign<ServiceProviderSignProvider, PubBankRequestModel> sign,
+            [JsonContent]PubBankRequestModel pubBankRequestModel,
+            WebApiClient.Parameterables.Timeout timeout = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }

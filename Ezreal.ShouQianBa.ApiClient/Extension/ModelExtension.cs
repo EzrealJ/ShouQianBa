@@ -93,6 +93,27 @@ namespace Ezreal.ShouQianBa.ApiClient.Extension
             return Convert.ChangeType((value as ValueType), type).ToString();
         }
 
+        public static Sign<ServiceProviderSignProvider, TRequestModel> SignByServiceProviderSignProvider<TRequestModel>(this TRequestModel requestModel, ServiceProviderSignSettings serviceProviderSignSettings)
+   where TRequestModel : IServiceSignable
+        {
+            return (
+                serviceProviderSignSettings == null
+                ? ServiceProviderSignProvider.CreateFromServiceProviderSettings()
+                : new ServiceProviderSignProvider(serviceProviderSignSettings)
+                )
+                .Sign(requestModel);
+        }
 
+        public static Sign<TerminalSignProvider, TRequestModel> SignByTerminalSignProvider<TRequestModel>(this TRequestModel requestModel, TerminalSignSettings terminalSignSettings)
+   where TRequestModel : ITerminalSignable
+
+        {
+            if (terminalSignSettings == null)
+            {
+                throw new ArgumentNullException(nameof(terminalSignSettings));
+            }
+
+            return new TerminalSignProvider(terminalSignSettings).Sign(requestModel);
+        }
     }
 }

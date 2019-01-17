@@ -12,6 +12,7 @@ using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Terminal;
 using Ezreal.ShouQianBa.ApiClient.Sign;
 using WebApiClient.Parameterables;
 using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request;
+using System.Threading;
 
 namespace Ezreal.ShouQianBa.ApiClient.ApiContract
 {
@@ -30,7 +31,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("terminal/activate")]
         [JsonReturn]
-        ITask<Response<TerminalActivateResponseModel>> Activate([Headers]Sign<ServiceProviderSignProvider, TerminalActivateRequestModel> sign, [JsonContent]TerminalActivateRequestModel terminalActivateRequestModel, Timeout timeout = null);
+        ITask<Response<TerminalActivateResponseModel>> Activate([Headers]Sign<ServiceProviderSignProvider, TerminalActivateRequestModel> sign, [JsonContent]TerminalActivateRequestModel terminalActivateRequestModel,  WebApiClient.Parameterables.Timeout timeout = null,CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// 设备签到
         /// </summary>
@@ -41,7 +42,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("terminal/checkin")]
         [JsonReturn]
-        ITask<Response<TerminalCheckinResponseModel>> Checkin([Headers]Sign<TerminalSignProvider, TerminalCheckinRequestModel> sign, [JsonContent]TerminalCheckinRequestModel terminalCheckinRequestModel, Timeout timeout = null);
+        ITask<Response<TerminalCheckinResponseModel>> Checkin([Headers]Sign<TerminalSignProvider, TerminalCheckinRequestModel> sign, [JsonContent]TerminalCheckinRequestModel terminalCheckinRequestModel,  WebApiClient.Parameterables.Timeout timeout = null,CancellationToken cancellationToken = default(CancellationToken));
         ///// <summary>
         ///// 上传日志
         ///// <para>
@@ -55,6 +56,6 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         //[Timeout(5 * 1000)]
         //[HttpPost("terminal/uploadLog")]
         //[JsonReturn]
-        //ITask<ResponseModel> UploadLog([Headers]Sign<TerminalSignProvider, RequestModel> sign, [JsonContent]MulitpartFile mulitpartFile, Timeout timeout = null);
+        //ITask<ResponseModel> UploadLog([Headers]Sign<TerminalSignProvider, RequestModel> sign, [JsonContent]MulitpartFile mulitpartFile,  WebApiClient.Parameterables.Timeout timeout = null,CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -24,9 +24,14 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
         public async void Banks(string bankCardNo)
         {
             BankRequestModel requestModel = new BankRequestModel() { BankCard = bankCardNo };
-            var apiInstense = Global.Create<IMerchantContract>();
-            var sign = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);          
-            Response<BankResponseModel> result = await apiInstense.Banks(sign, requestModel);
+            Response<BankResponseModel> result = await ApiFactory.CreateMerchantClient()
+                .Banks(requestModel)
+                .Retry(3, TimeSpan.FromSeconds(5))
+                .WhenCatch<HttpStatusFailureException>(ex => ex.StatusCode == System.Net.HttpStatusCode.RequestTimeout);
+                
+               
+
+
             Assert.NotNull(result);
             Assert.True(result.ResultCode == Enums.ResponseResultCodeEnum.OK);
         }
@@ -52,8 +57,8 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
         }
 
         [Theory]
-        //[InlineData(@"中国银行", "320506")]
-        //[InlineData(@"中国农业银行", "320506")]
+        [InlineData(@"中国银行", "320506")]
+        [InlineData(@"中国农业银行", "320506")]
         [InlineData(@"招商银行", "330103")]
         public async void BankBranches(string bankName, string bankArea)
         {

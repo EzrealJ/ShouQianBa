@@ -66,7 +66,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Converters
             }
             else
             {
-                throw new JsonSerializationException($"Unexpected token parsing date. Expected Integer or String, got {reader.TokenType}.");
+                throw new JsonSerializationException($"Unexpected cancellationToken parsing date. Expected Integer or String, got {reader.TokenType}.");
             }
 
             if (milliseconds >= 0)
