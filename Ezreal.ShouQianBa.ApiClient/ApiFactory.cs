@@ -12,6 +12,8 @@ namespace Ezreal.ShouQianBa.ApiClient
     {
         public static MerchantClient CreateMerchantClient() => new MerchantClient(null);
 
+        public static TerminalClient CreateTerminalClient() => new TerminalClient(null);
 
+        public static PayClient CreatePayClient() => new PayClient(null);
     }
 }
