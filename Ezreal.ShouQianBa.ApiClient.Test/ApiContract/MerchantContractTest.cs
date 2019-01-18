@@ -28,10 +28,6 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
                 .Banks(requestModel)
                 .Retry(3, TimeSpan.FromSeconds(5))
                 .WhenCatch<HttpStatusFailureException>(ex => ex.StatusCode == System.Net.HttpStatusCode.RequestTimeout);
-                
-               
-
-
             Assert.NotNull(result);
             Assert.True(result.ResultCode == Enums.ResponseResultCodeEnum.OK);
         }

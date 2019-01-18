@@ -13,11 +13,11 @@ namespace Ezreal.ShouQianBa.ApiClient
         /// <summary>
         /// 生产环境Uri
         /// </summary>
-        public const string ProductionEnvironmentApiUri = "https://api-vendor.shouqianba.com/";
+        public string ProductionEnvironmentApiUri { get; set; } = "https://api-vendor.shouqianba.com/";
         /// <summary>
         /// 沙箱环境Uri
         /// </summary>
-        public const string SandboxEnvironmentApiUri = "http://api-sandbox.test.shouqianba.com/";
+        public string SandboxEnvironmentApiUri { get; set; } = "http://api-sandbox.test.shouqianba.com/";
 
 
         /// <summary>

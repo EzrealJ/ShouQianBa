@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay
 {
+    /// <summary>
+    /// 通用的支付响应模型
+    /// <para>
+    /// 通常情况下，除预创建订单外，支付相关接口返回的结果都能满足此模型
+    /// </para>
+    /// </summary>
     public class OrderGenericResponseModel : IBusinessResponseModel
     {
         /// <summary>
@@ -29,5 +35,12 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay
 
         [ApiParameterName("data")]
         public Generic.ShouQianBaOrder Order { get; set; }
+        /// <summary>
+        /// 订单是否有效
+        /// <para>
+        /// 等效于Order==null
+        /// </para>
+        /// </summary>
+        public bool IsEffectiveOrder { get => this.Order == null; }
     }
 }

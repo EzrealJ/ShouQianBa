@@ -15,6 +15,10 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response
 
         [ApiParameterName("biz_response")]
         public T BusinessResponseContent { get; set; }
+        /// <summary>
+        /// 存在有效的业务响应
+        /// </summary>
+        public bool ExistsBusinessResponseContent { get => this.BusinessResponseContent.Equals(default(T)); }
 
     }
 }

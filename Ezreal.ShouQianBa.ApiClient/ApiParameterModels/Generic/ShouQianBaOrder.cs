@@ -1,5 +1,6 @@
 ﻿using Ezreal.ShouQianBa.ApiClient.Attributes;
 using Ezreal.ShouQianBa.ApiClient.Converters;
+using Ezreal.ShouQianBa.ApiClient.Enums;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -47,7 +48,8 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic
         /// 订单状态
         /// </summary>
         [ApiParameterName("order_status")]
-        public string OrderStatus { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public OrderStatusEnum OrderStatus { get; set; }
 
 
         /// <summary>
@@ -55,7 +57,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic
         /// </summary>
         [ApiParameterName("payway")]
         [JsonConverter(typeof(EnumValueStringConverter))]
-        public Enums.PaywayEnum Payway { get; set; }
+        public PaywayEnum Payway { get; set; }
 
         /// <summary>
         /// 支付方式名称
@@ -68,7 +70,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic
         /// </summary>
         [ApiParameterName("sub_payway")]
         [JsonConverter(typeof(EnumValueStringConverter))]
-        public Enums.SubPaywayEnum SubPayway { get; set; }
+        public SubPaywayEnum SubPayway { get; set; }
 
         /// <summary>
         /// 付款人在支付提供商平台上的ID
@@ -144,5 +146,23 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic
         /// </summary>
         [ApiParameterName("payment_list")]
         public dynamic PaymentList { get; set; }
+
+        public static readonly OrderStatusEnum[] OrderFinalStatus = new OrderStatusEnum[] {
+           OrderStatusEnum.PAID,
+           OrderStatusEnum.PAY_CANCELED,
+           OrderStatusEnum.REFUNDED,
+           OrderStatusEnum.PARTIAL_REFUNDED,
+           OrderStatusEnum.CANCELED
+        };
+        /// <summary>
+        /// 订单是否最终态
+        /// <para>
+        /// 判断OrderStatus是否是"PAID","PAY_CANCELED","REFUNDED","PARTIAL_REFUNDED","CANCELED"其中的项
+        /// </para>
+        /// <para>
+        /// 文档约定,若订单不是最终状态,需要继续查询订单状态
+        /// </para>
+        /// </summary>
+        public bool IsFinalOrderStatus { get => OrderFinalStatus.Contains(this.OrderStatus) }
     }
 }

@@ -14,7 +14,7 @@
 
 * 配置
 ```C#
-    //这是收钱吧方面提供的测试环境的信息，但使用范围是有限的 大多数接口都需要在生产环境调试
+
     Global.InitializeDefaultConfig(config =>
     {
         config.DefaultShouQianBaServiceProviderSettings = new ServiceProviderSettings()
