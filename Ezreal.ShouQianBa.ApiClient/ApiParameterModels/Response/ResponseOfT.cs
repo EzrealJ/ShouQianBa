@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response
 {
-    public class Response<T> : ResponseModel where T : IBusinessResponseModel
+    public class Response<T> : ResponseModel where T : class, IBusinessResponseModel
     {
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response
         /// <summary>
         /// 存在有效的业务响应
         /// </summary>
-        public bool ExistsBusinessResponseContent { get => this.BusinessResponseContent.Equals(default(T)); }
+        public bool ExistsBusinessResponseContent { get => this.BusinessResponseContent != null; }
 
     }
 }

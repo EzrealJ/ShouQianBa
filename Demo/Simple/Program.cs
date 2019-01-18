@@ -1,19 +1,19 @@
-﻿using System;
-using Ezreal.ShouQianBa.ApiClient;
+﻿using Ezreal.ShouQianBa.ApiClient;
 using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay;
 using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response;
+using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay;
+using Ezreal.ShouQianBa.ApiClient.Enums;
 using Ezreal.ShouQianBa.ApiClient.Sign;
+using System;
+using System.Threading;
 using System.Threading.Tasks;
 using WebApiClient;
-using System.Threading;
-using Ezreal.ShouQianBa.ApiClient.Enums;
 
 namespace Simple
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             //当前示例向您演示如何最简单的使用方式
             Global.InitializeDefaultConfig(config =>
@@ -31,26 +31,23 @@ namespace Simple
                 config.ProductionEnvironmentApiUri = "生产环境Url";
             });
 
-
-
+            PayDemo();
+            while (true)
+            {
+                Console.ReadKey();
+            }
         }
 
-
-        public async void PayDemo()
+        public static async void PayDemo()
         {
-            /*
-             
-             重要！此示例是理论示例，代码正确性尚未验证
-             
-             */
-
-
+            //重要！此示例是理论示例，代码正确性尚未验证
 
             TerminalSignSettings terminalSignSettings = new TerminalSignSettings()
             {
                 TerminalKey = "设备Key(通过设备激活接口获得,或者通过设备签到接口刷新)",
                 TerminalSerialNo = "设备序列号(通过设备激活接口获得)"
             };
+
             //当面付示例
             OrderCreateRequestModel orderCreateRequestModel = new OrderCreateRequestModel();
             orderCreateRequestModel.TerminalSerialNo = terminalSignSettings.TerminalSerialNo;
@@ -72,7 +69,10 @@ namespace Simple
             //一般而言是等待可以直接得到最终的正确结果,但不建议使用此方式，示例仍设定2s超时时间，在其超时后通过轮询的方式轮询最终态来确定结果
             catch (TaskCanceledException)
             {
-                //此处消除异常使业务继续
+                //此处消除 主动超时 异常使业务继续
+            }
+            catch (Exception ex)
+            {
             }
             if (result != null
                 && result.ExistsBusinessResponseContent
@@ -91,11 +91,40 @@ namespace Simple
             CancellationTokenSource queryTaskCancelTokenSource = new CancellationTokenSource();
             //创建一个取消轮询的任务
             Task queryTimeoutTask = Task.Delay(TimeSpan.FromSeconds(50)).ContinueWith(task => queryTaskCancelTokenSource.Cancel());
-            result = await ApiFactory.CreatePayClient().Query(orderTokenRequestModel, terminalSignSettings, TimeSpan.FromSeconds(2), queryTaskCancelTokenSource.Token)
-            .Retry(30, TimeSpan.FromSeconds(2))//设定轮询等待为2s，轮询不超过30次
-            .WhenCatch<HttpStatusFailureException>(ex => ex.StatusCode == System.Net.HttpStatusCode.RequestTimeout)
-            .WhenResult(response => !(response.ExistsBusinessResponseContent && response.BusinessResponseContent.IsEffectiveOrder && response.BusinessResponseContent.Order.IsFinalOrderStatus));
+            try
+            {
+                result = await ApiFactory.CreatePayClient().Query(orderTokenRequestModel, terminalSignSettings, TimeSpan.FromSeconds(2), queryTaskCancelTokenSource.Token)
+                .Retry(30, TimeSpan.FromSeconds(2))//设定轮询等待为2s，轮询不超过30次
+                .WhenCatch<HttpStatusFailureException>(ex => ex.StatusCode == System.Net.HttpStatusCode.RequestTimeout)
+                .WhenResult(response =>
+                {
+                    if(!response.ExistsBusinessResponseContent)
+                    {
+                        return false;//请求异常中止重试
+                    }
+                    if(!response.BusinessResponseContent.IsEffectiveOrder)
+                    {
+                        return false;//业务异常中止重试
+                    }
 
+                    if (!response.BusinessResponseContent.Order.IsFinalOrderStatus)
+                    {
+                        //未达最终态继续重试
+                        Console.WriteLine("查询轮询" + response.BusinessResponseContent?.Order?.OrderStatus);
+                        return true;
+                    }
+                    return false;//订单到达最终态中止重试
+                }
+                );
+            }
+            catch (TaskCanceledException)
+            {
+                //此处消除异常使业务继续
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
             if (result != null
                 && result.ExistsBusinessResponseContent
@@ -112,14 +141,42 @@ namespace Simple
                 //创建一个取消轮询的任务
                 Task cancleTimeoutTask = Task.Delay(TimeSpan.FromSeconds(50)).ContinueWith(task => cancelTaskCancelTokenSource.Cancel());
 
-                result = await ApiFactory.CreatePayClient().Cancel(orderTokenRequestModel, terminalSignSettings, TimeSpan.FromSeconds(2), cancelTaskCancelTokenSource.Token)
-                .Retry(30, TimeSpan.FromSeconds(2))//设定轮询等待为2s，轮询不超过30次
-                .WhenCatch<HttpStatusFailureException>(ex => ex.StatusCode == System.Net.HttpStatusCode.RequestTimeout)
-                .WhenResult(response => !(response.ExistsBusinessResponseContent && response.BusinessResponseContent.IsEffectiveOrder && response.BusinessResponseContent.Order.IsFinalOrderStatus));
+                try
+                {
+                    result = await ApiFactory.CreatePayClient().Cancel(orderTokenRequestModel, terminalSignSettings, TimeSpan.FromSeconds(2), cancelTaskCancelTokenSource.Token)
+                    .Retry(30, TimeSpan.FromSeconds(2))//设定轮询等待为2s，轮询不超过30次
+                    .WhenCatch<HttpStatusFailureException>(ex => ex.StatusCode == System.Net.HttpStatusCode.RequestTimeout)
+                    .WhenResult(response =>
+                    {
+                        if (!response.ExistsBusinessResponseContent)
+                        {
+                            return false;//请求异常中止重试
+                        }
+                        if (!response.BusinessResponseContent.IsEffectiveOrder)
+                        {
+                            return false;//业务异常中止重试
+                        }
+
+                        if (!response.BusinessResponseContent.Order.IsFinalOrderStatus)
+                        {
+                            //未达最终态继续重试
+                            Console.WriteLine("撤销轮询" + response.BusinessResponseContent?.Order?.OrderStatus);
+                            return true;
+                        }
+                        return false;//订单到达最终态中止重试
+                    }
+                    );
+                }
+                catch (TaskCanceledException)
+                {
+                    //此处消除异常使业务继续
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
             //判断撤单结果
-          
         }
-
     }
 }

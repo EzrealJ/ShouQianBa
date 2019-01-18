@@ -49,10 +49,12 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
             return PayContract.Revoke(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, new WebApiClient.Parameterables.Timeout(timeout), cancellationToken);
         }
 
-        public ITask<Response<OrderGenericResponseModel>> Pay(OrderRefundRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan timeout = default(TimeSpan), CancellationToken cancellationToken = default(CancellationToken))
+        public ITask<Response<OrderGenericResponseModel>> Refund(OrderRefundRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan timeout = default(TimeSpan), CancellationToken cancellationToken = default(CancellationToken))
         {
             return PayContract.Refund(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, new WebApiClient.Parameterables.Timeout(timeout), cancellationToken);
         }
+
+
     }
 
     public static class PayClientExtension

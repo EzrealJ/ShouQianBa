@@ -163,6 +163,6 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic
         /// 文档约定,若订单不是最终状态,需要继续查询订单状态
         /// </para>
         /// </summary>
-        public bool IsFinalOrderStatus { get => OrderFinalStatus.Contains(this.OrderStatus) }
+        public bool IsFinalOrderStatus { get => OrderFinalStatus.Contains(this.OrderStatus); }
     }
 }

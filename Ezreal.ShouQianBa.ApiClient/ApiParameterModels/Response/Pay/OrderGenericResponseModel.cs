@@ -38,9 +38,9 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay
         /// <summary>
         /// 订单是否有效
         /// <para>
-        /// 等效于Order==null
+        /// 等效于Order!=null
         /// </para>
         /// </summary>
-        public bool IsEffectiveOrder { get => this.Order == null; }
+        public bool IsEffectiveOrder { get => this.Order != null; }
     }
 }
