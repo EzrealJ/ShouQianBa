@@ -13,7 +13,7 @@
 * [System.Drawing.Common【v4.5.1】](https://www.newtonsoft.com/json)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://licenses.nuget.org/MIT) 
 
-
+# 当前仓库代码版本 0.2.0-α
 ## 使用前
 * 项目曾经名为Ezreal.SDK.ShouQianBa,因项目不符合SDK的定位更名为Ezreal.ShouQianBa.ApiClient
 * 作者不是收钱吧的开发者,因此有问题请Issues.
