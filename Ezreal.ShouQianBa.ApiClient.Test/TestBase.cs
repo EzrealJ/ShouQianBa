@@ -10,6 +10,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Test
         {
             Global.InitializeDefaultConfig(config =>
             {
+
                 config.DefaultShouQianBaServiceProviderSettings = new ServiceProviderSettings()
                 {
                     ServiceProviderSerialNo = "@vendor_sn",

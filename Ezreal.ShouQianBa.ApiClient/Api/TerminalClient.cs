@@ -23,14 +23,14 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
 
         public ITerminalContract TerminalContract { get; }
 
-        public ITask<Response<TerminalActivateResponseModel>> Activate(TerminalActivateRequestModel requestModel, ServiceProviderSignSettings serviceProviderSignSettings = null, TimeSpan timeout = default(TimeSpan), CancellationToken cancellationToken = default(CancellationToken))
+        public ITask<Response<TerminalActivateResponseModel>> Activate(TerminalActivateRequestModel requestModel, ServiceProviderSignSettings serviceProviderSignSettings = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return TerminalContract.Activate(requestModel.SignByServiceProviderSignProvider(serviceProviderSignSettings), requestModel, new WebApiClient.Parameterables.Timeout(timeout), cancellationToken);
+            return TerminalContract.Activate(requestModel.SignByServiceProviderSignProvider(serviceProviderSignSettings), requestModel, timeout==null?null:new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
         }
 
-        public ITask<Response<TerminalCheckinResponseModel>> Pay(TerminalCheckinRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan timeout = default(TimeSpan), CancellationToken cancellationToken = default(CancellationToken))
+        public ITask<Response<TerminalCheckinResponseModel>> Pay(TerminalCheckinRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return TerminalContract.Checkin(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, new WebApiClient.Parameterables.Timeout(timeout), cancellationToken);
+            return TerminalContract.Checkin(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, timeout==null?null:new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
         }
     }
 }

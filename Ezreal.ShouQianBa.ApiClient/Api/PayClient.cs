@@ -24,41 +24,36 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
         public IPayContract PayContract { get; }
 
 
-        public ITask<Response<OrderGenericResponseModel>> Pay(OrderCreateRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan timeout = default(TimeSpan), CancellationToken cancellationToken = default(CancellationToken))
+        public ITask<Response<OrderGenericResponseModel>> Pay(OrderCreateRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PayContract.Pay(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, new WebApiClient.Parameterables.Timeout(timeout), cancellationToken);
+            return PayContract.Pay(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, timeout==null?null:new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
         }
 
-        public ITask<Response<OrderPrecreateSyncResponseModel>> Precreate(OrderPrecreateRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan timeout = default(TimeSpan), CancellationToken cancellationToken = default(CancellationToken))
+        public ITask<Response<OrderPrecreateSyncResponseModel>> Precreate(OrderPrecreateRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PayContract.Precreate(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, new WebApiClient.Parameterables.Timeout(timeout), cancellationToken);
+            return PayContract.Precreate(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, timeout==null?null:new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
         }
 
-        public ITask<Response<OrderGenericResponseModel>> Query(OrderTokenRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan timeout = default(TimeSpan), CancellationToken cancellationToken = default(CancellationToken))
+        public ITask<Response<OrderGenericResponseModel>> Query(OrderTokenRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PayContract.Query(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, new WebApiClient.Parameterables.Timeout(timeout), cancellationToken);
+            return PayContract.Query(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, timeout==null?null:new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
         }
 
-        public ITask<Response<OrderGenericResponseModel>> Cancel(OrderTokenRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan timeout = default(TimeSpan), CancellationToken cancellationToken = default(CancellationToken))
+        public ITask<Response<OrderGenericResponseModel>> Cancel(OrderTokenRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PayContract.Cancel(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, new WebApiClient.Parameterables.Timeout(timeout), cancellationToken);
+            return PayContract.Cancel(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, timeout==null?null:new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
         }
 
-        public ITask<Response<OrderGenericResponseModel>> Revoke(OrderTokenRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan timeout = default(TimeSpan), CancellationToken cancellationToken = default(CancellationToken))
+        public ITask<Response<OrderGenericResponseModel>> Revoke(OrderTokenRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PayContract.Revoke(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, new WebApiClient.Parameterables.Timeout(timeout), cancellationToken);
+            return PayContract.Revoke(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, timeout==null?null:new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
         }
 
-        public ITask<Response<OrderGenericResponseModel>> Refund(OrderRefundRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan timeout = default(TimeSpan), CancellationToken cancellationToken = default(CancellationToken))
+        public ITask<Response<OrderGenericResponseModel>> Refund(OrderRefundRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PayContract.Refund(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, new WebApiClient.Parameterables.Timeout(timeout), cancellationToken);
+            return PayContract.Refund(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, timeout==null?null:new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
         }
-
 
     }
 
-    public static class PayClientExtension
-    {
-
-    }
 }

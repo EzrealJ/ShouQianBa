@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ezreal.ShouQianBa.ApiClient
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{16C843CD-E583-4FE1-9BBE-501C432FBC39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple", "Demo\Simple\Simple.csproj", "{6DB0D127-EFC1-4362-A6A1-CCF8C94E0FC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple", "Demo\Simple\Simple.csproj", "{6DB0D127-EFC1-4362-A6A1-CCF8C94E0FC4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ezreal.ShouQianBa.ApiClient.DependencyInjection", "Ezreal.ShouQianBa.ApiClient.DependencyInjection\Ezreal.ShouQianBa.ApiClient.DependencyInjection.csproj", "{CE4B6506-6693-45A7-9FA9-667CC49BF07D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreDemo", "Demo\AspNetCoreDemo\AspNetCoreDemo.csproj", "{63185B9B-6EE0-4215-9BC8-F6875BC6969A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,14 +33,23 @@ Global
 		{6DB0D127-EFC1-4362-A6A1-CCF8C94E0FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DB0D127-EFC1-4362-A6A1-CCF8C94E0FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DB0D127-EFC1-4362-A6A1-CCF8C94E0FC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE4B6506-6693-45A7-9FA9-667CC49BF07D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE4B6506-6693-45A7-9FA9-667CC49BF07D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE4B6506-6693-45A7-9FA9-667CC49BF07D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE4B6506-6693-45A7-9FA9-667CC49BF07D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63185B9B-6EE0-4215-9BC8-F6875BC6969A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63185B9B-6EE0-4215-9BC8-F6875BC6969A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63185B9B-6EE0-4215-9BC8-F6875BC6969A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63185B9B-6EE0-4215-9BC8-F6875BC6969A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8693333B-3109-4592-9EF0-0B895307D745}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6DB0D127-EFC1-4362-A6A1-CCF8C94E0FC4} = {16C843CD-E583-4FE1-9BBE-501C432FBC39}
+		{63185B9B-6EE0-4215-9BC8-F6875BC6969A} = {16C843CD-E583-4FE1-9BBE-501C432FBC39}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8693333B-3109-4592-9EF0-0B895307D745}
 	EndGlobalSection
 EndGlobal
