@@ -14,6 +14,9 @@ using System.Threading;
 
 namespace Ezreal.ShouQianBa.ApiClient.Api
 {
+    /// <summary>
+    /// 设备请求
+    /// </summary>
     public class TerminalClient
     {
         public TerminalClient(ITerminalContract terminalContract )

@@ -37,6 +37,8 @@
         config.UseSandbox = true;
     });
 ```
+
+### 以下演示简单使用,依赖注入请参照Demo项目适当更改代码
 * 开始使用
 ```C#
    BankRequestModel requestModel = new BankRequestModel() { BankCard = bankCardNo };
@@ -189,4 +191,3 @@
         }
 ```
 * 更多使用方式尽情期待
-## 下一步计划:添加DI支持

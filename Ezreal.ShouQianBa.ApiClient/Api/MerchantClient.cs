@@ -14,6 +14,9 @@ using Ezreal.ShouQianBa.ApiClient.Extension;
 
 namespace Ezreal.ShouQianBa.ApiClient.Api
 {
+    /// <summary>
+    /// 商户请求
+    /// </summary>
     public class MerchantClient
     {
         public MerchantClient(IMerchantContract merchantContract)

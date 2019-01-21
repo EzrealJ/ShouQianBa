@@ -14,6 +14,9 @@ using Ezreal.ShouQianBa.ApiClient.Extension;
 
 namespace Ezreal.ShouQianBa.ApiClient.Api
 {
+    /// <summary>
+    /// 支付请求
+    /// </summary>
     public class PayClient
     {
         public PayClient(IPayContract payContract)

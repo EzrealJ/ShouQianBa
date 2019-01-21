@@ -75,7 +75,11 @@ namespace Ezreal.ShouQianBa.ApiClient.Sign
 
 
 
-
+        /// <summary>
+        /// 使用收钱吧服务商配置来创建一个服务商签名提供程序
+        /// </summary>
+        /// <param name="serviceProviderSettings">给定此参数时，使用给定值来创建服务商签名提供程序，否则使用默认的收钱吧服务商配置</param>
+        /// <returns></returns>
         public static ServiceProviderSignProvider CreateFromServiceProviderSettings(ServiceProviderSettings serviceProviderSettings = null)
         {
             serviceProviderSettings = serviceProviderSettings ?? Global.GlobalConfig.DefaultShouQianBaServiceProviderSettings;
