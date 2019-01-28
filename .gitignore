@@ -328,4 +328,6 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
-/.vscode
+
+# Visual Studio Code setting directory
+.vscode/
