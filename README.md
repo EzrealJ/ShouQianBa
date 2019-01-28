@@ -14,7 +14,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://licenses.nuget.org/MIT) 
 
 #### Version Status:
-<table border>
+<table>
 <tr>
 <th>Date</th>
 <th>Version</th>
