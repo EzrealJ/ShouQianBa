@@ -13,7 +13,33 @@
 * [System.Drawing.Common【v4.5.1】](https://www.newtonsoft.com/json)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://licenses.nuget.org/MIT) 
 
-# 当前仓库代码版本 0.2.0-α
+#### Version Status:
+<table border>
+<tr>
+<th>Date</th>
+<th>Version</th>
+<th>Status</th>
+</tr>
+<tr>
+<td>2019-01-10</td>
+<td>0.1.0-preview</td>
+<td>release</td>
+</tr>
+<tr>
+<td>2019-01-10</td>
+<td>0.1.0-preview</td>
+<td>nuget only</td>
+</tr>
+<tr>
+<td>now</td>
+<td>0.2.0-α</td>
+<td>waiting for test</td>
+</tr>
+
+</table>
+
+
+# 当前仓库代码版本 0.2.0-α【年后测试后在nuget发布β预览版】
 ## 使用前
 * 项目曾经名为Ezreal.SDK.ShouQianBa,因项目不符合SDK的定位更名为Ezreal.ShouQianBa.ApiClient
 * 作者不是收钱吧的开发者,因此有问题请Issues.
