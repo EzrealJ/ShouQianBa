@@ -26,7 +26,7 @@
 <td>release</td>
 </tr>
 <tr>
-<td>2019-01-10</td>
+<td>2019-01-14</td>
 <td>0.1.1-preview</td>
 <td>nuget only</td>
 </tr>
