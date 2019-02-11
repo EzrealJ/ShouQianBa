@@ -33,7 +33,7 @@
 <tr>
 <td>now</td>
 <td>0.2.0-α</td>
-<td>waiting for test</td>
+<td>testing</td>
 </tr>
 
 </table>

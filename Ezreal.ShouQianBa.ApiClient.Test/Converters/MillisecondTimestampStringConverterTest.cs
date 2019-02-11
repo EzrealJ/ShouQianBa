@@ -11,7 +11,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.Converters
     {
 
         public class TestClass
-        {
+        {                    
             [JsonConverter(typeof(MillisecondTimestampStringConverter))]
             public DateTime MyProperty { get; set; }
             [JsonConverter(typeof(MillisecondTimestampStringConverter))]

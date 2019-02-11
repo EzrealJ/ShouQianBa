@@ -15,25 +15,30 @@ namespace Simple
     {
         private static void Main(string[] args)
         {
+            Console.WriteLine("@vendor_sn:");
+            string @vendor_sn = Console.ReadLine();
+            Console.WriteLine("@vendor_key");
+            string @vendor_key = Console.ReadLine();
             //当前示例向您演示如何最简单的使用方式
             Global.InitializeDefaultConfig(config =>
             {
                 //若您不是服务商而是从服务商获取了信息来调用支付相关接口，则无需进行此配置
                 config.DefaultShouQianBaServiceProviderSettings = new ServiceProviderSettings()
                 {
-                    ServiceProviderSerialNo = "@vendor_sn",
-                    ServiceProviderKey = "@vendor_key",
+                    ServiceProviderSerialNo = @vendor_sn,
+                    ServiceProviderKey = @vendor_key,
                 };
 
                 //不使用沙箱无需配置此项目
-                config.UseSandbox = true;
+                //config.UseSandbox = true;
                 //默认配置了收钱吧提供的生产环境Url，如果您的网络环境下请求不可直达该Url,请用代理地址覆盖此项,沙箱环境同理。
-                config.ProductionEnvironmentApiUri = "生产环境Url";
+                //config.ProductionEnvironmentApiUri = "生产环境Url";
             });
 
-            PayDemo();
+
             while (true)
             {
+                PayDemo();
                 Console.ReadKey();
             }
         }
@@ -71,8 +76,9 @@ namespace Simple
             {
                 //此处消除 主动超时 异常使业务继续
             }
-            catch (Exception ex)
+            catch (Exception)
             {
+                throw;
             }
             if (result != null
                 && result.ExistsBusinessResponseContent
@@ -121,7 +127,7 @@ namespace Simple
             {
                 //此处消除异常使业务继续
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
