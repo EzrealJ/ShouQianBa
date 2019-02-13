@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,17 +17,18 @@ namespace Ezreal.ShouQianBa.ApiClient.DependencyInjection
         /// <typeparam name="TInterface">接口类型</typeparam>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static void AddShouQianBaApiClient(this IServiceCollection services, Action<GlobalConfig> action)
+        public static void AddShouQianBaApiClient(this IServiceCollection services, Action<GlobalConfig> action, ILoggerFactory loggerFactory=null)
 
         {
             services.AddSingleton(Global.GlobalConfig);
             action.Invoke(Global.GlobalConfig);
+            HttpApiConfig.DefaultJsonFormatter = Global.GlobalConfig.DefaultJsonFormatter;
             Action<HttpApiConfig> configAction = config =>
             {
                 config.HttpHost = new Uri(Global.GlobalConfig.ApiUri);
                 Global.GlobalConfig.ApiActionFilters.ToList().ForEach(filter => config.GlobalFilters.Add(filter));
                 config.FormatOptions.DateTimeFormat = DateTimeFormats.ISO8601_WithMillisecond;
-                config.JsonFormatter = Global.GlobalConfig.DefaultJsonFormatter;
+                config.LoggerFactory= loggerFactory;
             };
 
             services.HttpApiFactoryBuilder<ApiContract.IMerchantContract>(configAction);

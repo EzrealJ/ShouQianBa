@@ -9,12 +9,13 @@ using WebApiClient.Defaults;
 
 namespace Ezreal.ShouQianBa.ApiClient
 {
-    public class ApiJsonFormatter:JsonFormatter
+    public class ApiJsonFormatter : JsonFormatter
     {
         protected override JsonSerializerSettings CreateSerializerSettings(FormatOptions options)
         {
             JsonSerializerSettings jsonSerializerSettings = base.CreateSerializerSettings(options);
             jsonSerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+            var a = jsonSerializerSettings.Converters;
             //jsonSerializerSettings.DateFormatHandling = DateFormatHandling.MicrosoftDateFormat;
             return jsonSerializerSettings;
         }

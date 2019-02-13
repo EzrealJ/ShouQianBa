@@ -158,7 +158,7 @@ namespace AspNetCoreDemo.Controllers
             };
             CancellationTokenSource queryTaskCancelTokenSource = new CancellationTokenSource();
             //创建一个取消轮询的任务
-            Task queryTimeoutTask = Task.Delay(TimeSpan.FromSeconds(50)).ContinueWith(task => queryTaskCancelTokenSource.Cancel());
+            Task queryTimeoutTask = Task.Delay(TimeSpan.FromSeconds(60)).ContinueWith(task => queryTaskCancelTokenSource.Cancel());
             try
             {
                 result = await PayClient.Query(orderTokenRequestModel, terminalSignSettings, TimeSpan.FromSeconds(2), queryTaskCancelTokenSource.Token)
@@ -197,10 +197,18 @@ namespace AspNetCoreDemo.Controllers
             if (result != null
                 && result.ExistsBusinessResponseContent
                 && result.BusinessResponseContent.IsEffectiveOrder
-                && result.BusinessResponseContent.Order.OrderStatus == OrderStatusEnum.PAID)
+                && result.BusinessResponseContent.Order.IsFinalOrderStatus)
             {
-                //符合此条件认为轮询到支付成功
-                return result.BusinessResponseContent.Order;
+                if (result.BusinessResponseContent.Order.OrderStatus == OrderStatusEnum.PAID)
+                {
+                    //符合此条件认为轮询到支付成功
+                    return result.BusinessResponseContent.Order;
+                }
+                else
+                {
+                    //符合此条件认为轮询到支付失败
+                    return result.BusinessResponseContent.Order;
+                }
             }
             else
             {
@@ -249,7 +257,7 @@ namespace AspNetCoreDemo.Controllers
                 && result.BusinessResponseContent.IsEffectiveOrder
                 && result.BusinessResponseContent.Order.OrderStatus == OrderStatusEnum.PAY_CANCELED)
                 {
-                    //符合此条件认为轮询到支付成功
+                    //符合此条件认为轮询到撤销完成
                     return result.BusinessResponseContent.Order;
                 }
                 return result?.BusinessResponseContent?.Order;

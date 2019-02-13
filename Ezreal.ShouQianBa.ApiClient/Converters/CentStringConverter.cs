@@ -16,9 +16,13 @@ namespace Ezreal.ShouQianBa.ApiClient.Converters
     /// 收钱吧约定所有的金额均采用以分计的整数字符串来传递
     /// </para>
     /// </summary>
-    public class CentStringConverter : JsonConverter
+   public class CentStringConverter : JsonConverter
     {
         private static List<Type> allowTypes = new List<Type>() { typeof(float), typeof(double), typeof(decimal) };
+        /// <summary>
+        /// 仅在Api内部有效
+        /// </summary>
+        public static bool InternalOnly { get; set; } = true;
         public override bool CanConvert(Type objectType)
         {
 
@@ -27,22 +31,31 @@ namespace Ezreal.ShouQianBa.ApiClient.Converters
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
+            if (serializer.ContractResolver.GetType().Namespace != "WebApiClient.Defaults" && InternalOnly)
+            {
+                return serializer.Deserialize(reader, objectType);
+            }
             if (!allowTypes.Contains(objectType))
             {
                 throw new TypeAccessException(objectType.ToString());
             }
-            return Convert.ChangeType(decimal.Parse(serializer.Deserialize(reader, objectType).ToString())/100,objectType);
+            decimal value = decimal.Parse(serializer.Deserialize(reader, objectType).ToString());
+            return Convert.ChangeType(reader.TokenType == JsonToken.String ? value / 100 : value, objectType);
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
+            if (serializer.ContractResolver.GetType().Namespace != "WebApiClient.Defaults" && InternalOnly)
+            {
+                writer.WriteValue(value);
+                return;
+            }
             Type fromType = value.GetType();
             if (!allowTypes.Contains(fromType))
             {
                 throw new TypeAccessException(fromType.ToString());
             }
             writer.WriteValue(((int)(Math.Round(decimal.Parse(value.ToString()), 2) * 100)).ToString());
-
         }
     }
 }

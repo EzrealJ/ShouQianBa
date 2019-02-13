@@ -12,6 +12,7 @@ using Ezreal.ShouQianBa.ApiClient.DependencyInjection;
 using Ezreal.ShouQianBa.ApiClient;
 using Swashbuckle.AspNetCore.Swagger;
 using System.IO;
+using Microsoft.Extensions.Logging;
 
 namespace AspNetCoreDemo
 {
@@ -43,10 +44,10 @@ namespace AspNetCoreDemo
                     ServiceProviderSerialNo = "@vendor_sn",
                     ServiceProviderKey = "@vendor_key",
                 };
-                config.UseSandbox = true;
+                //config.UseSandbox = true;
 
 
-            });
+            }, new LoggerFactory().AddConsole());
 
             //注册Swagger生成器，定义一个和多个Swagger 文档
             services.AddSwaggerGen(option =>

@@ -6,6 +6,11 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.Converters
 {
     public class CentStringConverterTest
     {
+        public CentStringConverterTest()
+        {
+            CentStringConverter.InternalOnly = false;
+        }
+
         public class TestClass
         {
             [JsonConverter(typeof(CentStringConverter))]

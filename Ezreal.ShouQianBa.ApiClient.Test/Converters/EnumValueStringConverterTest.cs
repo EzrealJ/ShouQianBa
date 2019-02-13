@@ -6,6 +6,10 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.Converters
 {
     public class EnumValueStringConverterTest
     {
+        public EnumValueStringConverterTest()
+        {
+            EnumValueStringConverter.InternalOnly = false;
+        }
 
         public enum Enum1 : byte
         {

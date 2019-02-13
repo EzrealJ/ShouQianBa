@@ -160,7 +160,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic
         /// 判断OrderStatus是否是"PAID","PAY_CANCELED","REFUNDED","PARTIAL_REFUNDED","CANCELED"其中的项
         /// </para>
         /// <para>
-        /// 文档约定,若订单不是最终状态,需要继续查询订单状态
+        /// 文档约定,若订单不是最终状态,需要继续查询订单状态或者调用撤单操作
         /// </para>
         /// </summary>
         public bool IsFinalOrderStatus { get => OrderFinalStatus.Contains(this.OrderStatus); }

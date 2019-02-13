@@ -18,8 +18,18 @@ namespace Ezreal.ShouQianBa.ApiClient.Converters
         private static List<Type> allowTypes = new List<Type>() { typeof(DateTime), typeof(DateTime?),typeof(TimeSpan), typeof(TimeSpan?) };
         static public DateTime UnixTimestampLocalZero { get; set; } = System.TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), TimeZoneInfo.Local);
 
+        /// <summary>
+        /// 仅在Api内部有效
+        /// </summary>
+        public static bool InternalOnly { get; set; } = true;
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
+            if (serializer.ContractResolver.GetType().Namespace != "WebApiClient.Defaults" && InternalOnly)
+            {
+                writer.WriteValue(value);
+                return;
+            }
+
             Type fromType = value.GetType();
             if (!allowTypes.Contains(fromType))
             {
@@ -35,6 +45,10 @@ namespace Ezreal.ShouQianBa.ApiClient.Converters
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
+            if (serializer.ContractResolver.GetType().Namespace != "WebApiClient.Defaults" && InternalOnly)
+            {
+                return serializer.Deserialize(reader, objectType);
+            }
             if (!allowTypes.Contains(objectType))
             {
                 throw new TypeAccessException(objectType.ToString());

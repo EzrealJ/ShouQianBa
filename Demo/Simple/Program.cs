@@ -135,9 +135,18 @@ namespace Simple
             if (result != null
                 && result.ExistsBusinessResponseContent
                 && result.BusinessResponseContent.IsEffectiveOrder
-                && result.BusinessResponseContent.Order.OrderStatus == OrderStatusEnum.PAID)
+                && result.BusinessResponseContent.Order.IsFinalOrderStatus)
             {
-                //符合此条件认为轮询到支付成功
+                if (result.BusinessResponseContent.Order.OrderStatus == OrderStatusEnum.PAID)
+                {
+                    //符合此条件认为轮询到支付成功
+                   
+                }
+                else
+                {
+                    //符合此条件认为轮询到支付失败
+                   
+                }
             }
             else
             {

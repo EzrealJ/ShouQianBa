@@ -39,7 +39,7 @@
 </table>
 
 
-# 当前仓库代码版本 0.2.0-α【年后测试后在nuget发布β预览版】
+# 当前仓库代码版本 0.2.0-α
 ## 使用前
 * 项目曾经名为Ezreal.SDK.ShouQianBa,因项目不符合SDK的定位更名为Ezreal.ShouQianBa.ApiClient
 * 作者不是收钱吧的开发者,因此有问题请Issues.
@@ -77,8 +77,7 @@
 ```C#
         public static async void PayDemo()
         {
-            //重要！此示例是理论示例，代码正确性尚未验证
-
+           
             TerminalSignSettings terminalSignSettings = new TerminalSignSettings()
             {
                 TerminalKey = "设备Key(通过设备激活接口获得,或者通过设备签到接口刷新)",
@@ -108,8 +107,9 @@
             {
                 //此处消除 主动超时 异常使业务继续
             }
-            catch (Exception ex)
+            catch (Exception)
             {
+                throw;
             }
             if (result != null
                 && result.ExistsBusinessResponseContent
@@ -158,7 +158,7 @@
             {
                 //此处消除异常使业务继续
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -166,9 +166,18 @@
             if (result != null
                 && result.ExistsBusinessResponseContent
                 && result.BusinessResponseContent.IsEffectiveOrder
-                && result.BusinessResponseContent.Order.OrderStatus == OrderStatusEnum.PAID)
+                && result.BusinessResponseContent.Order.IsFinalOrderStatus)
             {
-                //符合此条件认为轮询到支付成功
+                if (result.BusinessResponseContent.Order.OrderStatus == OrderStatusEnum.PAID)
+                {
+                    //符合此条件认为轮询到支付成功
+                   
+                }
+                else
+                {
+                    //符合此条件认为轮询到支付失败
+                   
+                }
             }
             else
             {

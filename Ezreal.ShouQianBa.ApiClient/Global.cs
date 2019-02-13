@@ -21,13 +21,13 @@ namespace Ezreal.ShouQianBa.ApiClient
         public static void InitializeDefaultConfig(Action<GlobalConfig> action)
         {
             action.Invoke(GlobalConfig);
-
+            HttpApiConfig.DefaultJsonFormatter = Global.GlobalConfig.DefaultJsonFormatter;
             Action<HttpApiConfig> configAction = config =>
              {
                  config.HttpHost = new Uri(GlobalConfig.ApiUri);
                  GlobalConfig.ApiActionFilters.ToList().ForEach(filter => config.GlobalFilters.Add(filter));
                  config.FormatOptions.DateTimeFormat = WebApiClient.DateTimeFormats.ISO8601_WithMillisecond;
-                 config.JsonFormatter = GlobalConfig.DefaultJsonFormatter;
+                
              };
 
             HttpApiFactory.Add<ApiContract.IMerchantContract>().ConfigureHttpApiConfig(configAction);

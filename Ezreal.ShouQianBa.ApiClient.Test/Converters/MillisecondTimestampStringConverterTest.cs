@@ -9,6 +9,10 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.Converters
 {
     public class MillisecondTimestampStringConverterTest
     {
+        public MillisecondTimestampStringConverterTest()
+        {
+            MillisecondTimestampStringConverter.InternalOnly = false;
+        }
 
         public class TestClass
         {                    
