@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AspNetCoreDemo</name>
+    </assembly>
+    <members>
+        <member name="T:AspNetCoreDemo.Controllers.PayClientController">
+            <summary>
+            支付
+            </summary>
+        </member>
+        <member name="M:AspNetCoreDemo.Controllers.PayClientController.Pay(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings)">
+            <summary>
+            支付
+            </summary>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AspNetCoreDemo.Controllers.PayClientController.Precreate(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings)">
+            <summary>
+            预创建订单
+            </summary>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AspNetCoreDemo.Controllers.PayClientController.Query(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings)">
+            <summary>
+            查询订单
+            </summary>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AspNetCoreDemo.Controllers.PayClientController.Cancel(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings)">
+            <summary>
+            取消订单
+            </summary>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AspNetCoreDemo.Controllers.PayClientController.Revoke(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings)">
+            <summary>
+            手动撤单
+            </summary>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AspNetCoreDemo.Controllers.PayClientController.Refund(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings)">
+            <summary>
+            退款
+            </summary>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AspNetCoreDemo.Controllers.PayClientController.PayStandard(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings)">
+            <summary>
+            标准流程的支付
+            </summary>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AspNetCoreDemo.Controllers.TerminalClientController">
+            <summary>
+            终端
+            </summary>
+        </member>
+        <member name="M:AspNetCoreDemo.Controllers.TerminalClientController.Activate(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel)">
+            <summary>
+            激活
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AspNetCoreDemo.Controllers.TerminalClientController.Checkin(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings)">
+            <summary>
+            签到
+            </summary>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
