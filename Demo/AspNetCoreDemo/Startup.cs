@@ -35,6 +35,16 @@ namespace AspNetCoreDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    p => p.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    .SetPreflightMaxAge(TimeSpan.FromSeconds(60))
+                    );
+            });
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -62,7 +72,7 @@ namespace AspNetCoreDemo
                 {
                     return JsonConvert.DeserializeObject<TerminalSignSettings>(File.ReadAllText(path));
                 }
-                return new TerminalSignSettings() ;
+                return new TerminalSignSettings();
             });
             //注册Swagger生成器，定义一个和多个Swagger 文档
             services.AddSwaggerGen(option =>
@@ -98,7 +108,7 @@ namespace AspNetCoreDemo
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseCors("AllowAll");
             app.UseStaticFiles();
             app.UseCookiePolicy();
 

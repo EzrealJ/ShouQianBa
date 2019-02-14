@@ -42,8 +42,8 @@ namespace AspNetCoreDemo.Controllers
         [HttpPost(nameof(Pay))]
         public async Task<Response<OrderGenericResponseModel>> Pay([FromBody]OrderCreateRequestModel requestModel, [FromQuery]TerminalSignSettings terminalSignSettings)
         {
-            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
             terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
+            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
             return await PayClient.Pay(requestModel, terminalSignSettings);
         }
         /// <summary>
@@ -55,8 +55,8 @@ namespace AspNetCoreDemo.Controllers
         [HttpPost(nameof(Precreate))]
         public async Task<Response<OrderPrecreateSyncResponseModel>> Precreate([FromBody]OrderPrecreateRequestModel requestModel, [FromQuery]TerminalSignSettings terminalSignSettings)
         {
-            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
             terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
+            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
             return await PayClient.Precreate(requestModel, terminalSignSettings);
         }
         /// <summary>
@@ -68,8 +68,8 @@ namespace AspNetCoreDemo.Controllers
         [HttpGet(nameof(Query))]
         public async Task<Response<OrderGenericResponseModel>> Query([FromQuery]OrderTokenRequestModel requestModel, [FromQuery]TerminalSignSettings terminalSignSettings)
         {
-            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
             terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
+            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
             return await PayClient.Query(requestModel, terminalSignSettings);
         }
         /// <summary>
@@ -81,8 +81,8 @@ namespace AspNetCoreDemo.Controllers
         [HttpPost(nameof(Cancel))]
         public async Task<Response<OrderGenericResponseModel>> Cancel([FromBody]OrderTokenRequestModel requestModel, [FromQuery]TerminalSignSettings terminalSignSettings)
         {
-            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
             terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
+            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
             return await PayClient.Cancel(requestModel, terminalSignSettings);
         }
         /// <summary>
@@ -94,8 +94,8 @@ namespace AspNetCoreDemo.Controllers
         [HttpPost(nameof(Revoke))]
         public async Task<Response<OrderGenericResponseModel>> Revoke([FromBody]OrderTokenRequestModel requestModel, [FromQuery]TerminalSignSettings terminalSignSettings)
         {
-            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
             terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
+            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
             return await PayClient.Revoke(requestModel, terminalSignSettings);
         }
         /// <summary>
@@ -107,8 +107,8 @@ namespace AspNetCoreDemo.Controllers
         [HttpPost(nameof(Refund))]
         public async Task<Response<OrderGenericResponseModel>> Refund([FromBody]OrderRefundRequestModel requestModel, [FromQuery]TerminalSignSettings terminalSignSettings)
         {
-            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
             terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
+            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
             return await PayClient.Refund(requestModel, terminalSignSettings);
         }
 
@@ -126,8 +126,9 @@ namespace AspNetCoreDemo.Controllers
             {
                 throw new ArgumentNullException(nameof(requestModel));
             }
-            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
             terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
+            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
+           
 
             //重要！此示例是理论示例，代码正确性尚未验证
 
