@@ -18,7 +18,9 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
     /// <summary>
     /// 支付相关接口
     /// </summary>
+
     [TraceFilter]
+
     public interface IPayContract : IHttpApi
     {
         /// <summary>

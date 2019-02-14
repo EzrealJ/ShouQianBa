@@ -17,6 +17,9 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
     /// <summary>
     /// 商户相关接口
     /// </summary>
+
+    [TraceFilter]
+
     public interface IMerchantContract : IHttpApi
     {
         /// <summary>

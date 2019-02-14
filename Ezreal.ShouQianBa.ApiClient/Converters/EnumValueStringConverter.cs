@@ -20,15 +20,16 @@ namespace Ezreal.ShouQianBa.ApiClient.Converters
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
+            return serializer.Deserialize(reader, objectType);
             //if (serializer.ContractResolver.GetType().Namespace != "WebApiClient.Defaults"&& InternalOnly)
             //{
             //    return serializer.Deserialize(reader, objectType);
             //}
-            if (!objectType.IsEnum)
-            {
-                throw new TypeAccessException(objectType.ToString());
-            }
-            return serializer.Deserialize(reader, objectType);
+            //if (objectType.IsEnum || (objectType.GetGenericTypeDefinition() == typeof(Nullable<>) && objectType.GetGenericArguments()[0].IsEnum))
+            //{
+            //    return serializer.Deserialize(reader, objectType);
+            //}
+            //throw new TypeAccessException(objectType.ToString());           
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

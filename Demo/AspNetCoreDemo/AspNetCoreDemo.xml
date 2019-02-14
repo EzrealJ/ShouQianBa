@@ -70,11 +70,12 @@
             终端
             </summary>
         </member>
-        <member name="M:AspNetCoreDemo.Controllers.TerminalClientController.Activate(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel)">
+        <member name="M:AspNetCoreDemo.Controllers.TerminalClientController.Activate(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignSettings)">
             <summary>
             激活
             </summary>
             <param name="requestModel"></param>
+            <param name="serviceProviderSignSettings"></param>
             <returns></returns>
         </member>
         <member name="M:AspNetCoreDemo.Controllers.TerminalClientController.Checkin(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings)">
@@ -84,6 +85,27 @@
             <param name="requestModel"></param>
             <param name="terminalSignSettings"></param>
             <returns></returns>
+        </member>
+        <member name="M:AspNetCoreDemo.Controllers.TerminalClientController.RefreshDefaultTerminalSignSettings(Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings)">
+            <summary>
+            刷新默认的终端签名信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:AspNetCoreDemo.DefaultTerminalInfo.DeviceID">
+            <summary>
+            【必须】设备唯一身份ID
+            </summary>
+        </member>
+        <member name="P:AspNetCoreDemo.DefaultTerminalInfo.Name">
+            <summary>
+            终端名
+            </summary> 
+        </member>
+        <member name="P:AspNetCoreDemo.Startup.ApplicationPath">
+            <summary>
+            应用程序所在目录
+            </summary>
         </member>
     </members>
 </doc>

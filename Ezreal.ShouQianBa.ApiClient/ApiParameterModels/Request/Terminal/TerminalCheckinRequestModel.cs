@@ -25,11 +25,11 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal
         /// 系统信息
         /// </summary>
         [ApiParameterName("os_info")]
-        public string OSInfo { get; set; }
+        public string OSInfo { get; } = "C#";
         /// <summary>
         /// SDK版本
         /// </summary>
         [ApiParameterName("sdk_version")]
-        public string SdkVersion { get; set; }
+        public string SdkVersion { get; set; } = "Ezreal.ShouQianBa.ApiClient@0.2.0(Bate)";
     }
 }

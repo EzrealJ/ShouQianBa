@@ -19,6 +19,9 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
     /// <summary>
     /// 设备相关接口
     /// </summary>
+
+    [TraceFilter]
+
     public interface ITerminalContract : IHttpApi
     {
         /// <summary>
@@ -31,7 +34,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("terminal/activate")]
         [JsonReturn]
-        ITask<Response<TerminalActivateResponseModel>> Activate([Headers]Sign<ServiceProviderSignProvider, TerminalActivateRequestModel> sign, [JsonContent]TerminalActivateRequestModel terminalActivateRequestModel,  WebApiClient.Parameterables.Timeout timeout = null,CancellationToken cancellationToken = default(CancellationToken));
+        ITask<Response<TerminalActivateResponseModel>> Activate([Headers]Sign<ServiceProviderSignProvider, TerminalActivateRequestModel> sign, [JsonContent]TerminalActivateRequestModel terminalActivateRequestModel, WebApiClient.Parameterables.Timeout timeout = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// 设备签到
         /// </summary>
@@ -42,7 +45,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [Timeout(5 * 1000)]
         [HttpPost("terminal/checkin")]
         [JsonReturn]
-        ITask<Response<TerminalCheckinResponseModel>> Checkin([Headers]Sign<TerminalSignProvider, TerminalCheckinRequestModel> sign, [JsonContent]TerminalCheckinRequestModel terminalCheckinRequestModel,  WebApiClient.Parameterables.Timeout timeout = null,CancellationToken cancellationToken = default(CancellationToken));
+        ITask<Response<TerminalCheckinResponseModel>> Checkin([Headers]Sign<TerminalSignProvider, TerminalCheckinRequestModel> sign, [JsonContent]TerminalCheckinRequestModel terminalCheckinRequestModel, WebApiClient.Parameterables.Timeout timeout = null, CancellationToken cancellationToken = default(CancellationToken));
         ///// <summary>
         ///// 上传日志
         ///// <para>

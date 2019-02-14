@@ -12,10 +12,4 @@
     <ProjectReference Include="..\Ezreal.ShouQianBa.ApiClient\Ezreal.ShouQianBa.ApiClient.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Microsoft.Extensions.Logging">
-      <HintPath>..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.logging\2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

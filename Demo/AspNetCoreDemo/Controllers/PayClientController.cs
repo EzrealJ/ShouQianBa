@@ -22,12 +22,14 @@ namespace AspNetCoreDemo.Controllers
     [Route("[controller]")]
     public class PayClientController : Controller
     {
-        public PayClientController(PayClient payClient)
+        public PayClientController(PayClient payClient, TerminalSignSettings terminalSignSettings)
         {
             PayClient = payClient;
+            TerminalSignSettings = terminalSignSettings;
         }
 
         public PayClient PayClient { get; }
+        public TerminalSignSettings TerminalSignSettings { get; }
 
 
 
@@ -38,8 +40,10 @@ namespace AspNetCoreDemo.Controllers
         /// <param name="terminalSignSettings"></param>
         /// <returns></returns>
         [HttpPost(nameof(Pay))]
-        public async Task<Response<OrderGenericResponseModel>> Pay([FromBody]OrderCreateRequestModel requestModel, [FromQuery,Required]TerminalSignSettings terminalSignSettings)
+        public async Task<Response<OrderGenericResponseModel>> Pay([FromBody]OrderCreateRequestModel requestModel, [FromQuery]TerminalSignSettings terminalSignSettings)
         {
+            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
+            terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
             return await PayClient.Pay(requestModel, terminalSignSettings);
         }
         /// <summary>
@@ -49,8 +53,10 @@ namespace AspNetCoreDemo.Controllers
         /// <param name="terminalSignSettings"></param>
         /// <returns></returns>
         [HttpPost(nameof(Precreate))]
-        public async Task<Response<OrderPrecreateSyncResponseModel>> Precreate([FromBody]OrderPrecreateRequestModel requestModel, [FromQuery, Required]TerminalSignSettings terminalSignSettings)
+        public async Task<Response<OrderPrecreateSyncResponseModel>> Precreate([FromBody]OrderPrecreateRequestModel requestModel, [FromQuery]TerminalSignSettings terminalSignSettings)
         {
+            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
+            terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
             return await PayClient.Precreate(requestModel, terminalSignSettings);
         }
         /// <summary>
@@ -60,8 +66,10 @@ namespace AspNetCoreDemo.Controllers
         /// <param name="terminalSignSettings"></param>
         /// <returns></returns>
         [HttpGet(nameof(Query))]
-        public async Task<Response<OrderGenericResponseModel>> Query([FromQuery]OrderTokenRequestModel requestModel, [FromQuery, Required]TerminalSignSettings terminalSignSettings)
+        public async Task<Response<OrderGenericResponseModel>> Query([FromQuery]OrderTokenRequestModel requestModel, [FromQuery]TerminalSignSettings terminalSignSettings)
         {
+            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
+            terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
             return await PayClient.Query(requestModel, terminalSignSettings);
         }
         /// <summary>
@@ -71,8 +79,10 @@ namespace AspNetCoreDemo.Controllers
         /// <param name="terminalSignSettings"></param>
         /// <returns></returns>
         [HttpPost(nameof(Cancel))]
-        public async Task<Response<OrderGenericResponseModel>> Cancel([FromBody]OrderTokenRequestModel requestModel, [FromQuery, Required]TerminalSignSettings terminalSignSettings)
+        public async Task<Response<OrderGenericResponseModel>> Cancel([FromBody]OrderTokenRequestModel requestModel, [FromQuery]TerminalSignSettings terminalSignSettings)
         {
+            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
+            terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
             return await PayClient.Cancel(requestModel, terminalSignSettings);
         }
         /// <summary>
@@ -82,8 +92,10 @@ namespace AspNetCoreDemo.Controllers
         /// <param name="terminalSignSettings"></param>
         /// <returns></returns>
         [HttpPost(nameof(Revoke))]
-        public async Task<Response<OrderGenericResponseModel>> Revoke([FromBody]OrderTokenRequestModel requestModel, [FromQuery, Required]TerminalSignSettings terminalSignSettings)
+        public async Task<Response<OrderGenericResponseModel>> Revoke([FromBody]OrderTokenRequestModel requestModel, [FromQuery]TerminalSignSettings terminalSignSettings)
         {
+            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
+            terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
             return await PayClient.Revoke(requestModel, terminalSignSettings);
         }
         /// <summary>
@@ -93,8 +105,10 @@ namespace AspNetCoreDemo.Controllers
         /// <param name="terminalSignSettings"></param>
         /// <returns></returns>
         [HttpPost(nameof(Refund))]
-        public async Task<Response<OrderGenericResponseModel>> Refund([FromBody]OrderRefundRequestModel requestModel, [FromQuery, Required]TerminalSignSettings terminalSignSettings)
+        public async Task<Response<OrderGenericResponseModel>> Refund([FromBody]OrderRefundRequestModel requestModel, [FromQuery]TerminalSignSettings terminalSignSettings)
         {
+            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
+            terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
             return await PayClient.Refund(requestModel, terminalSignSettings);
         }
 
@@ -106,12 +120,15 @@ namespace AspNetCoreDemo.Controllers
         /// <param name="terminalSignSettings"></param>
         /// <returns></returns>
         [HttpPost(nameof(PayStandard))]
-        public async Task<ShouQianBaOrder> PayStandard([FromBody]OrderCreateRequestModel requestModel, [FromQuery, Required]TerminalSignSettings terminalSignSettings)
+        public async Task<ShouQianBaOrder> PayStandard([FromBody]OrderCreateRequestModel requestModel, [FromQuery]TerminalSignSettings terminalSignSettings)
         {
             if (requestModel == null)
             {
                 throw new ArgumentNullException(nameof(requestModel));
             }
+            requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
+            terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
+
             //重要！此示例是理论示例，代码正确性尚未验证
 
             //当面付示例
@@ -127,7 +144,7 @@ namespace AspNetCoreDemo.Controllers
             Response<OrderGenericResponseModel> result = null;
             try
             {
-                result =await PayClient.Pay(orderCreateRequestModel, terminalSignSettings, TimeSpan.FromSeconds(2))
+                result = await PayClient.Pay(orderCreateRequestModel, terminalSignSettings, TimeSpan.FromSeconds(2))
                 .Retry(3, TimeSpan.FromSeconds(5))
                 .WhenCatch<HttpStatusFailureException>(ex => ex.StatusCode == System.Net.HttpStatusCode.RequestTimeout);
             }

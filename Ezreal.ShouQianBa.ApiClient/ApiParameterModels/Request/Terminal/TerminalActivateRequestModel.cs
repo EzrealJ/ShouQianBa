@@ -26,7 +26,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal
         [ApiParameterName("device_id")]
         public string DeviceID { get; set; }
         /// <summary>
-        /// 调用方终端号
+        /// 【非必需，但经过确认一般必须无】调用方终端号
         /// </summary>
 
         [ApiParameterName("client_sn")]
@@ -41,11 +41,11 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal
         /// 系统信息
         /// </summary>
         [ApiParameterName("os_info")]
-        public string OSInfo { get; set; }
+        public string OSInfo { get; set; } = "C#"; /*= $"OS:{System.Environment.OSVersion.ToString()},Platform:{System.Environment.Version.ToString()},Language:C#";*/
         /// <summary>
         /// SDK版本
         /// </summary>
         [ApiParameterName("sdk_version")]
-        public string SdkVersion { get; set; }
+        public string SdkVersion { get; set; } = "Ezreal.ShouQianBa.ApiClient@0.2.0(Bate)";
     }
 }
