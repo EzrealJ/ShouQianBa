@@ -20,16 +20,16 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
     /// 设备相关接口
     /// </summary>
 
-    [TraceFilter]
 
     public interface ITerminalContract : IHttpApi
     {
         /// <summary>
         /// 设备激活
         /// </summary>
-        /// <param name="serviceProviderSigner"></param>
+        /// <param name="sign">签名</param>
         /// <param name="terminalActivateRequestModel"></param>
         /// <param name="timeout">超时时间,可以覆盖预定义特性<see cref="TimeoutAttribute"/></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [Timeout(5 * 1000)]
         [HttpPost("terminal/activate")]
@@ -38,9 +38,10 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         /// <summary>
         /// 设备签到
         /// </summary>
-        /// <param name="terminalSignProvider"></param>
+        /// <param name="sign">签名</param>
         /// <param name="terminalCheckinRequestModel"></param>
         /// <param name="timeout">超时时间,可以覆盖预定义特性<see cref="TimeoutAttribute"/></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [Timeout(5 * 1000)]
         [HttpPost("terminal/checkin")]

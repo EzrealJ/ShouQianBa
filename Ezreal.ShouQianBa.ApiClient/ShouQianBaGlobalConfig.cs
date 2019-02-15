@@ -31,9 +31,17 @@ namespace Ezreal.ShouQianBa.ApiClient
         /// </summary>
         public string ApiUri { get => UseSandbox ? SandboxEnvironmentApiUri : ProductionEnvironmentApiUri; }
         /// <summary>
-        /// 使用沙箱
+        /// 使用沙箱,默认false
         /// </summary>
         public bool UseSandbox { get; set; } = false;
+
+        /// <summary>
+        /// 启用日志,默认false
+        /// <para>
+        /// 将会在日志中记录请求内容
+        /// </para>
+        /// </summary>
+        public bool UseLog { get; set; } = false;
         /// <summary>
         /// 默认的Json序列化设置
         /// <para>
@@ -41,6 +49,9 @@ namespace Ezreal.ShouQianBa.ApiClient
         /// </para>
         /// </summary>
         public IJsonFormatter DefaultJsonFormatter { get; set; } = new ApiJsonFormatter();
+        /// <summary>
+        /// 全局拦截器集合
+        /// </summary>
         public List<IApiActionFilter> ApiActionFilters { get; set; } = new List<IApiActionFilter>();
     }
 }

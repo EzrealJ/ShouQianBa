@@ -27,6 +27,10 @@ namespace Ezreal.ShouQianBa.ApiClient.DependencyInjection
             {
                 config.HttpHost = new Uri(ShouQianBaGlobal.GlobalConfig.ApiUri);
                 ShouQianBaGlobal.GlobalConfig.ApiActionFilters.ToList().ForEach(filter => config.GlobalFilters.Add(filter));
+                if (ShouQianBaGlobal.GlobalConfig.UseLog)
+                {
+                    config.GlobalFilters.Add(new WebApiClient.Attributes.TraceFilterAttribute());
+                }
                 config.FormatOptions.DateTimeFormat = DateTimeFormats.ISO8601_WithMillisecond;
                 config.LoggerFactory= loggerFactory;
             };

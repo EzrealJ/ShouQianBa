@@ -62,7 +62,7 @@ namespace AspNetCoreDemo
                 //    ServiceProviderKey = "@vendor_key",
                 //};
                 //config.UseSandbox = true;
-
+                config.UseLog = true;
 
             }, new LoggerFactory().AddConsole());
             services.AddTransient(serviceProvider =>

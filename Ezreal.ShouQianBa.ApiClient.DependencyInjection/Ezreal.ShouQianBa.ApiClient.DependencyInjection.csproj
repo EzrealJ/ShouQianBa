@@ -14,6 +14,7 @@
     <PackageTags>ShouQianBa;WoSaiPay;</PackageTags>
     <PackageReleaseNotes>LICENSE:https://github.com/EzrealJ/ShouQianBa/blob/master/LICENSE
 E-Mail:memory_of_you@hotmail.com</PackageReleaseNotes>
+    <Authors>Ezreal</Authors>
   </PropertyGroup>
 
   <ItemGroup>

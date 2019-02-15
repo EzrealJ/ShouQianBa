@@ -13,63 +13,70 @@
             <summary>
             创建商户
             </summary>
-            <param name="serviceProviderSigner">签名对象</param>
+            <param name="sign">签名</param>
             <param name="createMerchantRequestModel">创建商户的信息</param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.Info(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantInfoRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantInfoRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             查询商户信息
             </summary>
-            <param name="serviceProviderSigner"></param>
+            <param name="sign">签名</param>
             <param name="merchantInfoRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.Close(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCloseRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCloseRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             禁用商户
             </summary>
-            <param name="serviceProviderSigner"></param>
+            <param name="sign">签名</param>
             <param name="closeMerchantRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.Banks(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             根据银行卡号获取银行信息
             </summary>
-            <param name="serviceProviderSigner"></param>
+            <param name="sign">签名</param>
             <param name="bankRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.BankBranches(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankBranchesRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankBranchesRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             模糊查询银行支行
             </summary>
-            <param name="serviceProviderSigner"></param>
+            <param name="sign">签名</param>
             <param name="bankBranchesRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.ImageUpload(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.ImageUploadRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.ImageUploadRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             上传图片
             </summary>
-            <param name="serviceProviderSigner"></param>
+            <param name="sign">签名</param>
             <param name="imageUploadRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.PubBank(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.PubBankRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.PubBankRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             对公银行查询接口
             </summary>
-            <param name="serviceProviderSigner"></param>
+            <param name="sign">签名</param>
             <param name="pubBankRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract">
@@ -87,9 +94,10 @@
             与支付宝/微信等支付服务直接提供商相比，此接口的流程存在差异，收钱吧方面这个请求是同步且持续阻塞的，当用户未支付时会一直pending，并不会返回等待支付的状态，因此此接口的预定义超时时间是50ms
             </para>
             </summary>
-            <param name="terminalSignProvider">签名对象</param>
+            <param name="sign">签名</param>
             <param name="orderCreateRequestModel">创建订单的信息</param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Precreate(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
@@ -99,27 +107,30 @@
             一般用于生成二维码提供给用户扫码支付
             </para>
             </summary>
-            <param name="terminalSignProvider">签名对象</param>
+            <param name="sign">签名</param>
             <param name="orderPrecreateRequestModel">预创建订单的信息</param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Query(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             查询订单接口
             </summary>
-            <param name="terminalSignProvider">签名对象</param>
+            <param name="sign">签名</param>
             <param name="orderTokenRequestModel">订单凭证对象<seealso cref="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel"/></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Cancel(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             取消订单
             </summary>
-            <param name="terminalSignProvider">签名对象</param>
+            <param name="sign">签名</param>
             <param name="orderTokenRequestModel">订单凭证对象<seealso cref="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel"/></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Revoke(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
@@ -129,18 +140,20 @@
             整体和Cancel方法的结果没有任何差异,但执行人工撤单时建议使用此接口，这样会在收钱吧方的数据上体现出区别
             </para>
             </summary>
-            <param name="terminalSignProvider">签名对象</param>
+            <param name="sign">签名</param>
             <param name="orderTokenRequestModel">订单凭证对象<seealso cref="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel"/></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Refund(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             退款
             </summary>
-            <param name="terminalSignProvider">签名对象</param>
+            <param name="sign">签名</param>
             <param name="orderRefundRequestModel">退款参数对象<seealso cref="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel"/></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiContract.ITerminalContract">
@@ -152,18 +165,20 @@
             <summary>
             设备激活
             </summary>
-            <param name="serviceProviderSigner"></param>
+            <param name="sign">签名</param>
             <param name="terminalActivateRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.ITerminalContract.Checkin(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             设备签到
             </summary>
-            <param name="terminalSignProvider"></param>
+            <param name="sign">签名</param>
             <param name="terminalCheckinRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.ApiParameterModelBase">
@@ -1148,12 +1163,13 @@
             静态的全局配置信息
             </summary>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobal.InitializeDefaultConfig(System.Action{Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig})">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobal.InitializeDefaultConfig(System.Action{Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig},Microsoft.Extensions.Logging.ILoggerFactory)">
             <summary>
             初始化全局配置
             <para>在没有DI的情况下可以使用它来初始化配置</para>
             </summary>
-            <param name="action"></param>
+            <param name="action"></param>   
+            <param name="loggerFactory">日志工厂</param>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig">
             <summary>
@@ -1182,7 +1198,15 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.UseSandbox">
             <summary>
-            使用沙箱
+            使用沙箱,默认false
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.UseLog">
+            <summary>
+            启用日志,默认false
+            <para>
+            将会在日志中记录请求内容
+            </para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.DefaultJsonFormatter">
@@ -1191,6 +1215,11 @@
             <para>
             在没有详细阅读代码的情况下请不要改动
             </para>
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.ApiActionFilters">
+            <summary>
+            全局拦截器集合
             </summary>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.Sign.IServiceSignable">

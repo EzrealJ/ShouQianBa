@@ -19,7 +19,6 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
     /// 支付相关接口
     /// </summary>
 
-    [TraceFilter]
 
     public interface IPayContract : IHttpApi
     {
@@ -32,9 +31,10 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         /// 与支付宝/微信等支付服务直接提供商相比，此接口的流程存在差异，收钱吧方面这个请求是同步且持续阻塞的，当用户未支付时会一直pending，并不会返回等待支付的状态，因此此接口的预定义超时时间是50ms
         /// </para>
         /// </summary>
-        /// <param name="terminalSignProvider">签名对象</param>
+        /// <param name="sign">签名</param>
         /// <param name="orderCreateRequestModel">创建订单的信息</param>
         /// <param name="timeout">超时时间,可以覆盖预定义特性<see cref="TimeoutAttribute"/></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [Timeout(50 * 1000)]
         [HttpPost("upay/v2/pay")]
@@ -46,9 +46,10 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         /// 一般用于生成二维码提供给用户扫码支付
         /// </para>
         /// </summary>
-        /// <param name="terminalSignProvider">签名对象</param>
+        /// <param name="sign">签名</param>
         /// <param name="orderPrecreateRequestModel">预创建订单的信息</param>
         /// <param name="timeout">超时时间,可以覆盖预定义特性<see cref="TimeoutAttribute"/></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [Timeout(5 * 1000)]
         [HttpPost("upay/v2/precreate")]
@@ -57,9 +58,10 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         /// <summary>
         /// 查询订单接口
         /// </summary>
-        /// <param name="terminalSignProvider">签名对象</param>
+        /// <param name="sign">签名</param>
         /// <param name="orderTokenRequestModel">订单凭证对象<seealso cref="OrderTokenRequestModel"/></param>
         /// <param name="timeout">超时时间,可以覆盖预定义特性<see cref="TimeoutAttribute"/></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [Timeout(5 * 1000)]
         [HttpPost("upay/v2/query")]
@@ -68,9 +70,10 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         /// <summary>
         /// 取消订单
         /// </summary>
-        /// <param name="terminalSignProvider">签名对象</param>
+        /// <param name="sign">签名</param>
         /// <param name="orderTokenRequestModel">订单凭证对象<seealso cref="OrderTokenRequestModel"/></param>
         /// <param name="timeout">超时时间,可以覆盖预定义特性<see cref="TimeoutAttribute"/></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [Timeout(5 * 1000)]
         [HttpPost("upay/v2/cancel")]
@@ -82,9 +85,10 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         /// 整体和Cancel方法的结果没有任何差异,但执行人工撤单时建议使用此接口，这样会在收钱吧方的数据上体现出区别
         /// </para>
         /// </summary>
-        /// <param name="terminalSignProvider">签名对象</param>
+        /// <param name="sign">签名</param>
         /// <param name="orderTokenRequestModel">订单凭证对象<seealso cref="OrderTokenRequestModel"/></param>
         /// <param name="timeout">超时时间,可以覆盖预定义特性<see cref="TimeoutAttribute"/></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [Timeout(5 * 1000)]
         [HttpPost("upay/v2/revoke")]
@@ -93,9 +97,10 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         /// <summary>
         /// 退款
         /// </summary>
-        /// <param name="terminalSignProvider">签名对象</param>
+        /// <param name="sign">签名</param>
         /// <param name="orderRefundRequestModel">退款参数对象<seealso cref="OrderRefundRequestModel"/></param>
         /// <param name="timeout">超时时间,可以覆盖预定义特性<see cref="TimeoutAttribute"/></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [Timeout(5 * 1000)]
         [HttpPost("upay/v2/refund")]

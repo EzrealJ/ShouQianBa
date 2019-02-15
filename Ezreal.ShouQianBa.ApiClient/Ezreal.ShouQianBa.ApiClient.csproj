@@ -17,6 +17,9 @@ E-Mail:memory_of_you@hotmail.com</PackageReleaseNotes>
     <Copyright>Ezreal</Copyright>
     <AssemblyVersion>0.2.0.0</AssemblyVersion>
     <PackageIconUrl>https://raw.githubusercontent.com/EzrealJ/ShouQianBa/master/Ezreal.ShouQianBa.ApiClient/WoSaipay.ico</PackageIconUrl>
+    <Authors>Ezreal</Authors>
+    <Company />
+    <Product />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
