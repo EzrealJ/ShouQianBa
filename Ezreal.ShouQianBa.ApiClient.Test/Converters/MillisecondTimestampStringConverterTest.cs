@@ -23,7 +23,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.Converters
 
         }
         [Fact]
-        public void SerializeObject()
+        public void Serialize_Object_ReturnMillisecondTimestampString()
         {
             DateTime now = DateTime.Now;
             TestClass testClass = new TestClass()
@@ -35,10 +35,10 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.Converters
 
             string str = JsonConvert.SerializeObject(testClass);
             Assert.Contains(((now - MillisecondTimestampStringConverter.UnixTimestampLocalZero).Ticks/ 10000).ToString(), str);
-            Assert.DoesNotContain("\"null\"", str);
+
         }
         [Fact]
-        public void DeserializeObject()
+        public void Deserialize_ObjectJsonStringWithMillisecondTimestampString_ReturnTrueDateTime()
         {
             string str = "{\"MyProperty\":\"1547196591508\",\"MyProperty1\":\"\"}";
             TestClass testClass = JsonConvert.DeserializeObject<TestClass>(str);

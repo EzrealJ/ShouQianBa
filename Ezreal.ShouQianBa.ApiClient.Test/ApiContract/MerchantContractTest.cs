@@ -21,8 +21,12 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
         [InlineData(@"6227002021280187342")]
         [InlineData(@"6222600260001072444")]
         [InlineData(@"6217790001073282390")]
-        public async void Banks(string bankCardNo)
+        public async void GetBanks_BankCardNo_ReturnsOKResultCode(string bankCardNo)
         {
+            if(string.IsNullOrWhiteSpace(ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings.ServiceProviderKey+ ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings.ServiceProviderSerialNo))
+            {
+                throw new ArgumentException("DefaultShouQianBaServiceProviderSettings must be initialized", nameof(ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings));
+            }
             BankRequestModel requestModel = new BankRequestModel() { BankCard = bankCardNo };
             Response<BankResponseModel> result = await ApiFactory.CreateMerchantClient()
                 .Banks(requestModel)
@@ -37,11 +41,13 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
         [InlineData(@"中国")]
         [InlineData(@"农业")]
         [InlineData(@"招商")]
-        public async void PubBank(string bankName)
+        public async void GetPubBank_BankName_NotEmptyBankBranchesList(string bankName)
         {
-            var apiInstense = Global.Create<IMerchantContract>();
-
-
+            if (string.IsNullOrWhiteSpace(ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings.ServiceProviderKey + ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings.ServiceProviderSerialNo))
+            {
+                throw new ArgumentException("DefaultShouQianBaServiceProviderSettings must be initialized", nameof(ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings));
+            }
+            var apiInstense = ShouQianBaGlobal.Create<IMerchantContract>();
             PubBankRequestModel requestModel = new PubBankRequestModel() { BankName = bankName };
             var sign = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);
 
@@ -56,11 +62,13 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
         [InlineData(@"中国银行", "320506")]
         [InlineData(@"中国农业银行", "320506")]
         [InlineData(@"招商银行", "330103")]
-        public async void BankBranches(string bankName, string bankArea)
+        public async void GetBankBranches_BankNameBankArea_NotEmptyBankBranchesList(string bankName, string bankArea)
         {
-            var apiInstense = Global.Create<IMerchantContract>();
-
-
+            if (string.IsNullOrWhiteSpace(ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings.ServiceProviderKey + ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings.ServiceProviderSerialNo))
+            {
+                throw new ArgumentException("DefaultShouQianBaServiceProviderSettings must be initialized", nameof(ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings));
+            }
+            var apiInstense = ShouQianBaGlobal.Create<IMerchantContract>();
             BankBranchesRequestModel requestModel = new BankBranchesRequestModel() { BankName = bankName, BankArea = bankArea };
             var sign = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);
 
@@ -74,10 +82,13 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
 
         [Theory]
         [InlineData(@"./Files/desktop.png")]
-        public async void ImageUpload(string filePath)
+        public async void ImageUpload_FilePath_NotEmptyFileURI(string filePath)
         {
-
-            var apiInstense = Global.Create<IMerchantContract>();
+            if (string.IsNullOrWhiteSpace(ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings.ServiceProviderKey + ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings.ServiceProviderSerialNo))
+            {
+                throw new ArgumentException("DefaultShouQianBaServiceProviderSettings must be initialized", nameof(ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings));
+            }
+            var apiInstense = ShouQianBaGlobal.Create<IMerchantContract>();
             Image image = Image.FromFile(filePath);
             ImageUploadRequestModel requestModel = ImageUploadRequestModel.FromImage(image);
             var sign = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);

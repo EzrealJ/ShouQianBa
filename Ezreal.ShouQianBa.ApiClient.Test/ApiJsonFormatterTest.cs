@@ -9,7 +9,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Test
     public class ApiJsonFormatterTest
     {
         [Fact]
-        public void IgnoreNullValue()
+        public void Serialize_RequestModel_ReturnsIgnoreNullValueJsonString()
         {
             BankBranchesRequestModel requestModel = new BankBranchesRequestModel() { BankArea = "123456" };
             ApiJsonFormatter apiJsonFormatter = new ApiJsonFormatter();

@@ -36,8 +36,6 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.Models
             MerchantCreateRequestModel createMerchantRequestModel = new MerchantCreateRequestModel();
             createMerchantRequestModel.CertificateType = Enums.CertificateTypeEnum.IDCard;
             string str = createMerchantRequestModel.ToApiParameterJsonString();
-
-
             MerchantCreateRequestModel targetObject = MerchantCreateRequestModel.FormApiParameterJsonString<MerchantCreateRequestModel>(str);
             Assert.True(targetObject.CertificateType == Enums.CertificateTypeEnum.IDCard);
 

@@ -8,7 +8,10 @@ using WebApiClient;
 
 namespace Ezreal.ShouQianBa.ApiClient
 {
-    public class GlobalConfig
+    /// <summary>
+    /// 收钱吧全局配置
+    /// </summary>
+    public class ShouQianBaGlobalConfig
     {
         /// <summary>
         /// 生产环境Uri
@@ -18,7 +21,6 @@ namespace Ezreal.ShouQianBa.ApiClient
         /// 沙箱环境Uri
         /// </summary>
         public string SandboxEnvironmentApiUri { get; set; } = "http://api-sandbox.test.shouqianba.com/";
-
 
         /// <summary>
         /// 默认的收钱吧服务商配置

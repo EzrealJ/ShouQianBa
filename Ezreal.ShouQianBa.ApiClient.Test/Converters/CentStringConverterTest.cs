@@ -21,7 +21,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.Converters
             public decimal MyProperty2 { get; set; }
         }
         [Fact]
-        public void SerializeObject()
+        public void Serialize_Object_ReturnsMultipliedBy100()
         {
 
             TestClass testClass = new TestClass()
@@ -32,13 +32,13 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.Converters
             };
 
             string str = JsonConvert.SerializeObject(testClass);
-            Assert.Contains("\"1230\"", str);
-            Assert.Contains("\"1120\"", str);
-            Assert.Contains("\"5230\"", str);
+            Assert.Contains($"\"{(int)(100*testClass.MyProperty)}\"", str);
+            Assert.Contains($"\"{(int)(100 * testClass.MyProperty1)}\"", str);
+            Assert.Contains($"\"{(int)(100 * testClass.MyProperty2)}\"", str);
 
         }
         [Fact]
-        public void DeserializeObject()
+        public void Deserialize_ObjectJsonString_ReturnsDividedBy100()
         {
             string str = "{\"MyProperty\":\"1230\",\"MyProperty1\":\"1120\",\"MyProperty2\":\"5230\"}";
             TestClass testClass = JsonConvert.DeserializeObject<TestClass>(str);

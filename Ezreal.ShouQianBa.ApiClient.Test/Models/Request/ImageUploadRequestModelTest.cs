@@ -14,7 +14,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.Models.Request
     {
         [Theory]
         [InlineData(@"./Files/desktop.png")]
-        public void FromImage(string filePath)
+        public void FromImage_FilePath_ReturnsImageBase64String(string filePath)
         {
             Image image = Image.FromFile(filePath);
             ImageUploadRequestModel imageUploadRequestModel = ImageUploadRequestModel.FromImage(image);

@@ -82,7 +82,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Sign
         /// <returns></returns>
         public static ServiceProviderSignProvider CreateFromServiceProviderSettings(ServiceProviderSettings serviceProviderSettings = null)
         {
-            serviceProviderSettings = serviceProviderSettings ?? Global.GlobalConfig.DefaultShouQianBaServiceProviderSettings;
+            serviceProviderSettings = serviceProviderSettings ?? ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings;
             return new ServiceProviderSignProvider(new ServiceProviderSignSettings()
             {
                 ServiceProviderKey = serviceProviderSettings.ServiceProviderKey,

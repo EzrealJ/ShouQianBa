@@ -7,21 +7,24 @@ using WebApiClient;
 
 namespace Ezreal.ShouQianBa.ApiClient
 {
-    public class Global
+    /// <summary>
+    /// 收钱吧全局操作
+    /// </summary>
+    public class ShouQianBaGlobal
     {
         /// <summary>
         /// 静态的全局配置信息
         /// </summary>
-        public static GlobalConfig GlobalConfig { get; set; } = new GlobalConfig();
+        public static ShouQianBaGlobalConfig GlobalConfig { get; set; } = new ShouQianBaGlobalConfig();
         /// <summary>
         /// 初始化全局配置
         /// <para>在没有DI的情况下可以使用它来初始化配置</para>
         /// </summary>
         /// <param name="action"></param>
-        public static void InitializeDefaultConfig(Action<GlobalConfig> action)
+        public static void InitializeDefaultConfig(Action<ShouQianBaGlobalConfig> action)
         {
             action.Invoke(GlobalConfig);
-            HttpApiConfig.DefaultJsonFormatter = Global.GlobalConfig.DefaultJsonFormatter;
+            HttpApiConfig.DefaultJsonFormatter = ShouQianBaGlobal.GlobalConfig.DefaultJsonFormatter;
             Action<HttpApiConfig> configAction = config =>
              {
                  config.HttpHost = new Uri(GlobalConfig.ApiUri);

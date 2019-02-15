@@ -20,7 +20,7 @@ namespace Simple
             Console.WriteLine("@vendor_key");
             string @vendor_key = Console.ReadLine();
             //当前示例向您演示如何最简单的使用方式
-            Global.InitializeDefaultConfig(config =>
+            ShouQianBaGlobal.InitializeDefaultConfig(config =>
             {
                 //若您不是服务商而是从服务商获取了信息来调用支付相关接口，则无需进行此配置
                 config.DefaultShouQianBaServiceProviderSettings = new ServiceProviderSettings()

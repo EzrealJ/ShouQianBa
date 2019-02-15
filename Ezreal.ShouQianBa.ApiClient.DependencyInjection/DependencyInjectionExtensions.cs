@@ -17,16 +17,16 @@ namespace Ezreal.ShouQianBa.ApiClient.DependencyInjection
         /// <typeparam name="TInterface">接口类型</typeparam>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static void AddShouQianBaApiClient(this IServiceCollection services, Action<GlobalConfig> action, ILoggerFactory loggerFactory=null)
+        public static void AddShouQianBaApiClient(this IServiceCollection services, Action<ShouQianBaGlobalConfig> action, ILoggerFactory loggerFactory=null)
 
         {
-            services.AddSingleton(Global.GlobalConfig);
-            action.Invoke(Global.GlobalConfig);
-            HttpApiConfig.DefaultJsonFormatter = Global.GlobalConfig.DefaultJsonFormatter;
+            services.AddSingleton(ShouQianBaGlobal.GlobalConfig);
+            action.Invoke(ShouQianBaGlobal.GlobalConfig);
+            HttpApiConfig.DefaultJsonFormatter = ShouQianBaGlobal.GlobalConfig.DefaultJsonFormatter;
             Action<HttpApiConfig> configAction = config =>
             {
-                config.HttpHost = new Uri(Global.GlobalConfig.ApiUri);
-                Global.GlobalConfig.ApiActionFilters.ToList().ForEach(filter => config.GlobalFilters.Add(filter));
+                config.HttpHost = new Uri(ShouQianBaGlobal.GlobalConfig.ApiUri);
+                ShouQianBaGlobal.GlobalConfig.ApiActionFilters.ToList().ForEach(filter => config.GlobalFilters.Add(filter));
                 config.FormatOptions.DateTimeFormat = DateTimeFormats.ISO8601_WithMillisecond;
                 config.LoggerFactory= loggerFactory;
             };

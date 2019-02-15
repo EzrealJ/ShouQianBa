@@ -36,7 +36,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.Converters
             public Enum3 MyProperty2 { get; set; }
         }
         [Fact]
-        public void SerializeObject()
+        public void Serialize_Object_ReturnsStringEnumValue()
         {
             TestClass testClass = new TestClass()
             {
@@ -51,7 +51,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.Converters
             Assert.Contains("\"5\"", str);
         }
         [Fact]
-        public void DeserializeObject()
+        public void Deserialize_ObjectJsonStringWithStringEnumValue_ReturnsTrueEnum()
         {
             string str = "{\"MyProperty\":\"2\",\"MyProperty1\":\"4\",\"MyProperty2\":\"6\"}";
             TestClass testClass = JsonConvert.DeserializeObject<TestClass>(str);

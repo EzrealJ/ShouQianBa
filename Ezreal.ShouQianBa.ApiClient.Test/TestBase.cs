@@ -8,13 +8,13 @@ namespace Ezreal.ShouQianBa.ApiClient.Test
     {
         static TestBase()
         {
-            Global.InitializeDefaultConfig(config =>
+            ShouQianBaGlobal.InitializeDefaultConfig(config =>
             {
 
                 config.DefaultShouQianBaServiceProviderSettings = new ServiceProviderSettings()
                 {
-                    ServiceProviderSerialNo = "@vendor_sn",
-                    ServiceProviderKey = "@vendor_key",
+                    ServiceProviderSerialNo = string.Empty,
+                    ServiceProviderKey = string.Empty,
                 };
                 config.UseSandbox = true;
             });
