@@ -2,6 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>0.1.0-alpha</Version>
+    <Description>Ezreal.ShouQianBa.ApiClient.DependencyInjection是一个Ezreal.ShouQianBa.ApiClient的AspNetCore依赖注入扩展库</Description>
+    <Copyright>Ezreal</Copyright>
+    <PackageLicenseUrl>https://github.com/EzrealJ/ShouQianBa/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/EzrealJ/ShouQianBa</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/EzrealJ/ShouQianBa/master/Ezreal.ShouQianBa.ApiClient/WoSaipay.ico</PackageIconUrl>
+    <RepositoryUrl>https://github.com/EzrealJ/ShouQianBa</RepositoryUrl>
+    <PackageTags>ShouQianBa;WoSaiPay;</PackageTags>
+    <PackageReleaseNotes>LICENSE:https://github.com/EzrealJ/ShouQianBa/blob/master/LICENSE
+E-Mail:memory_of_you@hotmail.com</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

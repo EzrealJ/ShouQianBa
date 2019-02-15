@@ -31,9 +31,9 @@
 <td>nuget only</td>
 </tr>
 <tr>
-<td>now</td>
+<td>2019-02-15</td>
 <td>0.2.0-α</td>
-<td>testing</td>
+<td>release</td>
 </tr>
 
 </table>
@@ -53,14 +53,18 @@
 * 配置
 ```C#
 
-    Global.InitializeDefaultConfig(config =>
+    ShouQianBaGlobal.InitializeDefaultConfig(config =>
     {
+        //若您不是服务商而是从服务商获取了信息来调用支付相关接口，则无需进行此配置
         config.DefaultShouQianBaServiceProviderSettings = new ServiceProviderSettings()
         {
-            ServiceProviderSerialNo = "@vendor_sn",
-            ServiceProviderKey = "@vendor_key",
+            ServiceProviderSerialNo = @vendor_sn,
+            ServiceProviderKey = @vendor_key,
         };
-        config.UseSandbox = true;
+        //不使用沙箱无需配置此项目
+        //config.UseSandbox = true;
+        //默认配置了收钱吧提供的生产环境Url，如果您的网络环境下请求不可直达该Url,请用代理地址覆盖此项,沙箱环境同理。
+        //config.ProductionEnvironmentApiUri = "生产环境Url";
     });
 ```
 
@@ -78,7 +82,7 @@
         public static async void PayDemo()
         {
            
-            TerminalSignSettings terminalSignSettings = new TerminalSignSettings()
+             TerminalSignSettings terminalSignSettings = new TerminalSignSettings()
             {
                 TerminalKey = "设备Key(通过设备激活接口获得,或者通过设备签到接口刷新)",
                 TerminalSerialNo = "设备序列号(通过设备激活接口获得)"

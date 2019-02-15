@@ -1109,51 +1109,6 @@
             <param name="value"></param>
             <returns></returns>
         </member>
-        <member name="P:Ezreal.ShouQianBa.ApiClient.Global.GlobalConfig">
-            <summary>
-            静态的全局配置信息
-            </summary>
-        </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.Global.InitializeDefaultConfig(System.Action{Ezreal.ShouQianBa.ApiClient.GlobalConfig})">
-            <summary>
-            初始化全局配置
-            <para>在没有DI的情况下可以使用它来初始化配置</para>
-            </summary>
-            <param name="action"></param>
-        </member>
-        <member name="P:Ezreal.ShouQianBa.ApiClient.GlobalConfig.ProductionEnvironmentApiUri">
-            <summary>
-            生产环境Uri
-            </summary>
-        </member>
-        <member name="P:Ezreal.ShouQianBa.ApiClient.GlobalConfig.SandboxEnvironmentApiUri">
-            <summary>
-            沙箱环境Uri
-            </summary>
-        </member>
-        <member name="P:Ezreal.ShouQianBa.ApiClient.GlobalConfig.DefaultShouQianBaServiceProviderSettings">
-            <summary>
-            默认的收钱吧服务商配置
-            </summary>
-        </member>
-        <member name="P:Ezreal.ShouQianBa.ApiClient.GlobalConfig.ApiUri">
-            <summary>
-            Api地址
-            </summary>
-        </member>
-        <member name="P:Ezreal.ShouQianBa.ApiClient.GlobalConfig.UseSandbox">
-            <summary>
-            使用沙箱
-            </summary>
-        </member>
-        <member name="P:Ezreal.ShouQianBa.ApiClient.GlobalConfig.DefaultJsonFormatter">
-            <summary>
-            默认的Json序列化设置
-            <para>
-            在没有详细阅读代码的情况下请不要改动
-            </para>
-            </summary>
-        </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.Security.MD5Hash.Md5HashToBase64(System.String,System.String)">
             <summary>
             MD5哈希加密Base64字符串
@@ -1181,6 +1136,61 @@
         <member name="P:Ezreal.ShouQianBa.ApiClient.ServiceProviderSettings.ServiceProviderKey">
             <summary>
             服务商Key
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobal">
+            <summary>
+            收钱吧全局操作
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobal.GlobalConfig">
+            <summary>
+            静态的全局配置信息
+            </summary>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobal.InitializeDefaultConfig(System.Action{Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig})">
+            <summary>
+            初始化全局配置
+            <para>在没有DI的情况下可以使用它来初始化配置</para>
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig">
+            <summary>
+            收钱吧全局配置
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.ProductionEnvironmentApiUri">
+            <summary>
+            生产环境Uri
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.SandboxEnvironmentApiUri">
+            <summary>
+            沙箱环境Uri
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.DefaultShouQianBaServiceProviderSettings">
+            <summary>
+            默认的收钱吧服务商配置
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.ApiUri">
+            <summary>
+            Api地址
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.UseSandbox">
+            <summary>
+            使用沙箱
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.DefaultJsonFormatter">
+            <summary>
+            默认的Json序列化设置
+            <para>
+            在没有详细阅读代码的情况下请不要改动
+            </para>
             </summary>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.Sign.IServiceSignable">
