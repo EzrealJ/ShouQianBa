@@ -32,14 +32,14 @@
 </tr>
 <tr>
 <td>2019-02-15</td>
-<td>0.2.0-α</td>
+<td>0.2.1-α</td>
 <td>release</td>
 </tr>
 
 </table>
 
 
-# 当前仓库代码版本 0.2.0-α
+# 当前仓库代码版本 0.2.1-α
 ## 使用前
 * 项目曾经名为Ezreal.SDK.ShouQianBa,因项目不符合SDK的定位更名为Ezreal.ShouQianBa.ApiClient
 * 作者不是收钱吧的开发者,因此有问题请Issues.
