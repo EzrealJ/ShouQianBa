@@ -237,5 +237,4 @@
 # 捐赠
 ### 如果觉得这个项目不错，请Ezreal喝一杯咖啡或吃一顿午餐亦或是为了.NET开源生态更好的发展，可以扫描下方二维码进行捐赠以鼓励Ezreal。
 
-<img src="https://raw.githubusercontent.com/EzrealJ/FileStorageForOtherProjects/master/Img/QR/myWechatQR.png" height="480" width="320">
-<img src="https://raw.githubusercontent.com/EzrealJ/FileStorageForOtherProjects/master/Img/QR/myAlipayQR.png" height="480" width="320">
+<img src="https://raw.githubusercontent.com/EzrealJ/FileStorageForOtherProjects/master/Img/QR/wx%26alipay.png" height="600" width="800">
