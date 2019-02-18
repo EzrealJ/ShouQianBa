@@ -1,7 +1,8 @@
-# Ezreal.ShouQianBa[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/EzrealJ/ShouQianBa/blob/master/LICENSE)  
+#  <img src="https://raw.githubusercontent.com/EzrealJ/ShouQianBa/master/Ezreal.ShouQianBa.ApiClient/WoSaipay.ico" height="25"/>Ezreal.ShouQianBa[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/EzrealJ/ShouQianBa/blob/master/LICENSE)  
 
 * Ezreal.ShouQianBa.ApiClient是一个.NET实现的收钱吧WebApi连接库，旨在让您编写简单且可读性强代码快速接入收钱吧的WebApi
 * 同时支持 .NET Framework 4.5/.NET Standard 2.0+
+* 您可以直接通过nuget引用项目
 
 ## NuGet Dependencies
 #### All platform framework required
@@ -41,6 +42,7 @@
 
 # 当前仓库代码版本 0.2.1-α
 ## 使用前
+* 如果您觉得项目对您有帮助，请务必点个star支持一下
 * 项目曾经名为Ezreal.SDK.ShouQianBa,因项目不符合SDK的定位更名为Ezreal.ShouQianBa.ApiClient
 * 作者不是收钱吧的开发者,因此有问题请Issues.
 * 项目是作者在接入收钱吧WebApi时创建的,.NET下没有相应的库,因此在此贡献出来给大家使用.
@@ -230,3 +232,10 @@
         }
 ```
 * 更多使用方式尽情期待
+
+
+# 捐赠
+### 如果觉得这个项目不错，请Ezreal喝一杯咖啡或吃一顿午餐亦或是为了.NET开源生态更好的发展，可以扫描下方二维码进行捐赠以鼓励Ezreal。
+
+<img src="https://raw.githubusercontent.com/EzrealJ/FileStorageForOtherProjects/master/Img/QR/myWechatQR.png" height="600" width="400">
+<img src="https://raw.githubusercontent.com/EzrealJ/FileStorageForOtherProjects/master/Img/QR/myAlipayQR.png" height="600" width="400">
