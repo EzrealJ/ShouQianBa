@@ -66,7 +66,9 @@
         //config.UseSandbox = true;
         //默认配置了收钱吧提供的生产环境Url，如果您的网络环境下请求不可直达该Url,请用代理地址覆盖此项,沙箱环境同理。
         //config.ProductionEnvironmentApiUri = "生产环境Url";
-    });
+        //若您希望记录日志请开启此项并配置LoggerFactory
+        //config.UseLog = true;
+    }/*, new LoggerFactory().AddConsole()*/);
 ```
 
 ### 以下演示简单使用,依赖注入请参照Demo项目适当更改代码
