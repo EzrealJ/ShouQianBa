@@ -44,10 +44,19 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant
         /// </summary>
         [ApiParameterName("client_sn")]
         public string ClientSerialNo { get; set; }
+        /// <summary>
+        /// 服务商AppID
+        /// </summary>
         [ApiParameterName("vendor_app_id")]
         public string ServiceProviderAppID { get; set; }
+        /// <summary>
+        /// 服务商序列号
+        /// </summary>
         [ApiParameterName("vendor_sn")]
         public string ServiceProviderSerialNo { get; set; }
+        /// <summary>
+        /// 商户组织ID
+        /// </summary>
         [ApiParameterName("organization_id")]
         public string MerchantOrganizationID { get; set; }
         [ApiParameterName("user_id")]

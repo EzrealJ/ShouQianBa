@@ -25,7 +25,12 @@ E-Mail:memory_of_you@hotmail.com</PackageReleaseNotes>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
     <DocumentationFile>C:\Users\Ezreal\Documents\GitHub\ShouQianBa\Ezreal.ShouQianBa\Ezreal.ShouQianBa.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Enums\AreaEnum.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
