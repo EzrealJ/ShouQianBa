@@ -16,7 +16,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay
     public class OrderTokenRequestModel : RequestModel, Sign.ITerminalSignable
     {
         /// <summary>
-        /// 【必须】收钱吧终端ID
+        /// *收钱吧终端ID
         /// </summary>
         [ApiParameterName("terminal_sn")]
         public string TerminalSerialNo { get; set; }

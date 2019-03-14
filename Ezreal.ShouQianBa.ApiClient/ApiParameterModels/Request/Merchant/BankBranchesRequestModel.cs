@@ -14,13 +14,13 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant
     public class BankBranchesRequestModel : RequestModel,Sign.IServiceSignable
     {
         /// <summary>
-        /// 银行名称
+        /// *银行名称
         /// </summary>
         [ApiParameterName("bank_name")]
         public string BankName { get; set; }
 
         /// <summary>
-        /// 银行所在地区编码
+        /// *银行所在地区编码
         /// </summary>
         [ApiParameterName("bank_area")]
         public string BankArea { get; set; }

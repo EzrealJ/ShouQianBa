@@ -11,12 +11,12 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal
     public class TerminalCheckinRequestModel : RequestModel, Sign.ITerminalSignable
     {
         /// <summary>
-        /// 【必须】终端号
+        /// *终端号
         /// </summary>
         [ApiParameterName("terminal_sn")]
         public string TerminalSerialNo { get; set; }
         /// <summary>
-        /// 【必须】设备唯一身份ID
+        /// *设备唯一身份ID
         /// </summary>
         [ApiParameterName("device_id")]
         public string DeviceID { get; set; }

@@ -16,13 +16,13 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant
     public class MerchantCloseRequestModel : RequestModel, Sign.IServiceSignable
     {
         /// <summary>
-        /// 服务商序列号
+        /// *服务商序列号
         /// </summary>
         [ApiParameterName("vendor_sn")]
         public string ServiceProviderSerialNo { get; set; }
 
         /// <summary>
-        /// 商户号
+        /// *商户号
         /// </summary>
         [ApiParameterName("merchant_sn")]
         public string MerchantSerialNo { get; set; }

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Ezreal.ShouQianBa</name>
+        <name>Ezreal.ShouQianBa.ApiClient</name>
     </assembly>
     <members>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract">
@@ -9,67 +9,74 @@
             商户相关接口
             </summary>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.Create(Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel,WebApiClient.Parameterables.Timeout)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.Create(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             创建商户
             </summary>
-            <param name="serviceProviderSigner">签名对象</param>
+            <param name="sign">签名</param>
             <param name="createMerchantRequestModel">创建商户的信息</param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.Info(Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantInfoRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantInfoRequestModel,WebApiClient.Parameterables.Timeout)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.Info(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantInfoRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantInfoRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             查询商户信息
             </summary>
-            <param name="serviceProviderSigner"></param>
+            <param name="sign">签名</param>
             <param name="merchantInfoRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.Close(Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCloseRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCloseRequestModel,WebApiClient.Parameterables.Timeout)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.Close(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCloseRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCloseRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             禁用商户
             </summary>
-            <param name="serviceProviderSigner"></param>
+            <param name="sign">签名</param>
             <param name="closeMerchantRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.Banks(Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankRequestModel,WebApiClient.Parameterables.Timeout)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.Banks(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             根据银行卡号获取银行信息
             </summary>
-            <param name="serviceProviderSigner"></param>
+            <param name="sign">签名</param>
             <param name="bankRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.BankBranches(Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankBranchesRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankBranchesRequestModel,WebApiClient.Parameterables.Timeout)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.BankBranches(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankBranchesRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankBranchesRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             模糊查询银行支行
             </summary>
-            <param name="serviceProviderSigner"></param>
+            <param name="sign">签名</param>
             <param name="bankBranchesRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.ImageUpload(Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.ImageUploadRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.ImageUploadRequestModel,WebApiClient.Parameterables.Timeout)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.ImageUpload(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.ImageUploadRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.ImageUploadRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             上传图片
             </summary>
-            <param name="serviceProviderSigner"></param>
+            <param name="sign">签名</param>
             <param name="imageUploadRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.PubBank(Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.PubBankRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.PubBankRequestModel,WebApiClient.Parameterables.Timeout)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.PubBank(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.PubBankRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.PubBankRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             对公银行查询接口
             </summary>
-            <param name="serviceProviderSigner"></param>
+            <param name="sign">签名</param>
             <param name="pubBankRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract">
@@ -77,7 +84,7 @@
             支付相关接口
             </summary>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Pay(Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel,WebApiClient.Parameterables.Timeout)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Pay(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             创建订单
             <para>
@@ -87,60 +94,66 @@
             与支付宝/微信等支付服务直接提供商相比，此接口的流程存在差异，收钱吧方面这个请求是同步且持续阻塞的，当用户未支付时会一直pending，并不会返回等待支付的状态，因此此接口的预定义超时时间是50ms
             </para>
             </summary>
-            <param name="terminalSignProvider">签名对象</param>
+            <param name="sign">签名</param>
             <param name="orderCreateRequestModel">创建订单的信息</param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Precreate(Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel,WebApiClient.Parameterables.Timeout)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Precreate(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             订单预创建接口
             <para>
             一般用于生成二维码提供给用户扫码支付
             </para>
             </summary>
-            <param name="terminalSignProvider">签名对象</param>
+            <param name="sign">签名</param>
             <param name="orderPrecreateRequestModel">预创建订单的信息</param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Query(Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,WebApiClient.Parameterables.Timeout)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Query(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             查询订单接口
             </summary>
-            <param name="terminalSignProvider">签名对象</param>
+            <param name="sign">签名</param>
             <param name="orderTokenRequestModel">订单凭证对象<seealso cref="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel"/></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Cancel(Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,WebApiClient.Parameterables.Timeout)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Cancel(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             取消订单
             </summary>
-            <param name="terminalSignProvider">签名对象</param>
+            <param name="sign">签名</param>
             <param name="orderTokenRequestModel">订单凭证对象<seealso cref="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel"/></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Revoke(Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,WebApiClient.Parameterables.Timeout)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Revoke(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             手动撤单
             <para>
-            整体和<seealso cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Cancel(Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,WebApiClient.Parameterables.Timeout)"/>的结果没有任何差异,但执行人工撤单时建议使用此接口，这样会在收钱吧方的数据上体现出区别
+            整体和Cancel方法的结果没有任何差异,但执行人工撤单时建议使用此接口，这样会在收钱吧方的数据上体现出区别
             </para>
             </summary>
-            <param name="terminalSignProvider">签名对象</param>
+            <param name="sign">签名</param>
             <param name="orderTokenRequestModel">订单凭证对象<seealso cref="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel"/></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Refund(Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel,WebApiClient.Parameterables.Timeout)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Refund(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             退款
             </summary>
-            <param name="terminalSignProvider">签名对象</param>
+            <param name="sign">签名</param>
             <param name="orderRefundRequestModel">退款参数对象<seealso cref="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel"/></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiContract.ITerminalContract">
@@ -148,34 +161,33 @@
             设备相关接口
             </summary>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.ITerminalContract.Activate(Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel,WebApiClient.Parameterables.Timeout)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.ITerminalContract.Activate(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             设备激活
             </summary>
-            <param name="serviceProviderSigner"></param>
+            <param name="sign">签名</param>
             <param name="terminalActivateRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.ITerminalContract.Checkin(Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel,WebApiClient.Parameterables.Timeout)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.ITerminalContract.Checkin(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)">
             <summary>
             设备签到
             </summary>
-            <param name="terminalSignProvider"></param>
+            <param name="sign">签名</param>
             <param name="terminalCheckinRequestModel"></param>
             <param name="timeout">超时时间,可以覆盖预定义特性<see cref="T:WebApiClient.Attributes.TimeoutAttribute"/></param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiContract.ITerminalContract.UploadLog(Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider{Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.RequestModel},WebApiClient.Parameterables.MulitpartFile)">
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.ApiParameterModelBase">
             <summary>
-            上传日志
+            约定Api交互参数模型的基类
             <para>
-            收钱吧方面建议日志本地保存，此接口因文档描述模糊暂不可用
+            与收钱吧进行交互的参数都直接或者间接继承此类
             </para>
             </summary>
-            <param name="terminalSignProvider"></param>
-            <param name="mulitpartFile"></param>
-            <returns></returns>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic.ShouQianBaOrder.TerminalSerialNo">
             <summary>
@@ -275,6 +287,17 @@
             </para>
             </summary>
         </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic.ShouQianBaOrder.IsFinalOrderStatus">
+            <summary>
+            订单是否最终态
+            <para>
+            判断OrderStatus是否是"PAID","PAY_CANCELED","REFUNDED","PARTIAL_REFUNDED","CANCELED"其中的项
+            </para>
+            <para>
+            文档约定,若订单不是最终状态,需要继续查询订单状态或者调用撤单操作
+            </para>
+            </summary>
+        </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankBranchesRequestModel">
              <summary>
              银行支行接口请求模型
@@ -285,12 +308,12 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankBranchesRequestModel.BankName">
             <summary>
-            银行名称
+            *银行名称
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankBranchesRequestModel.BankArea">
             <summary>
-            银行所在地区编码
+            *银行所在地区编码
             </summary>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankRequestModel">
@@ -303,7 +326,7 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankRequestModel.BankCard">
             <summary>
-            银行卡号
+            *银行卡号
             </summary>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.ImageUploadRequestModel">
@@ -316,7 +339,7 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.ImageUploadRequestModel.ImageBase64String">
             <summary>
-            图片Base64编码
+            *图片Base64编码
             </summary>
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.ImageUploadRequestModel.FromImage(System.Drawing.Image)">
@@ -336,61 +359,125 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCloseRequestModel.ServiceProviderSerialNo">
             <summary>
-            服务商序列号
+            *服务商序列号
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCloseRequestModel.MerchantSerialNo">
             <summary>
-            商户号
+            *商户号
             </summary>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel">
             <summary>
             商户入网接口请求模型
             <para>
-            
+            https://doc.shouqianba.com/zh-cn/api/interface/merchantCreate.html
             </para>
-            <seealso cref="!:https://doc.shouqianba.com/zh-cn/api/interface/merchantCreate.html"/>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.CertificateType">
             <summary>
-            证件类型
+            *证件类型
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.Extra">
             <summary>
             扩展信息
+            <para>json格式存储的其他字段</para>
+            <para>[**此处传递对象即可,发起请求时会序列化为json]</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.ProactiveCreateAccount">
             <summary>
             是否主动创建商户
+            <para>默认(true)创建商户账号，传false则不创建账号</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.AccountType">
             <summary>
-            账户类型
+            *账户类型
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.ClientSerialNo">
             <summary>
             外部商户号
+            <para>外部商户号，可以根据此商户号查询商户信息</para>
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.ServiceProviderAppID">
+            <summary>
+            *服务商AppID
+            <para>收钱吧提供的服务商appid</para>
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.ServiceProviderSerialNo">
+            <summary>
+            *服务商序列号
+            <para>收钱吧提供的服务商sn</para>
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.MerchantOrganizationID">
+            <summary>
+            组织
+            <para>收钱吧提供的商户所属组织id</para>
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.MerchantPromoterID">
+            <summary>
+            推广者
+            <para>收钱吧提供的商户推广人id</para>
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.Name">
+            <summary>
+            *商户名
+            <para>至少有一个汉字</para>
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.BusinessName">
+            <summary>
+            商户经营名称
+            <para>非必须 至少有一个汉字，商家实际在经营场所使用的名称，默认和商户名一样</para>
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.ContactPerson">
+            <summary>
+            *联系人
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.ContactCellphone">
+            <summary>
+            *联系电话
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.Industry">
+            <summary>
+            行业
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.Area">
+            <summary>
+            *地区
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.Address">
+            <summary>
+            *详细地址
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.BrandPhoto">
             <summary>
-            门店照片
+            *门头照片
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.IndoorPhoto">
             <summary>
-            室内照片
+            *室内照片
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.OutdoorPhoto">
             <summary>
-            室外照片
+            *室外照片
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.OtherPhotos">
@@ -415,27 +502,34 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.CustomerPhone">
             <summary>
-            自定义联系电话(文档显示为微信客服电话)
+            自定义联系电话
+            <para>为空则取联系电话</para>
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.BankCard">
+            <summary>
+            *银行卡号
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.BankCardImage">
             <summary>
-            银行卡图片
+            *银行卡图片
+            <para>必须传真实的银行卡照片，需要跟银行卡号匹配</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.BankName">
             <summary>
-            银行名称
+            *开户银行
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.BankArea">
             <summary>
-            银行所在地区编码
+            *开户银行所在地区编码
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.BranchName">
             <summary>
-            支行名称
+            *开户支行名称
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.BankCellphone">
@@ -446,36 +540,44 @@
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.Holder">
             <summary>
             持有人
+            <para>个人账户为开户人，企业账户为开户公司名</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.LegalPersonName">
             <summary>
             法人姓名
+            <para>企业账户必须</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.BusinessLicenseImage">
             <summary>
             营业执照图片地址
+            <para>企业账户必须</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.BusinessRegistrationNumber">
             <summary>
             工商注册号
+            <para>企业账户必须</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.IdentityCardID">
             <summary>
-            身份证号
+            *身份证号
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.IdentityCardFrontPhoto">
             <summary>
-            身份证正面照片
+            *身份证正面照片
+            <para>必须传真实的身份证照片，且身份证信息需要和开户姓名和身份证号匹配</para>
+            <para>[***此处接口定义存在问题,根据相关法律法规,中国居民身份证的正面是指国徽面，为了成功调用接口，仍要上传人像面]</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel.IdentityCardBackPhoto">
             <summary>
-            身份证背面照片
+            *身份证背面照片
+            <para>必须传真实的身份证照片，且身份证有效期限不能过期</para>
+            <para>[***此处接口定义存在问题,根据相关法律法规,中国居民身份证的反面是指人像面，为了成功调用接口，仍要上传国徽面]</para>
             </summary>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantInfoRequestModel">
@@ -488,12 +590,12 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantInfoRequestModel.ServiceProviderSerialNo">
             <summary>
-            服务商序列号
+            *服务商序列号
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantInfoRequestModel.MerchantSerialNo">
             <summary>
-            商户号
+            *商户号
             </summary>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.PubBankRequestModel">
@@ -506,42 +608,49 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.PubBankRequestModel.BankName">
             <summary>
-            银行名称,支持模糊查询
+            *银行名称,支持模糊查询
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.TerminalSerialNo">
             <summary>
-            【必须】收钱吧终端ID
+            *收钱吧终端ID
+            <para>收钱吧终端ID，不超过32位的纯数字</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.ClientSerialNo">
              <summary>
-            【必须】调用方订单号
+            *调用方订单号
+            <para>必须在商户系统内唯一；且长度不超过32字节</para>
              </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.TotalAmount">
             <summary>
-            【必须】总金额,以分计
+            *总金额
+            <para>以分为单位,不超过10位纯数字字符串,超过1亿元的收款请使用银行转账</para>
+            <para>[***调用时请使用以元为单位的<see cref="T:System.Decimal"/>值,将在发起请求时自动转换为以分计的值]</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.Payway">
             <summary>
-            【非必须】支付方式，一旦设置，将限定为指定的支付方式
+            支付方式
+            <para>一旦设置，将限定为指定的支付方式</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.PayCertificate">
             <summary>
-            【必须】支付凭证,条码支付场景下为条码内容
+            *支付凭证
+            <para>条码支付场景下为条码内容</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.Summary">
             <summary>
-            【必须】交易摘要
+            *交易摘要
+            <para>本次交易的简要介绍</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.Operator">
             <summary>
-            【必须】操作员
+            *操作员
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.Description">
@@ -782,7 +891,7 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel.ClientSerialNo">
             <summary>
-            调用方终端号
+            【非必需，但经过确认一般必须无】调用方终端号
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel.Name">
@@ -850,6 +959,14 @@
             外部商户号
             </summary>
         </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderGenericResponseModel">
+            <summary>
+            通用的支付响应模型
+            <para>
+            通常情况下，除预创建订单外，支付相关接口返回的结果都能满足此模型
+            </para>
+            </summary>
+        </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderGenericResponseModel.ResultCode">
             <summary>
             响应码
@@ -863,6 +980,14 @@
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderGenericResponseModel.ErrorMessage">
             <summary>
             错误信息
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderGenericResponseModel.IsEffectiveOrder">
+            <summary>
+            订单是否有效
+            <para>
+            等效于Order!=null
+            </para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderPrecreateSyncResponseModel.ResultCode">
@@ -910,6 +1035,209 @@
             业务返回内容
             </summary>
         </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Response`1.ExistsBusinessResponseContent">
+            <summary>
+            存在有效的业务响应
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Api.MerchantClient">
+            <summary>
+            商户请求
+            </summary>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.MerchantClient.#ctor(Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract)">
+            <summary>
+            商户Client
+            </summary>
+            <param name="merchantContract">商户交互协议,可以从依赖注入环境获取,当无法获取到传入的实例时则调用<see cref="M:WebApiClient.HttpApiFactory.Create``1"/></param>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Api.MerchantClient.MerchantContract">
+            <summary>
+            商户交互协议
+            </summary>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.MerchantClient.Create(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignSettings,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            使用全局默认或传入的签名配置签名并代理调用<see cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.Create(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCreateRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="requestModel"></param>
+            <param name="serviceProviderSignSettings"></param>
+            <param name="timeout"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.MerchantClient.Info(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantInfoRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignSettings,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            使用全局默认或传入的签名配置签名并代理调用<see cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.Info(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantInfoRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantInfoRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="requestModel"></param>
+            <param name="serviceProviderSignSettings"></param>
+            <param name="timeout"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.MerchantClient.Close(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCloseRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignSettings,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            使用全局默认或传入的签名配置签名并代理调用<see cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.Close(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCloseRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.MerchantCloseRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="requestModel"></param>
+            <param name="serviceProviderSignSettings"></param>
+            <param name="timeout"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.MerchantClient.Banks(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignSettings,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            使用全局默认或传入的签名配置签名并代理调用<see cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.Banks(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="requestModel"></param>
+            <param name="serviceProviderSignSettings"></param>
+            <param name="timeout"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.MerchantClient.BankBranches(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankBranchesRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignSettings,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            使用全局默认或传入的签名配置签名并代理调用<see cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.BankBranches(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankBranchesRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.BankBranchesRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="requestModel"></param>
+            <param name="serviceProviderSignSettings"></param>
+            <param name="timeout"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.MerchantClient.PubBank(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.PubBankRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignSettings,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            使用全局默认或传入的签名配置签名并代理调用<see cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.PubBank(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.PubBankRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.PubBankRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="requestModel"></param>
+            <param name="serviceProviderSignSettings"></param>
+            <param name="timeout"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.MerchantClient.ImageUpload(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.ImageUploadRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignSettings,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            使用全局默认或传入的签名配置签名并代理调用<see cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IMerchantContract.ImageUpload(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.ImageUploadRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.ImageUploadRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="requestModel"></param>
+            <param name="serviceProviderSignSettings"></param>
+            <param name="timeout"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Api.PayClient">
+            <summary>
+            支付请求
+            </summary>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.PayClient.#ctor(Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract)">
+            <summary>
+            支付Client
+            </summary>
+            <param name="payContract">支付交互协议,可以从依赖注入环境获取,当无法获取到传入的实例时则调用<see cref="M:WebApiClient.HttpApiFactory.Create``1"/></param>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Api.PayClient.PayContract">
+            <summary>
+            支付交互协议
+            </summary>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.PayClient.Pay(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            使用传入的签名配置签名并代理调用<see cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Pay(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <param name="timeout"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.PayClient.Precreate(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            使用传入的签名配置签名并代理调用<see cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Precreate(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <param name="timeout"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.PayClient.Query(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            使用传入的签名配置签名并代理调用<see cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Query(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <param name="timeout"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.PayClient.Cancel(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            使用传入的签名配置签名并代理调用<see cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Cancel(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <param name="timeout"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.PayClient.Revoke(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            使用传入的签名配置签名并代理调用<see cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Revoke(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <param name="timeout"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.PayClient.Refund(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            使用传入的签名配置签名并代理调用<see cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.IPayContract.Refund(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <param name="timeout"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Api.TerminalClient">
+            <summary>
+            设备请求
+            </summary>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.TerminalClient.#ctor(Ezreal.ShouQianBa.ApiClient.ApiContract.ITerminalContract)">
+            <summary>
+            设备Client
+            </summary>
+            <param name="terminalContract">设备交互协议，可以从依赖注入环境获取,当无法获取到传入的实例时则调用<see cref="M:WebApiClient.HttpApiFactory.Create``1"/></param>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Api.TerminalClient.TerminalContract">
+            <summary>
+            设备交互协议
+            </summary>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.TerminalClient.Activate(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignSettings,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            使用全局默认或传入的签名配置签名并代理调用<see cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.ITerminalContract.Activate(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="requestModel"></param>
+            <param name="serviceProviderSignSettings"></param>
+            <param name="timeout"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Api.TerminalClient.Checkin(Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            使用传入的签名配置签名并代理调用<see cref="M:Ezreal.ShouQianBa.ApiClient.ApiContract.ITerminalContract.Checkin(Ezreal.ShouQianBa.ApiClient.Sign.Sign{Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider,Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel},Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel,WebApiClient.Parameterables.Timeout,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <param name="timeout"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.Attributes.ApiParameterNameAttribute">
             <summary>
             在请求中使用的参数名
@@ -926,9 +1254,34 @@
             </para>
             </summary>
         </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Converters.CentStringConverter.InternalOnly">
+            <summary>
+            仅在Api内部有效
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Converters.EnumValueStringConverter.InternalOnly">
+            <summary>
+            仅在Api内部有效
+            </summary>
+        </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.Converters.MillisecondTimestampStringConverter">
             <summary>
             Converts a <see cref="T:System.DateTime"/> to and from Unix epoch time
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Converters.MillisecondTimestampStringConverter.InternalOnly">
+            <summary>
+            仅在Api内部有效
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.AccountTypeEnum.Personal">
+            <summary>
+            个人账户
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.AccountTypeEnum.Enterprise">
+            <summary>
+            企业账户
             </summary>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.Enums.CertificateTypeEnum">
@@ -954,6 +1307,61 @@
         <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.CertificateTypeEnum.HongKongMacauPass">
             <summary>
             港澳通行证
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.CREATED">
+            <summary>
+            订单已创建/支付中
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.PAID">
+            <summary>
+            订单支付成功
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.PAY_CANCELED">
+            <summary>
+            支付失败并且已经成功充正
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.PAY_ERROR">
+            <summary>
+            支付失败，不确定是否已经成功充正, 请联系收钱吧客服确认是否支付成功
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.REFUNDED">
+            <summary>
+            已成功全额退款
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.PARTIAL_REFUNDED">
+            <summary>
+            已成功部分退款
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.REFUND_ERROR">
+            <summary>
+            退款失败并且不确定第三方支付通道的最终退款状态
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.CANCELED">
+            <summary>
+            客户端发起的撤单已成功
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.CANCEL_ERROR">
+            <summary>
+            客户端发起的撤单失败并且不确定第三方支付通道的最终状态
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.CANCEL_INPROGRESS">
+            <summary>
+            撤单进行中
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.INVALID_STATUS_CODE">
+            <summary>
+            无效的状态码
             </summary>
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.Extension.ModelExtension.NameOfApiParameter``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
@@ -996,50 +1404,6 @@
             <param name="value"></param>
             <returns></returns>
         </member>
-        <member name="P:Ezreal.ShouQianBa.ApiClient.Global.GlobalConfig">
-            <summary>
-            静态的全局配置信息
-            </summary>
-        </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.Global.InitializeDefaultConfig(System.Action{Ezreal.ShouQianBa.ApiClient.GlobalConfig})">
-            <summary>
-            初始化全局配置
-            </summary>
-            <param name="action"></param>
-        </member>
-        <member name="F:Ezreal.ShouQianBa.ApiClient.GlobalConfig.ProductionEnvironmentApiUri">
-            <summary>
-            生产环境Uri
-            </summary>
-        </member>
-        <member name="F:Ezreal.ShouQianBa.ApiClient.GlobalConfig.SandboxEnvironmentApiUri">
-            <summary>
-            沙箱环境Uri
-            </summary>
-        </member>
-        <member name="P:Ezreal.ShouQianBa.ApiClient.GlobalConfig.DefaultShouQianBaServiceProviderSettings">
-            <summary>
-            默认的收钱吧服务商配置
-            </summary>
-        </member>
-        <member name="P:Ezreal.ShouQianBa.ApiClient.GlobalConfig.ApiUri">
-            <summary>
-            Api地址
-            </summary>
-        </member>
-        <member name="P:Ezreal.ShouQianBa.ApiClient.GlobalConfig.UseSandbox">
-            <summary>
-            使用沙箱
-            </summary>
-        </member>
-        <member name="P:Ezreal.ShouQianBa.ApiClient.GlobalConfig.DefaultJsonFormatter">
-            <summary>
-            默认的Json序列化设置
-            <para>
-            在没有详细阅读代码的情况下请不要改动
-            </para>
-            </summary>
-        </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.Security.MD5Hash.Md5HashToBase64(System.String,System.String)">
             <summary>
             MD5哈希加密Base64字符串
@@ -1067,6 +1431,151 @@
         <member name="P:Ezreal.ShouQianBa.ApiClient.ServiceProviderSettings.ServiceProviderKey">
             <summary>
             服务商Key
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobal">
+            <summary>
+            收钱吧全局操作
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobal.GlobalConfig">
+            <summary>
+            静态的全局配置信息
+            </summary>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobal.InitializeDefaultConfig(System.Action{Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig},Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            初始化全局配置
+            <para>在没有DI的情况下可以使用它来初始化配置</para>
+            </summary>
+            <param name="action"></param>   
+            <param name="loggerFactory">日志工厂</param>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobal.Create``1">
+            <summary>
+            创建一个发起请求的实例,也可以用于创建其它已定义的WebApiClient接口
+            </summary>
+            <typeparam name="TInterface"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig">
+            <summary>
+            收钱吧全局配置
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.ProductionEnvironmentApiUri">
+            <summary>
+            生产环境Uri
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.SandboxEnvironmentApiUri">
+            <summary>
+            沙箱环境Uri
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.DefaultShouQianBaServiceProviderSettings">
+            <summary>
+            默认的收钱吧服务商配置
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.ApiUri">
+            <summary>
+            Api地址
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.UseSandbox">
+            <summary>
+            使用沙箱,默认false
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.UseLog">
+            <summary>
+            启用日志,默认false
+            <para>
+            将会在日志中记录请求内容
+            </para>
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.DefaultJsonFormatter">
+            <summary>
+            默认的Json序列化设置
+            <para>
+            在没有详细阅读代码的情况下请不要改动
+            </para>
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig.ApiActionFilters">
+            <summary>
+            全局拦截器集合
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Sign.IServiceSignable">
+            <summary>
+            定义可被<see cref="T:Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider"/>签名的内容
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Sign.ITerminalSignable">
+            <summary>
+            定义可被<see cref="T:Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider"/>签名的内容
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider">
+            <summary>
+            服务商签名提供者
+            </summary>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider.CreateFromServiceProviderSettings(Ezreal.ShouQianBa.ApiClient.ServiceProviderSettings)">
+            <summary>
+            使用收钱吧服务商配置来创建一个服务商签名提供程序
+            </summary>
+            <param name="serviceProviderSettings">给定此参数时，使用给定值来创建服务商签名提供程序，否则使用默认的收钱吧服务商配置</param>
+            <returns></returns>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignSettings.ServiceProviderSerialNo">
+            <summary>
+            服务商序列号
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignSettings.ServiceProviderKey">
+            <summary>
+            服务商Key
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Sign.Sign`2">
+            <summary>
+            签名对象
+            </summary>
+            <typeparam name="TSignProvider"></typeparam>
+            <typeparam name="TData"></typeparam>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Sign.Sign`2.Authorization">
+            <summary>
+            完整的签名体
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Sign.Sign`2.SerialNo">
+            <summary>
+            签名首部的序列号
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Sign.Sign`2.SignContent">
+            <summary>
+            签名内容
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Sign.Sign`2.DataObject">
+            <summary>
+            签名的数据对象
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Sign.Sign`2.SignProvider">
+            <summary>
+            签名提供者
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Sign.SignProvider">
+            <summary>
+            签名提供对象
             </summary>
         </member>
     </members>

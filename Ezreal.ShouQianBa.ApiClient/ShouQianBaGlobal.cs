@@ -45,7 +45,12 @@ namespace Ezreal.ShouQianBa.ApiClient
 
 
         }
-
+        /// <summary>
+        /// 创建一个发起请求的实例,也可以用于创建其它已定义的WebApiClient接口
+        /// </summary>
+        /// <typeparam name="TInterface"></typeparam>
+        /// <returns></returns>
+        [Obsolete("不太合理的方式,在没有DI环境的情况下，请考虑ApiFactory")]
         public static TInterface Create<TInterface>() where TInterface : class, IHttpApi
         {
             return HttpApiFactory.Create<TInterface>();

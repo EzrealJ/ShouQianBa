@@ -4,7 +4,7 @@
     <!--<TargetFramework>net45</TargetFramework>-->
     <!--<TargetFramework>netstandard2.0</TargetFramework>-->
     <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
-    <Version>0.2.1-alpha</Version>
+    <Version>0.2.1-beta</Version>
     <PackageLicenseUrl>https://github.com/EzrealJ/ShouQianBa/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/EzrealJ/ShouQianBa</PackageProjectUrl>
     <RepositoryUrl>https://github.com/EzrealJ/ShouQianBa</RepositoryUrl>
@@ -24,8 +24,12 @@ E-Mail:memory_of_you@hotmail.com</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
-    <DocumentationFile>C:\Users\Ezreal\Documents\GitHub\ShouQianBa\Ezreal.ShouQianBa\Ezreal.ShouQianBa.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\Ezreal\Documents\GitHub\ShouQianBa\Ezreal.ShouQianBa.ApiClient\Ezreal.ShouQianBa.ApiClient.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
+    <DocumentationFile>C:\Users\Ezreal\Documents\GitHub\ShouQianBa\Ezreal.ShouQianBa.ApiClient\Ezreal.ShouQianBa.ApiClient.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

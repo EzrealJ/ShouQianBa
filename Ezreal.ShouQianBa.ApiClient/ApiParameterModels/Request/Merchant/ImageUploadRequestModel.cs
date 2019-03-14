@@ -15,7 +15,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant
     public class ImageUploadRequestModel : RequestModel, Sign.IServiceSignable
     {
         /// <summary>
-        /// 图片Base64编码
+        /// *图片Base64编码
         /// </summary>
         [ApiParameterName("file")]
         public string ImageBase64String { get; set; }

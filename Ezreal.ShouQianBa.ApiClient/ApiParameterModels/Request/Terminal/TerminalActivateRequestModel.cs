@@ -11,17 +11,17 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal
     public class TerminalActivateRequestModel : RequestModel, Sign.IServiceSignable
     {
         /// <summary>
-        /// 【必须】从服务商平台获取
+        /// *从服务商平台获取
         /// </summary>
         [ApiParameterName("app_id")]
         public string AppID { get; set; }
         /// <summary>
-        /// 【必须】激活码
+        /// *激活码
         /// </summary>
         [ApiParameterName("code")]
         public string ActiveCode { get; set; }
         /// <summary>
-        /// 【必须】设备唯一身份ID
+        /// *设备唯一身份ID
         /// </summary>
         [ApiParameterName("device_id")]
         public string DeviceID { get; set; }
