@@ -611,6 +611,32 @@
             *银行名称,支持模糊查询
             </summary>
         </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.GoodsDetail.ID">
+            <summary>
+            商品编号
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.GoodsDetail.Name">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.GoodsDetail.Quantity">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.GoodsDetail.Price">
+            <summary>
+            单价
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.GoodsDetail.PromotionType">
+            <summary>
+            优惠类型
+            <para>优惠类型，0:没有优惠 1: 支付机构优惠，为1会把相关信息送到支付机构</para>
+            </summary>
+        </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.TerminalSerialNo">
             <summary>
             *收钱吧终端ID
@@ -655,22 +681,24 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.Description">
             <summary>
-            【非必须】详细描述
+            详细描述
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.Longitude">
             <summary>
-            【非必须】经度，若设置则必须设置纬度
+            经度
+            <para>若设置则必须设置纬度</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.Latitude">
             <summary>
-            【非必须】纬度，若设置则必须设置经度
+            纬度
+            <para>若设置则必须设置经度</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.DeviceID">
             <summary>
-            【非必须】设备唯一识别码
+            设备唯一识别码
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.Extra">
@@ -679,6 +707,7 @@
             <para>
             收钱吧与特定第三方单独约定的参数集合,json格式，最多支持24个字段，每个字段key长度不超过64字节，value长度不超过256字节
             </para>
+            <para>只需要设置对象即可,发起请求时会进行序列化</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.GoodsDetails">
@@ -698,27 +727,29 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel.TerminalSerialNo">
             <summary>
-            【必须】收钱吧终端ID
+            *收钱吧终端ID
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel.ClientSerialNo">
              <summary>
-            【必须】调用方订单号
+            *调用方订单号
              </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel.TotalAmount">
             <summary>
-            【必须】总金额,以分计
+            *总金额
+            <para>以分为单位,不超过10位纯数字字符串,超过1亿元的收款请使用银行转账</para>
+            <para>[***调用时请使用以元为单位的<see cref="T:System.Decimal"/>值,将在发起请求时自动转换为以分计的值]</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel.Payway">
             <summary>
-            【非必须】支付方式，一旦设置，将限定为指定的支付方式
+            支付方式，一旦设置，将限定为指定的支付方式
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel.SubPayway">
             <summary>
-            【*】二级支付方式
+            ?二级支付方式
             <para>
             如果要使用WAP支付，则必须传 "3", 使用小程序支付请传"4"
             </para>
@@ -726,7 +757,7 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel.PayerUserID">
             <summary>
-            【*】付款人在支付提供商平台上的ID
+            付款人在支付提供商平台上的ID
             <para>
             wap支付，小程序支付必传 ，微信WAP支付必须传open_id,支付宝WAP支付必传用户授权的userId
             </para>
@@ -734,27 +765,28 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel.Summary">
             <summary>
-            【必须】交易摘要
+            *交易摘要
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel.Operator">
             <summary>
-            【必须】操作员
+            *操作员
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel.Description">
             <summary>
-            【非必须】详细描述
+            详细描述
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel.Longitude">
             <summary>
-            【非必须】经度，若设置则必须设置纬度
+            经度
+            <para>若设置则必须设置纬度</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel.Latitude">
             <summary>
-            【非必须】纬度，若设置则必须设置经度
+            纬度<para>若设置则必须设置经度</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel.Extra">
@@ -763,6 +795,7 @@
             <para>
             收钱吧与特定第三方单独约定的参数集合,json格式，最多支持24个字段，每个字段key长度不超过64字节，value长度不超过256字节
             </para>
+            <para>直接设置对象即可，发起请求时会序列化</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel.GoodsDetails">
@@ -787,7 +820,7 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel.TerminalSerialNo">
             <summary>
-            【必须】收钱吧终端ID
+            *收钱吧终端ID
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel.SerialNo">
@@ -802,12 +835,12 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel.ClientRefundSerialNo">
              <summary>
-            【非必须】商户退款流水号
+            商户退款流水号
              </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel.RefundRequestNo">
              <summary>
-            【必须】退款请求唯一编号
+            *退款请求唯一编号
             <para>
             正常情况下，对同一笔订单进行多次退款请求时该字段不能重复；重试同一请求请保持不变
              </para>
@@ -815,25 +848,28 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel.RefundAmount">
             <summary>
-            【必须】退款金额,以分计
+            *退款金额
+            <para>以分为单位,不超过10位纯数字字符串,超过1亿元的收款请使用银行转账</para>
+            <para>[***调用时请使用以元为单位的<see cref="T:System.Decimal"/>值,将在发起请求时自动转换为以分计的值]</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel.Operator">
             <summary>
-            【必须】操作员
+            *操作员
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel.Extra">
             <summary>
-            【非必需】扩展信息
+            扩展信息
             <para>
             收钱吧与特定第三方单独约定的参数集合,json格式，最多支持24个字段，每个字段key长度不超过64字节，value长度不超过256字节
             </para>
+            <para>只需要设置对象即可,发起请求时会进行序列化</para>
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderRefundRequestModel.GoodsDetails">
             <summary>
-            【非必需】商品详情
+            商品详情
             </summary>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel">
@@ -846,7 +882,7 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel.TerminalSerialNo">
             <summary>
-            【必须】收钱吧终端ID
+            *收钱吧终端ID
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderTokenRequestModel.SerialNo">
@@ -876,17 +912,17 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel.AppID">
             <summary>
-            【必须】从服务商平台获取
+            *从服务商平台获取
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel.ActiveCode">
             <summary>
-            【必须】激活码
+            *激活码
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel.DeviceID">
             <summary>
-            【必须】设备唯一身份ID
+            *设备唯一身份ID
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel.ClientSerialNo">
@@ -911,12 +947,12 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel.TerminalSerialNo">
             <summary>
-            【必须】终端号
+            *终端号
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel.DeviceID">
             <summary>
-            【必须】设备唯一身份ID
+            *设备唯一身份ID
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel.OSInfo">
