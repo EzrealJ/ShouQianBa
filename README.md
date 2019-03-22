@@ -11,8 +11,8 @@
 * [Newtonsoft.Json【12.0.1】](https://www.newtonsoft.com/json)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://licenses.nuget.org/MIT)  
 #### .NET Standard only
-* [System.Drawing.Common【v4.5.1】](https://www.newtonsoft.com/json)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://licenses.nuget.org/MIT) 
+* [System.Drawing.Common【v4.5.1】](https://www.nuget.org/packages/System.Drawing.Common/)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/dotnet/corefx/blob/master/LICENSE.TXT) 
 
 #### Version Status:
 <table>
