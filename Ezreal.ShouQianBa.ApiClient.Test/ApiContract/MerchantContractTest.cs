@@ -47,7 +47,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
             {
                 throw new ArgumentException("DefaultShouQianBaServiceProviderSettings must be initialized", nameof(ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings));
             }
-            var apiInstense = ShouQianBaGlobal.Create<IMerchantContract>();
+            var apiInstense = ApiFactory.CreateMerchantClient().MerchantContract;
             PubBankRequestModel requestModel = new PubBankRequestModel() { BankName = bankName };
             var sign = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);
 
@@ -68,7 +68,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
             {
                 throw new ArgumentException("DefaultShouQianBaServiceProviderSettings must be initialized", nameof(ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings));
             }
-            var apiInstense = ShouQianBaGlobal.Create<IMerchantContract>();
+            var apiInstense = ApiFactory.CreateMerchantClient().MerchantContract;
             BankBranchesRequestModel requestModel = new BankBranchesRequestModel() { BankName = bankName, BankArea = bankArea };
             var sign = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);
 
@@ -88,7 +88,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
             {
                 throw new ArgumentException("DefaultShouQianBaServiceProviderSettings must be initialized", nameof(ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings));
             }
-            var apiInstense = ShouQianBaGlobal.Create<IMerchantContract>();
+           var apiInstense = ApiFactory.CreateMerchantClient().MerchantContract;
             Image image = Image.FromFile(filePath);
             ImageUploadRequestModel requestModel = ImageUploadRequestModel.FromImage(image);
             var sign = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);

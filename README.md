@@ -4,17 +4,17 @@
 * 同时支持 .NET Framework 4.5/.NET Standard 2.0+
 * 您可以直接通过nuget引用项目
 
-## NuGet Dependencies
-#### All platform framework required
+## NuGet 依赖项目
+#### 所有平台都必须的依赖项
 * [WebApiClient.AOT【0.3.2】](https://github.com/dotnetcore/WebApiClient)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/dotnetcore/WebApiClient/blob/master/LICENSE)  
 * [Newtonsoft.Json【12.0.1】](https://www.newtonsoft.com/json)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://licenses.nuget.org/MIT)  
-#### .NET Standard only
+#### 仅.NET Standard需要的依赖项
 * [System.Drawing.Common【v4.5.1】](https://www.nuget.org/packages/System.Drawing.Common/)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/dotnet/corefx/blob/master/LICENSE.TXT) 
 
-#### Version Status:
+#### 版本状态:
 <table>
 <tr>
 <th>Date</th>
@@ -36,7 +36,11 @@
 <td>0.2.1-α</td>
 <td>release</td>
 </tr>
-
+<tr>
+<td>2019-03-27</td>
+<td>0.2.1-β</td>
+<td>testing</td>
+</tr>
 </table>
 
 
