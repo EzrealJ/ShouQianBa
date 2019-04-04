@@ -5,14 +5,24 @@ using System.Text;
 
 namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant
 {
+    /// <summary>
+    /// 商户创建接口响应模型
+    /// </summary>
     public class MerchantCreateResponseModel : IBusinessResponseModel
     {
-
+        /// <summary>
+        /// 状态码
+        /// </summary>
         [ApiParameterName("result_code")]
         public string ResultCode { get; set; }
+        /// <summary>
+        /// 商户概要信息
+        /// </summary>
         [ApiParameterName("data")]
         public CreateMerchantResponseData Data { get; set; }
-
+        /// <summary>
+        /// 创建商户响应结果
+        /// </summary>
         public class CreateMerchantResponseData
         {
             /// <summary>

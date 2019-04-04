@@ -11,7 +11,11 @@ namespace Ezreal.ShouQianBa.ApiClient.Sign
     public class ServiceProviderSignProvider : SignProvider
     {
 
+        /// <summary>
+        /// 服务商签名配置
+        /// </summary>
         public ServiceProviderSignSettings ServiceProviderSignSetting
+#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
         {
             get
             {
@@ -25,13 +29,22 @@ namespace Ezreal.ShouQianBa.ApiClient.Sign
             }
         }
 
+
+#pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
         public ServiceProviderSignProvider(ServiceProviderSignSettings serviceProviderSignSetting)
+#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
+#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
         {
             ServiceProviderSignSetting = serviceProviderSignSetting;
         }
 
 
-
+        /// <summary>
+        /// 签名
+        /// </summary>
+        /// <typeparam name="TRequestParameterModel"></typeparam>
+        /// <param name="requestParameterModel"></param>
+        /// <returns></returns>
         public new Sign<ServiceProviderSignProvider, TRequestParameterModel> Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel) where TRequestParameterModel : IServiceSignable
         {
             if (requestParameterModel == null)
@@ -46,14 +59,27 @@ namespace Ezreal.ShouQianBa.ApiClient.Sign
                 SignProvider = this
             };
         }
-
+        /// <summary>
+        /// 签名
+        /// </summary>
+        /// <typeparam name="TRequestParameterModel"></typeparam>
+        /// <param name="requestParameterModel"></param>
+        /// <param name="serviceProviderSignSetting"></param>
+        /// <returns></returns>
         public Sign<ServiceProviderSignProvider, TRequestParameterModel> Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel, ServiceProviderSignSettings serviceProviderSignSetting) where TRequestParameterModel : IServiceSignable
         {
             this.ServiceProviderSignSetting = serviceProviderSignSetting;
             return this.Sign(requestParameterModel);
 
         }
-
+        /// <summary>
+        /// 签名
+        /// </summary>
+        /// <typeparam name="TRequestParameterModel"></typeparam>
+        /// <param name="requestParameterModel"></param>
+        /// <param name="serviceProviderSerialNo"></param>
+        /// <param name="serviceProviderKey"></param>
+        /// <returns></returns>
         public Sign<ServiceProviderSignProvider, TRequestParameterModel> Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel, string serviceProviderSerialNo, string serviceProviderKey) where TRequestParameterModel : IServiceSignable
         {
 

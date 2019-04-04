@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay
 {
+    /// <summary>
+    /// 订单创建请求模型
+    /// </summary>
     public class OrderCreateRequestModel : RequestModel, Sign.ITerminalSignable
     {
         /// <summary>

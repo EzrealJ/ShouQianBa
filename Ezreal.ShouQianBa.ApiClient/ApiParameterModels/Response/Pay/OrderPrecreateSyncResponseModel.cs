@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay
 {
+    /// <summary>
+    /// 预创建订单同步响应结果
+    /// </summary>
     public class OrderPrecreateSyncResponseModel : IBusinessResponseModel
     {
         /// <summary>
-        /// 响应码
+        /// 状态码
         /// </summary>
         [ApiParameterName("result_code")]
         public string ResultCode { get; set; }
@@ -26,10 +29,14 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay
 
         [ApiParameterName("error_message")]
         public string ErrorMessage { get; set; }
-
+        /// <summary>
+        /// 订单预创建信息
+        /// </summary>
         [ApiParameterName("data")]
         public PayPrecreateSyncResponseData Data { get; set; }
-
+        /// <summary>
+        /// 预创建订单同步响应内容模型
+        /// </summary>
         public class PayPrecreateSyncResponseData : Generic.ShouQianBaOrder
         {
             /// <summary>

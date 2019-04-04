@@ -8,8 +8,14 @@ using System.Threading.Tasks;
 
 namespace Ezreal.ShouQianBa.ApiClient.Sign
 {
+    /// <summary>
+    /// 设备签名提供者
+    /// </summary>
     public class TerminalSignProvider : SignProvider
     {
+        /// <summary>
+        /// 设备签名配置
+        /// </summary>
         public TerminalSignSettings TerminalSignSettings
         {
             get
@@ -24,13 +30,20 @@ namespace Ezreal.ShouQianBa.ApiClient.Sign
             }
         }
 
+#pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
         public TerminalSignProvider(TerminalSignSettings terminalSignSettings = null)
+#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
         {
             TerminalSignSettings = terminalSignSettings;
         }
 
 
-
+        /// <summary>
+        /// 签名
+        /// </summary>
+        /// <typeparam name="TRequestParameterModel"></typeparam>
+        /// <param name="requestParameterModel"></param>
+        /// <returns></returns>
         public new Sign<TerminalSignProvider, TRequestParameterModel> Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel) where TRequestParameterModel : ITerminalSignable
         {
             if (requestParameterModel == null)
@@ -45,13 +58,26 @@ namespace Ezreal.ShouQianBa.ApiClient.Sign
                 SignProvider = this
             };
         }
-
+        /// <summary>
+        /// 签名
+        /// </summary>
+        /// <typeparam name="TRequestParameterModel"></typeparam>
+        /// <param name="requestParameterModel"></param>
+        /// <param name="terminalSignSettings"></param>
+        /// <returns></returns>
         public Sign<TerminalSignProvider, TRequestParameterModel> Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel, TerminalSignSettings terminalSignSettings) where TRequestParameterModel : ITerminalSignable
         {
             this.TerminalSignSettings = terminalSignSettings;
             return this.Sign(requestParameterModel);
         }
-
+        /// <summary>
+        /// 签名
+        /// </summary>
+        /// <typeparam name="TRequestParameterModel"></typeparam>
+        /// <param name="requestParameterModel"></param>
+        /// <param name="terminalSerialNo"></param>
+        /// <param name="terminalKey"></param>
+        /// <returns></returns>
         public Sign<TerminalSignProvider, TRequestParameterModel> Sign<TRequestParameterModel>(TRequestParameterModel requestParameterModel, string terminalSerialNo, string terminalKey) where TRequestParameterModel : ITerminalSignable
         {
 

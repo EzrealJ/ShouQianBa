@@ -16,7 +16,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay
     public class OrderGenericResponseModel : IBusinessResponseModel
     {
         /// <summary>
-        /// 响应码
+        /// 状态码
         /// </summary>
         [ApiParameterName("result_code")]
         public string ResultCode { get; set; }
@@ -32,7 +32,9 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay
 
         [ApiParameterName("error_message")]
         public string ErrorMessage { get; set; }
-
+        /// <summary>
+        /// 收钱吧订单
+        /// </summary>
         [ApiParameterName("data")]
         public Generic.ShouQianBaOrder Order { get; set; }
         /// <summary>

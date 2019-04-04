@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic
 {
+    /// <summary>
+    /// 收钱吧订单模型
+    /// </summary>
     public class ShouQianBaOrder
     {
         /// <summary>
@@ -146,7 +149,12 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic
         /// </summary>
         [ApiParameterName("payment_list")]
         public dynamic PaymentList { get; set; }
-
+        /// <summary>
+        /// 订单最终态状态集
+        /// <para>
+        /// 定义符合订单最终态的状态集合,包含<see cref="OrderStatusEnum.PAID"/>、<see cref="OrderStatusEnum.PAID"/>、<see cref="OrderStatusEnum.PAY_CANCELED"/>、<see cref="OrderStatusEnum.PARTIAL_REFUNDED"/>、<see cref="OrderStatusEnum.CANCELED"/>
+        /// </para>
+        /// </summary>
         public static readonly OrderStatusEnum[] OrderFinalStatus = new OrderStatusEnum[] {
            OrderStatusEnum.PAID,
            OrderStatusEnum.PAY_CANCELED,
@@ -157,7 +165,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic
         /// <summary>
         /// 订单是否最终态
         /// <para>
-        /// 判断OrderStatus是否是"PAID","PAY_CANCELED","REFUNDED","PARTIAL_REFUNDED","CANCELED"其中的项
+        /// 判断OrderStatus是否是<see cref="OrderFinalStatus"/>中包含的项
         /// </para>
         /// <para>
         /// 文档约定,若订单不是最终状态,需要继续查询订单状态或者调用撤单操作

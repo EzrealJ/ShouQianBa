@@ -6,6 +6,10 @@ using System.Text;
 
 namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response
 {
+    /// <summary>
+    /// 响应结果
+    /// </summary>
+    /// <typeparam name="T">业务响应模型</typeparam>
     public class Response<T> : ResponseModel where T : class, IBusinessResponseModel
     {
 

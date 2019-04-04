@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay
 {
+    /// <summary>
+    /// 商品详情模型
+    /// </summary>
     public class GoodsDetail
     {
         /// <summary>

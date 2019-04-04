@@ -181,12 +181,73 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiFactory">
+            <summary>
+            Api工厂
+            </summary>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiFactory.CreateMerchantClient">
+            <summary>
+            创建商户相关Client
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiFactory.CreateTerminalClient">
+            <summary>
+            创建设备相关Client
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiFactory.CreatePayClient">
+            <summary>
+            创建支付相关Client
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiJsonFormatter">
+            <summary>
+            Api使用的Json格式化配置
+            </summary>
+        </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.ApiParameterModelBase">
             <summary>
             约定Api交互参数模型的基类
             <para>
             与收钱吧进行交互的参数都直接或者间接继承此类
             </para>
+            </summary>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.ApiParameterModelBase.ToApiParameterJsonString">
+            <summary>
+            将Api参数模型转化成Json字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.ApiParameterModelBase.FormApiParameterJsonString``1(System.String)">
+            <summary>
+            从已有Json字符串解析Api参数模型
+            </summary>
+            <typeparam name="TTargetType"></typeparam>
+            <param name="jsonString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.ApiParameterModelBase.ToApiParameterObject">
+            <summary>
+            将模型转化成使用真实接口参数名作成员名的动态对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.ApiParameterModelBase.FromApiParameterObject``1(System.Object)">
+            <summary>
+            从使用真实接口参数名作成员名的动态对象中解析出参数模型
+            </summary>
+            <typeparam name="TTargetType"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic.ShouQianBaOrder">
+            <summary>
+            收钱吧订单模型
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic.ShouQianBaOrder.TerminalSerialNo">
@@ -287,11 +348,19 @@
             </para>
             </summary>
         </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic.ShouQianBaOrder.OrderFinalStatus">
+            <summary>
+            订单最终态状态集
+            <para>
+            定义符合订单最终态的状态集合,包含<see cref="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.PAID"/>、<see cref="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.PAID"/>、<see cref="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.PAY_CANCELED"/>、<see cref="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.PARTIAL_REFUNDED"/>、<see cref="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.CANCELED"/>
+            </para>
+            </summary>
+        </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic.ShouQianBaOrder.IsFinalOrderStatus">
             <summary>
             订单是否最终态
             <para>
-            判断OrderStatus是否是"PAID","PAY_CANCELED","REFUNDED","PARTIAL_REFUNDED","CANCELED"其中的项
+            判断OrderStatus是否是<see cref="F:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic.ShouQianBaOrder.OrderFinalStatus"/>中包含的项
             </para>
             <para>
             文档约定,若订单不是最终状态,需要继续查询订单状态或者调用撤单操作
@@ -331,7 +400,7 @@
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.ImageUploadRequestModel">
              <summary>
-             开户银行接口请求模型
+             图片上传接口请求模型
              <para>
             https://doc.shouqianba.com/zh-cn/api/interface/merchantUpload.html
              </para>
@@ -344,7 +413,7 @@
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.ImageUploadRequestModel.FromImage(System.Drawing.Image)">
             <summary>
-            从<see cref="T:System.Drawing.Image"/>实例创建
+            从<see cref="T:System.Drawing.Image"/>实例创建<see cref="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant.ImageUploadRequestModel"/>
             </summary>
             <param name="image"></param>
             <returns></returns>
@@ -611,6 +680,11 @@
             *银行名称,支持模糊查询
             </summary>
         </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.GoodsDetail">
+            <summary>
+            商品详情模型
+            </summary>
+        </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.GoodsDetail.ID">
             <summary>
             商品编号
@@ -635,6 +709,11 @@
             <summary>
             优惠类型
             <para>优惠类型，0:没有优惠 1: 支付机构优惠，为1会把相关信息送到支付机构</para>
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel">
+            <summary>
+            订单创建请求模型
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.TerminalSerialNo">
@@ -723,6 +802,11 @@
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderCreateRequestModel.NotifyUrl">
             <summary>
             异步回调地址
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel">
+            <summary>
+            订单预创建请求模型
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay.OrderPrecreateRequestModel.TerminalSerialNo">
@@ -910,6 +994,11 @@
             
             </summary>
         </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel">
+            <summary>
+            终端激活请求模型
+            </summary>
+        </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalActivateRequestModel.AppID">
             <summary>
             *从服务商平台获取
@@ -945,6 +1034,11 @@
             SDK版本
             </summary>
         </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel">
+            <summary>
+            终端签到请求模型
+            </summary>
+        </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel.TerminalSerialNo">
             <summary>
             *终端号
@@ -963,6 +1057,86 @@
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal.TerminalCheckinRequestModel.SdkVersion">
             <summary>
             SDK版本
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.IBusinessResponseModel">
+            <summary>
+            声明正确的业务返回模型
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.BankBranchesResponseModel">
+            <summary>
+            银行支行接口响应模型
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.BankBranchesResponseModel.ResultCode">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.BankBranchesResponseModel.BankBranchesList">
+            <summary>
+            银行列表
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.BankResponseModel">
+            <summary>
+            开户银行接口响应模型
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.BankResponseModel.ResultCode">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.BankResponseModel.BankName">
+            <summary>
+            开户银行名称
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.ImageUploadResponseModel">
+            <summary>
+            图片上传接口响应模型
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.ImageUploadResponseModel.ResultCode">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.ImageUploadResponseModel.FileURI">
+            <summary>
+            文件URI
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantCloseResponseModel">
+            <summary>
+            商户禁用接口响应模型
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantCloseResponseModel.ResultCode">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantCreateResponseModel">
+            <summary>
+            商户创建接口响应模型
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantCreateResponseModel.ResultCode">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantCreateResponseModel.Data">
+            <summary>
+            商户概要信息
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantCreateResponseModel.CreateMerchantResponseData">
+            <summary>
+            创建商户响应结果
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantCreateResponseModel.CreateMerchantResponseData.MerchantSerialNo">
@@ -985,14 +1159,114 @@
             终端Key
             </summary>
         </member>
-        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.CreateMerchantResponseData.MerchantSerialNo">
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel">
+            <summary>
+            商户信息接口响应模型
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.ResultCode">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.Data">
+            <summary>
+            商户信息
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData">
+            <summary>
+            商户信息响应结果
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData.MerchantSerialNo">
             <summary>
             商户号
             </summary>
         </member>
-        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.CreateMerchantResponseData.ClientSerialNo">
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData.ClientSerialNo">
             <summary>
             外部商户号
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData.Name">
+            <summary>
+            商户名
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData.ContactPerson">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData.ContactCellphone">
+            <summary>
+            联系电话
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData.Area">
+            <summary>
+            邮编
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData.Address">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData.BankCard">
+            <summary>
+            银行卡号
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData.BankName">
+            <summary>
+            开户行
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData.BankArea">
+            <summary>
+            开户行邮编
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData.BranchName">
+            <summary>
+            开户支行
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData.BankCellphone">
+            <summary>
+            预留电话
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData.Holder">
+            <summary>
+            法人
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData.UnifiedStatus">
+            <summary>
+            统一状态
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.MerchantInfoResponseModel.MerchantInfoResponseData.ErrorMessage">
+            <summary>
+            错误信息
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.PubBankResponseModel">
+            <summary>
+            对公银行搜索接口响应模型
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.PubBankResponseModel.ResultCode">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant.PubBankResponseModel.BankBranchesList">
+            <summary>
+            对公银行列表
             </summary>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderGenericResponseModel">
@@ -1005,7 +1279,7 @@
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderGenericResponseModel.ResultCode">
             <summary>
-            响应码
+            状态码
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderGenericResponseModel.ErrorCode">
@@ -1018,6 +1292,11 @@
             错误信息
             </summary>
         </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderGenericResponseModel.Order">
+            <summary>
+            收钱吧订单
+            </summary>
+        </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderGenericResponseModel.IsEffectiveOrder">
             <summary>
             订单是否有效
@@ -1026,9 +1305,14 @@
             </para>
             </summary>
         </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderPrecreateSyncResponseModel">
+            <summary>
+            预创建订单同步响应结果
+            </summary>
+        </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderPrecreateSyncResponseModel.ResultCode">
             <summary>
-            响应码
+            状态码
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderPrecreateSyncResponseModel.ErrorCode">
@@ -1041,6 +1325,16 @@
             错误信息
             </summary>
         </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderPrecreateSyncResponseModel.Data">
+            <summary>
+            订单预创建信息
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderPrecreateSyncResponseModel.PayPrecreateSyncResponseData">
+            <summary>
+            预创建订单同步响应内容模型
+            </summary>
+        </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderPrecreateSyncResponseModel.PayPrecreateSyncResponseData.QRCode">
             <summary>
             二维码内容
@@ -1049,6 +1343,11 @@
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay.OrderPrecreateSyncResponseModel.PayPrecreateSyncResponseData.WapPayRequest">
             <summary>
             支付通道返回的调用WAP支付需要传递的信息
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.ResponseModel">
+            <summary>
+            响应模型
             </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.ResponseModel.ResultCode">
@@ -1066,6 +1365,12 @@
             错误信息
             </summary>
         </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Response`1">
+            <summary>
+            响应结果
+            </summary>
+            <typeparam name="T">业务响应模型</typeparam>
+        </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Response`1.BusinessResponseContent">
             <summary>
             业务返回内容
@@ -1074,6 +1379,36 @@
         <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Response`1.ExistsBusinessResponseContent">
             <summary>
             存在有效的业务响应
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Terminal.TerminalActivateResponseModel">
+            <summary>
+            终端激活接口响应模型
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Terminal.TerminalActivateResponseModel.TerminalSerialNo">
+            <summary>
+            终端编号
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Terminal.TerminalActivateResponseModel.TerminalKey">
+            <summary>
+            终端Key
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Terminal.TerminalCheckinResponseModel">
+            <summary>
+            终端签到接口响应模型
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Terminal.TerminalCheckinResponseModel.TerminalSerialNo">
+            <summary>
+            终端编号
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Terminal.TerminalCheckinResponseModel.TerminalKey">
+            <summary>
+            终端Key
             </summary>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.Api.MerchantClient">
@@ -1279,6 +1614,12 @@
             在请求中使用的参数名
             </summary>
         </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Attributes.ApiParameterNameAttribute.#ctor(System.String)">
+            <summary>
+            定义真实发起请求的参数名
+            </summary>
+            <param name="name">接口真实的参数名</param>
+        </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.Converters.CentStringConverter">
             <summary>
             以分计的金额字符串转换器
@@ -1295,6 +1636,11 @@
             仅在Api内部有效
             </summary>
         </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Converters.EnumValueStringConverter">
+            <summary>
+            定义枚举值和字符串值转化
+            </summary>
+        </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.Converters.EnumValueStringConverter.InternalOnly">
             <summary>
             仅在Api内部有效
@@ -1305,9 +1651,19 @@
             Converts a <see cref="T:System.DateTime"/> to and from Unix epoch time
             </summary>
         </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Converters.MillisecondTimestampStringConverter.UnixTimestampLocalZero">
+            <summary>
+            Unix零时间
+            </summary>
+        </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.Converters.MillisecondTimestampStringConverter.InternalOnly">
             <summary>
             仅在Api内部有效
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Enums.AccountTypeEnum">
+            <summary>
+            账户类型
             </summary>
         </member>
         <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.AccountTypeEnum.Personal">
@@ -1343,6 +1699,11 @@
         <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.CertificateTypeEnum.HongKongMacauPass">
             <summary>
             港澳通行证
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum">
+            <summary>
+            订单状态
             </summary>
         </member>
         <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.OrderStatusEnum.CREATED">
@@ -1400,6 +1761,146 @@
             无效的状态码
             </summary>
         </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum">
+            <summary>
+            支付方式
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum.AliPayLocal">
+            <summary>
+            境外支付宝本地钱包收款
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum.AliPay">
+            <summary>
+            支付宝
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum.WxPay">
+            <summary>
+            微信
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum.BaiduPay">
+            <summary>
+            百度钱包
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum.JDPay">
+            <summary>
+            京东钱包
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum.QQPay">
+            <summary>
+            QQ钱包
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum.NFCPay">
+            <summary>
+            NFC支付
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum.LakalaPay">
+            <summary>
+            拉卡拉前辈
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum.CMPay">
+            <summary>
+            移动和包支付
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum.LakalaPayWx">
+            <summary>
+            拉卡拉微信
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum.ChinaMerchantsBank">
+            <summary>
+            招商银行
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum.UnionQRPay">
+            <summary>
+            银联二维码
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum.BestPay">
+            <summary>
+            翼支付
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum.WeixinLocal">
+            <summary>
+            境外微信本地钱包收款
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.PaywayEnum.DepositPay">
+            <summary>
+            储值支付
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Enums.ResponseResultCodeEnum">
+            <summary>
+            响应结果
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.ResponseResultCodeEnum.OK">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.ResponseResultCodeEnum.ClientError">
+            <summary>
+            客户端错误
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.ResponseResultCodeEnum.ServerError">
+            <summary>
+            服务端错误
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Enums.SubPaywayEnum">
+            <summary>
+            二级支付方式
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.SubPaywayEnum.BarCode">
+            <summary>
+            条码
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.SubPaywayEnum.QrCode">
+            <summary>
+            二维码
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.SubPaywayEnum.WAP">
+            <summary>
+            WAP支付
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.SubPaywayEnum.Applet">
+            <summary>
+            小程序
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.SubPaywayEnum.App">
+            <summary>
+            APP
+            </summary>
+        </member>
+        <member name="F:Ezreal.ShouQianBa.ApiClient.Enums.SubPaywayEnum.H5">
+            <summary>
+            H5
+            </summary>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Extension.ModelExtension">
+            <summary>
+            模型扩展方法
+            </summary>
+        </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.Extension.ModelExtension.NameOfApiParameter``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
             <summary>
             获取属性在接口交互时对应的参数名
@@ -1440,18 +1941,43 @@
             <param name="value"></param>
             <returns></returns>
         </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Extension.ModelExtension.SignByServiceProviderSignProvider``1(``0,Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignSettings)">
+            <summary>
+            使用服务商签名提供者签名
+            </summary>
+            <typeparam name="TRequestModel"></typeparam>
+            <param name="requestModel"></param>
+            <param name="serviceProviderSignSettings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Extension.ModelExtension.SignByTerminalSignProvider``1(``0,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings)">
+            <summary>
+            使用终端签名提供者签名
+            </summary>
+            <typeparam name="TRequestModel"></typeparam>
+            <param name="requestModel"></param>
+            <param name="terminalSignSettings"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Security.MD5Hash">
+            <summary>
+            MD5哈希
+            </summary>
+        </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.Security.MD5Hash.Md5HashToBase64(System.String,System.String)">
             <summary>
-            MD5哈希加密Base64字符串
+            MD5哈希加密为Base64字符串
             </summary>
             <param name="value">字符串</param>
+            <param name="encoding"></param>
             <returns></returns>
         </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.Security.MD5Hash.Md5HashToHex(System.String,System.String)">
              <summary>
-            MD5哈希加密Base64字符串
+            MD5哈希加密为16进制字符串
              </summary>
              <param name="value">字符串</param>
+             <param name="encoding"></param>
              <returns></returns>
         </member>
         <member name="T:Ezreal.ShouQianBa.ApiClient.ServiceProviderSettings">
@@ -1560,12 +2086,49 @@
             服务商签名提供者
             </summary>
         </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider.ServiceProviderSignSetting">
+            <summary>
+            服务商签名配置
+            </summary>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider.Sign``1(``0)">
+            <summary>
+            签名
+            </summary>
+            <typeparam name="TRequestParameterModel"></typeparam>
+            <param name="requestParameterModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider.Sign``1(``0,Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignSettings)">
+            <summary>
+            签名
+            </summary>
+            <typeparam name="TRequestParameterModel"></typeparam>
+            <param name="requestParameterModel"></param>
+            <param name="serviceProviderSignSetting"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider.Sign``1(``0,System.String,System.String)">
+            <summary>
+            签名
+            </summary>
+            <typeparam name="TRequestParameterModel"></typeparam>
+            <param name="requestParameterModel"></param>
+            <param name="serviceProviderSerialNo"></param>
+            <param name="serviceProviderKey"></param>
+            <returns></returns>
+        </member>
         <member name="M:Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignProvider.CreateFromServiceProviderSettings(Ezreal.ShouQianBa.ApiClient.ServiceProviderSettings)">
             <summary>
             使用收钱吧服务商配置来创建一个服务商签名提供程序
             </summary>
             <param name="serviceProviderSettings">给定此参数时，使用给定值来创建服务商签名提供程序，否则使用默认的收钱吧服务商配置</param>
             <returns></returns>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignSettings">
+            <summary>
+            服务商签名配置
+            </summary>
         </member>
         <member name="P:Ezreal.ShouQianBa.ApiClient.Sign.ServiceProviderSignSettings.ServiceProviderSerialNo">
             <summary>
@@ -1612,6 +2175,84 @@
         <member name="T:Ezreal.ShouQianBa.ApiClient.Sign.SignProvider">
             <summary>
             签名提供对象
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Sign.SignProvider.SerialNo">
+            <summary>
+            序列号
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Sign.SignProvider.Key">
+            <summary>
+            Key
+            </summary>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Sign.SignProvider.GetSignContent``1(``0)">
+            <summary>
+            获取签名内容
+            </summary>
+            <typeparam name="TData"></typeparam>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Sign.SignProvider.Sign``1(``0)">
+            <summary>
+            签名
+            </summary>
+            <typeparam name="TData"></typeparam>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider">
+            <summary>
+            设备签名提供者
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider.TerminalSignSettings">
+            <summary>
+            设备签名配置
+            </summary>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider.Sign``1(``0)">
+            <summary>
+            签名
+            </summary>
+            <typeparam name="TRequestParameterModel"></typeparam>
+            <param name="requestParameterModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider.Sign``1(``0,Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings)">
+            <summary>
+            签名
+            </summary>
+            <typeparam name="TRequestParameterModel"></typeparam>
+            <param name="requestParameterModel"></param>
+            <param name="terminalSignSettings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignProvider.Sign``1(``0,System.String,System.String)">
+            <summary>
+            签名
+            </summary>
+            <typeparam name="TRequestParameterModel"></typeparam>
+            <param name="requestParameterModel"></param>
+            <param name="terminalSerialNo"></param>
+            <param name="terminalKey"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings">
+            <summary>
+            终端签名配置
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings.TerminalSerialNo">
+            <summary>
+            终端序列号
+            </summary>
+        </member>
+        <member name="P:Ezreal.ShouQianBa.ApiClient.Sign.TerminalSignSettings.TerminalKey">
+            <summary>
+            终端Key
             </summary>
         </member>
     </members>

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Ezreal.ShouQianBa.ApiClient.Enums
 {
+    /// <summary>
+    /// 订单状态
+    /// </summary>
     public enum OrderStatusEnum
     {
         /// <summary>

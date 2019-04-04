@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Ezreal.ShouQianBa.ApiClient.Enums
 {
+    /// <summary>
+    /// 账户类型
+    /// </summary>
     public enum AccountTypeEnum
     {
         /// <summary>

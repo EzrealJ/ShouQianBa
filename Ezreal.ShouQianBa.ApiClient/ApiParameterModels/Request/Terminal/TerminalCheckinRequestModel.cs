@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal
 {
+    /// <summary>
+    /// 终端签到请求模型
+    /// </summary>
     public class TerminalCheckinRequestModel : RequestModel, Sign.ITerminalSignable
     {
         /// <summary>

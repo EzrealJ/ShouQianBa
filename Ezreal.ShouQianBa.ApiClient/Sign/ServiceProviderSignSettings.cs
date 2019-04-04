@@ -1,5 +1,8 @@
 ﻿namespace Ezreal.ShouQianBa.ApiClient.Sign
 {
+    /// <summary>
+    /// 服务商签名配置
+    /// </summary>
     public class ServiceProviderSignSettings
     {
         /// <summary>

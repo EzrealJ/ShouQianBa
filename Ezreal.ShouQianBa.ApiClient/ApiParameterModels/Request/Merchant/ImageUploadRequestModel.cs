@@ -7,7 +7,7 @@ using System.Text;
 namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant
 {
     /// <summary>
-    /// 开户银行接口请求模型
+    /// 图片上传接口请求模型
     /// <para>
     ///https://doc.shouqianba.com/zh-cn/api/interface/merchantUpload.html
     /// </para>
@@ -20,7 +20,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant
         [ApiParameterName("file")]
         public string ImageBase64String { get; set; }
         /// <summary>
-        /// 从<see cref="Image"/>实例创建
+        /// 从<see cref="Image"/>实例创建<see cref="ImageUploadRequestModel"/>
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>

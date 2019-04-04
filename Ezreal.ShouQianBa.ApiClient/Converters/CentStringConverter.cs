@@ -23,13 +23,17 @@ namespace Ezreal.ShouQianBa.ApiClient.Converters
         /// 仅在Api内部有效
         /// </summary>
         public static bool InternalOnly { get; set; } = true;
+#pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
         public override bool CanConvert(Type objectType)
+#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
         {
 
             return allowTypes.Contains(objectType);
         }
 
+#pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
         {
             if (serializer.ContractResolver.GetType().Namespace != "WebApiClient.Defaults" && InternalOnly)
             {
@@ -43,7 +47,9 @@ namespace Ezreal.ShouQianBa.ApiClient.Converters
             return Convert.ChangeType(reader.TokenType == JsonToken.String ? value / 100 : value, objectType);
         }
 
+#pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
         {
             if (serializer.ContractResolver.GetType().Namespace != "WebApiClient.Defaults" && InternalOnly)
             {

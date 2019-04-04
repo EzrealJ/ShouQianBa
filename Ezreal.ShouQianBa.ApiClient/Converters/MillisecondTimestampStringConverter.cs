@@ -16,13 +16,18 @@ namespace Ezreal.ShouQianBa.ApiClient.Converters
     public class MillisecondTimestampStringConverter : DateTimeConverterBase
     {
         private static List<Type> allowTypes = new List<Type>() { typeof(DateTime), typeof(DateTime?),typeof(TimeSpan), typeof(TimeSpan?) };
+        /// <summary>
+        /// Unix零时间
+        /// </summary>
         static public DateTime UnixTimestampLocalZero { get; set; } = System.TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), TimeZoneInfo.Local);
 
         /// <summary>
         /// 仅在Api内部有效
         /// </summary>
         public static bool InternalOnly { get; set; } = true;
+#pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
         {
             if (serializer.ContractResolver.GetType().Namespace != "WebApiClient.Defaults" && InternalOnly)
             {
@@ -43,7 +48,9 @@ namespace Ezreal.ShouQianBa.ApiClient.Converters
         }
 
 
+#pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
         {
             if (serializer.ContractResolver.GetType().Namespace != "WebApiClient.Defaults" && InternalOnly)
             {
