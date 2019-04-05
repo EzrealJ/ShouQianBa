@@ -39,7 +39,12 @@
 <tr>
 <td>2019-03-27</td>
 <td>0.2.1-β</td>
-<td>testing</td>
+<td>cancel</td>
+</tr>
+<tr>
+<td>2019-04-05</td>
+<td>0.2.1</td>
+<td>release</td>
 </tr>
 </table>
 
