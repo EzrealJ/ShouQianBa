@@ -11,7 +11,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response
     /// <summary>
     /// 响应模型
     /// </summary>
-    public class ResponseModel : ApiParameterModelBase
+    public abstract class ResponseModel : ApiParameterModelBase
     {
         /// <summary>
         /// 响应码

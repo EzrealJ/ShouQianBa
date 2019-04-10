@@ -20,8 +20,6 @@ namespace Ezreal.ShouQianBa.ApiClient
         {
             JsonSerializerSettings jsonSerializerSettings = base.CreateSerializerSettings(options);
             jsonSerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-            var a = jsonSerializerSettings.Converters;
-            //jsonSerializerSettings.DateFormatHandling = DateFormatHandling.MicrosoftDateFormat;
             return jsonSerializerSettings;
         }
     }
