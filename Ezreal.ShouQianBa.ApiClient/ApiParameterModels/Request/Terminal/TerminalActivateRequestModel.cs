@@ -11,7 +11,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal
     /// <summary>
     /// 终端激活请求模型
     /// </summary>
-    public class TerminalActivateRequestModel : RequestModel, Sign.IServiceSignable
+    public class TerminalActivateRequestModel : RequestModel
     {
         /// <summary>
         /// *从服务商平台获取

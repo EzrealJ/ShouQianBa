@@ -42,13 +42,7 @@ namespace Ezreal.ShouQianBa.ApiClient
         /// </para>
         /// </summary>
         public bool UseLog { get; set; } = false;
-        /// <summary>
-        /// 默认的Json序列化设置
-        /// <para>
-        /// 在没有详细阅读代码的情况下请不要改动
-        /// </para>
-        /// </summary>
-        public IJsonFormatter DefaultJsonFormatter { get; set; } = new ApiJsonFormatter();
+
         /// <summary>
         /// 全局拦截器集合
         /// </summary>

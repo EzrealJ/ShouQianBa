@@ -11,7 +11,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant
     ///https://doc.shouqianba.com/zh-cn/api/interface/merchantBanks.html
     /// </para>
     /// </summary>
-    public class BankRequestModel : RequestModel, Sign.IServiceSignable
+    public class BankRequestModel : RequestModel
     {
         /// <summary>
         /// *银行卡号

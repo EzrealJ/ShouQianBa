@@ -22,10 +22,10 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
         /// <summary>
         /// 设备Client
         /// </summary>
-        /// <param name="terminalContract">设备交互协议，可以从依赖注入环境获取,当无法获取到传入的实例时则调用<see cref="HttpApiFactory.Create{ITerminalContract}()"/></param>
+        /// <param name="terminalContract">设备交互协议，可以从依赖注入环境获取,当无法获取到传入的实例时则调用<see cref="HttpApi.Resolve{ITerminalContract}()"/></param>
         public TerminalClient(ITerminalContract terminalContract)
         {
-            TerminalContract = terminalContract ?? HttpApiFactory.Create<ITerminalContract>();
+            TerminalContract = terminalContract ?? HttpApi.Resolve<ITerminalContract>();
         }
         /// <summary>
         /// 设备交互协议
@@ -41,7 +41,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
         /// <returns></returns>
         public ITask<Response<TerminalActivateResponseModel>> Activate(TerminalActivateRequestModel requestModel, ServiceProviderSignSettings serviceProviderSignSettings = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return TerminalContract.Activate(requestModel.SignByServiceProviderSignProvider(serviceProviderSignSettings), requestModel, timeout == null ? null : new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
+            return TerminalContract.Activate(serviceProviderSignSettings??ShouQianBaGlobal.GlobalConfig.DefaultShouQianBaServiceProviderSettings.CreateServiceProviderSignSettings(), requestModel, timeout, cancellationToken);
         }
         /// <summary>
         /// 使用传入的签名配置签名并代理调用<see cref="ITerminalContract.Checkin"/>
@@ -53,7 +53,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
         /// <returns></returns>
         public ITask<Response<TerminalCheckinResponseModel>> Checkin(TerminalCheckinRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return TerminalContract.Checkin(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, timeout == null ? null : new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
+            return TerminalContract.Checkin(terminalSignSettings, requestModel, timeout, cancellationToken);
         }
     }
 }

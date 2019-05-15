@@ -15,7 +15,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant
     /// https://doc.shouqianba.com/zh-cn/api/interface/merchantCreate.html
     /// </para>
     /// </summary>
-    public class MerchantCreateRequestModel : RequestModel, Sign.IServiceSignable
+    public class MerchantCreateRequestModel : RequestModel
     {
         /// <summary>
         /// *证件类型

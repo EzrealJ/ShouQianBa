@@ -22,22 +22,24 @@ namespace Ezreal.ShouQianBa.ApiClient.DependencyInjection
         {
             services.AddSingleton(ShouQianBaGlobal.GlobalConfig);
             action.Invoke(ShouQianBaGlobal.GlobalConfig);
-            HttpApiConfig.DefaultJsonFormatter = ShouQianBaGlobal.GlobalConfig.DefaultJsonFormatter;
+          
             Action<HttpApiConfig> configAction = config =>
             {
                 config.HttpHost = new Uri(ShouQianBaGlobal.GlobalConfig.ApiUri);
+                config.FormatOptions.IgnoreNullProperty = true;
                 ShouQianBaGlobal.GlobalConfig.ApiActionFilters.ToList().ForEach(filter => config.GlobalFilters.Add(filter));
                 if (ShouQianBaGlobal.GlobalConfig.UseLog)
                 {
                     config.GlobalFilters.Add(new WebApiClient.Attributes.TraceFilterAttribute());
                 }
+                config.GlobalFilters.Add(new Filter.SignFilter());
                 config.FormatOptions.DateTimeFormat = DateTimeFormats.ISO8601_WithMillisecond;
                 config.LoggerFactory= loggerFactory;
             };
 
-            services.HttpApiFactoryBuilder<ApiContract.IMerchantContract>(configAction);
-            services.HttpApiFactoryBuilder<ApiContract.ITerminalContract>(configAction);
-            services.HttpApiFactoryBuilder<ApiContract.IPayContract>(configAction);
+            services.AddHttpApiFactory<ApiContract.IMerchantContract>(configAction);
+            services.AddHttpApiFactory<ApiContract.ITerminalContract>(configAction);
+            services.AddHttpApiFactory<ApiContract.IPayContract>(configAction);
 
             services.AddTransient<Api.MerchantClient>();
             services.AddTransient<Api.TerminalClient>();
@@ -50,7 +52,7 @@ namespace Ezreal.ShouQianBa.ApiClient.DependencyInjection
         /// HttpApi实例工厂创建器
         /// </summary>
         /// <param name="services"></param>
-        private static void HttpApiFactoryBuilder<TInterface>(this IServiceCollection services, Action<HttpApiConfig> configAction)
+        private static void AddHttpApiFactory<TInterface>(this IServiceCollection services, Action<HttpApiConfig> configAction)
             where TInterface : class, IHttpApi
         {
             services.AddSingleton<IHttpApiFactory<TInterface>, HttpApiFactory<TInterface>>(p =>

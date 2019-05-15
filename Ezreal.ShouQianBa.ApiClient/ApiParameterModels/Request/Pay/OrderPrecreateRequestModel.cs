@@ -12,7 +12,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay
     /// <summary>
     /// 订单预创建请求模型
     /// </summary>
-    public class OrderPrecreateRequestModel : RequestModel, Sign.ITerminalSignable
+    public class OrderPrecreateRequestModel : RequestModel
     {
         /// <summary>
         /// *收钱吧终端ID

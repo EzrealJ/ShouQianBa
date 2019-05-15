@@ -13,7 +13,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant
     /// https://doc.shouqianba.com/zh-cn/api/interface/merchantClose.html
     /// </para>
     /// </summary>
-    public class MerchantCloseRequestModel : RequestModel, Sign.IServiceSignable
+    public class MerchantCloseRequestModel : RequestModel
     {
         /// <summary>
         /// *服务商序列号

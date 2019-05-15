@@ -15,5 +15,11 @@
         /// 服务商Key
         /// </summary>
         public string ServiceProviderKey { get; set; }
+
+        public Sign.ServiceProviderSignSettings CreateServiceProviderSignSettings() => new Sign.ServiceProviderSignSettings()
+        {
+            ServiceProviderKey = ServiceProviderKey,
+            ServiceProviderSerialNo = ServiceProviderSerialNo
+        };
     }
 }

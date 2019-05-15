@@ -13,7 +13,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant
     /// https://doc.shouqianba.com/zh-cn/api/interface/merchantInfo.html
     /// </para>
     /// </summary>
-    public class MerchantInfoRequestModel : RequestModel, Sign.IServiceSignable
+    public class MerchantInfoRequestModel : RequestModel
     {
         /// <summary>
         /// *服务商序列号

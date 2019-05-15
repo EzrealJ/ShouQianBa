@@ -22,10 +22,10 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
         /// <summary>
         /// 支付Client
         /// </summary>
-        /// <param name="payContract">支付交互协议,可以从依赖注入环境获取,当无法获取到传入的实例时则调用<see cref="HttpApiFactory.Create{IPayContract}()"/></param>
+        /// <param name="payContract">支付交互协议,可以从依赖注入环境获取,当无法获取到传入的实例时则调用<see cref="HttpApi.Resolve{IPayContract}()"/></param>
         public PayClient(IPayContract payContract)
         {
-            PayContract = payContract ?? HttpApiFactory.Create<IPayContract>();
+            PayContract = payContract ?? HttpApi.Resolve<IPayContract>();
         }
         /// <summary>
         /// 支付交互协议
@@ -42,7 +42,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
         /// <returns></returns>
         public ITask<Response<OrderGenericResponseModel>> Pay(OrderCreateRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PayContract.Pay(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, timeout == null ? null : new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
+            return PayContract.Pay(terminalSignSettings, requestModel, timeout, cancellationToken);
         }
         /// <summary>
         /// 使用传入的签名配置签名并代理调用<see cref="IPayContract.Precreate"/>
@@ -54,7 +54,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
         /// <returns></returns>
         public ITask<Response<OrderPrecreateSyncResponseModel>> Precreate(OrderPrecreateRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PayContract.Precreate(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, timeout == null ? null : new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
+            return PayContract.Precreate(terminalSignSettings, requestModel, timeout, cancellationToken);
         }
         /// <summary>
         /// 使用传入的签名配置签名并代理调用<see cref="IPayContract.Query"/>
@@ -66,7 +66,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
         /// <returns></returns>
         public ITask<Response<OrderGenericResponseModel>> Query(OrderTokenRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PayContract.Query(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, timeout == null ? null : new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
+            return PayContract.Query(terminalSignSettings, requestModel, timeout, cancellationToken);
         }
         /// <summary>
         /// 使用传入的签名配置签名并代理调用<see cref="IPayContract.Cancel"/>
@@ -78,7 +78,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
         /// <returns></returns>
         public ITask<Response<OrderGenericResponseModel>> Cancel(OrderTokenRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PayContract.Cancel(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, timeout == null ? null : new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
+            return PayContract.Cancel(terminalSignSettings, requestModel, timeout, cancellationToken);
         }
         /// <summary>
         /// 使用传入的签名配置签名并代理调用<see cref="IPayContract.Revoke"/>
@@ -90,7 +90,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
         /// <returns></returns>
         public ITask<Response<OrderGenericResponseModel>> Revoke(OrderTokenRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PayContract.Revoke(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, timeout == null ? null : new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
+            return PayContract.Revoke(terminalSignSettings, requestModel, timeout, cancellationToken);
         }
         /// <summary>
         /// 使用传入的签名配置签名并代理调用<see cref="IPayContract.Refund"/>
@@ -102,7 +102,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
         /// <returns></returns>
         public ITask<Response<OrderGenericResponseModel>> Refund(OrderRefundRequestModel requestModel, TerminalSignSettings terminalSignSettings, TimeSpan? timeout = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PayContract.Refund(requestModel.SignByTerminalSignProvider(terminalSignSettings), requestModel, timeout == null ? null : new WebApiClient.Parameterables.Timeout(timeout.Value), cancellationToken);
+            return PayContract.Refund(terminalSignSettings, requestModel, timeout, cancellationToken);
         }
 
     }

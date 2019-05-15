@@ -2,6 +2,7 @@
 using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response;
 using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant;
 using Ezreal.ShouQianBa.ApiClient.Sign;
+using System;
 using System.Threading;
 using WebApiClient;
 using WebApiClient.Attributes;
@@ -19,7 +20,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         /// <summary>
         /// 创建商户
         /// </summary>
-        /// <param name="sign">签名</param>
+        /// <param name="serviceProviderSignSettings"></param>
         /// <param name="createMerchantRequestModel">创建商户的信息</param>
         /// <param name="timeout">超时时间,可以覆盖预定义特性<see cref="TimeoutAttribute"/></param>
         /// <param name="cancellationToken"></param>
@@ -28,15 +29,15 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [HttpPost("v2/merchant/create")]
         [JsonReturn]
         ITask<Response<MerchantCreateResponseModel>> Create(
-            [Headers]Sign<ServiceProviderSignProvider, MerchantCreateRequestModel> sign,
+            [Headers]ServiceProviderSignSettings serviceProviderSignSettings,
             [JsonContent]MerchantCreateRequestModel createMerchantRequestModel,
-            WebApiClient.Parameterables.Timeout timeout = null,
+            [Timeout]TimeSpan? timeout = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// 查询商户信息
         /// </summary>
-        /// <param name="sign">签名</param>
+        /// <param name="serviceProviderSignSettings"></param>
         /// <param name="merchantInfoRequestModel"></param>
         /// <param name="timeout">超时时间,可以覆盖预定义特性<see cref="TimeoutAttribute"/></param>
         /// <param name="cancellationToken"></param>
@@ -45,15 +46,15 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [HttpPost("v2/merchant/info")]
         [JsonReturn]
         ITask<Response<MerchantInfoResponseModel>> Info(
-            [Headers]Sign<ServiceProviderSignProvider, MerchantInfoRequestModel> sign,
+            [Headers]ServiceProviderSignSettings serviceProviderSignSettings,
             [JsonContent]MerchantInfoRequestModel merchantInfoRequestModel,
-            WebApiClient.Parameterables.Timeout timeout = null,
+            [Timeout]TimeSpan? timeout = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// 禁用商户
         /// </summary>
-        /// <param name="sign">签名</param>
+        /// <param name="serviceProviderSignSettings"></param>
         /// <param name="closeMerchantRequestModel"></param>
         /// <param name="timeout">超时时间,可以覆盖预定义特性<see cref="TimeoutAttribute"/></param>
         /// <param name="cancellationToken"></param>
@@ -62,15 +63,15 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [HttpPost("v2/merchant/close")]
         [JsonReturn]
         ITask<Response<MerchantCloseResponseModel>> Close(
-            [Headers]Sign<ServiceProviderSignProvider, MerchantCloseRequestModel> sign,
+            [Headers]ServiceProviderSignSettings serviceProviderSignSettings,
             [JsonContent]MerchantCloseRequestModel closeMerchantRequestModel,
-            WebApiClient.Parameterables.Timeout timeout = null,
+            [Timeout]TimeSpan? timeout = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// 根据银行卡号获取银行信息
         /// </summary>
-        /// <param name="sign">签名</param>
+        /// <param name="serviceProviderSignSettings"></param>
         /// <param name="bankRequestModel"></param>
         /// <param name="timeout">超时时间,可以覆盖预定义特性<see cref="TimeoutAttribute"/></param>
         /// <param name="cancellationToken"></param>
@@ -79,15 +80,15 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [HttpPost("v2/merchant/banks")]
         [JsonReturn]
         ITask<Response<BankResponseModel>> Banks(
-            [Headers]Sign<ServiceProviderSignProvider, BankRequestModel> sign,
+            [Headers]ServiceProviderSignSettings serviceProviderSignSettings,
             [JsonContent]BankRequestModel bankRequestModel,
-            WebApiClient.Parameterables.Timeout timeout = null,
+            [Timeout]TimeSpan? timeout = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// 模糊查询银行支行
         /// </summary>
-        /// <param name="sign">签名</param>
+        /// <param name="serviceProviderSignSettings"></param>
         /// <param name="bankBranchesRequestModel"></param>
         /// <param name="timeout">超时时间,可以覆盖预定义特性<see cref="TimeoutAttribute"/></param>
         /// <param name="cancellationToken"></param>
@@ -96,16 +97,16 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [HttpPost("v2/merchant/branches")]
         [JsonReturn]
         ITask<Response<BankBranchesResponseModel>> BankBranches(
-            [Headers]Sign<ServiceProviderSignProvider, BankBranchesRequestModel> sign,
+            [Headers]ServiceProviderSignSettings serviceProviderSignSettings,
             [JsonContent]BankBranchesRequestModel bankBranchesRequestModel,
-            WebApiClient.Parameterables.Timeout timeout = null,
+            [Timeout]TimeSpan? timeout = null,
             CancellationToken cancellationToken = default(CancellationToken)
             );
 
         /// <summary>
         /// 上传图片
         /// </summary>
-        /// <param name="sign">签名</param>
+        /// <param name="serviceProviderSignSettings"></param>
         /// <param name="imageUploadRequestModel"></param>
         /// <param name="timeout">超时时间,可以覆盖预定义特性<see cref="TimeoutAttribute"/></param>
         /// <param name="cancellationToken"></param>
@@ -114,15 +115,15 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [HttpPost("v2/merchant/upload")]
         [JsonReturn]
         ITask<Response<ImageUploadResponseModel>> ImageUpload(
-            [Headers]Sign<ServiceProviderSignProvider, ImageUploadRequestModel> sign,
+            [Headers]ServiceProviderSignSettings serviceProviderSignSettings,
             [JsonContent]ImageUploadRequestModel imageUploadRequestModel,
-            WebApiClient.Parameterables.Timeout timeout = null,
+            [Timeout]TimeSpan? timeout = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// 对公银行查询接口
         /// </summary>
-        /// <param name="sign">签名</param>
+        /// <param name="serviceProviderSignSettings"></param>
         /// <param name="pubBankRequestModel"></param>
         /// <param name="timeout">超时时间,可以覆盖预定义特性<see cref="TimeoutAttribute"/></param>
         /// <param name="cancellationToken"></param>
@@ -131,9 +132,9 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
         [HttpPost("v2/merchant/pub_banks")]
         [JsonReturn]
         ITask<Response<PubBankResponseModel>> PubBank(
-            [Headers]Sign<ServiceProviderSignProvider, PubBankRequestModel> sign,
+            [Headers]ServiceProviderSignSettings serviceProviderSignSettings,
             [JsonContent]PubBankRequestModel pubBankRequestModel,
-            WebApiClient.Parameterables.Timeout timeout = null,
+            [Timeout]TimeSpan? timeout = null,
             CancellationToken cancellationToken = default(CancellationToken));
     }
 }

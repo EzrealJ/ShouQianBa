@@ -1,18 +1,22 @@
-﻿namespace Ezreal.ShouQianBa.ApiClient.Sign
+﻿using WebApiClient.DataAnnotations;
+
+namespace Ezreal.ShouQianBa.ApiClient.Sign
 {
     /// <summary>
     /// 服务商签名配置
     /// </summary>
-    public class ServiceProviderSignSettings
+    public class ServiceProviderSignSettings : ISignSettings
     {
         /// <summary>
         /// 服务商序列号
         /// </summary>
-        public string ServiceProviderSerialNo { get; set; }
+        [IgnoreSerialized] public string ServiceProviderSerialNo { get; set; }
 
         /// <summary>
         /// 服务商Key
         /// </summary>
-        public string ServiceProviderKey { get; set; }
+        [IgnoreSerialized] public string ServiceProviderKey { get; set; }
+        string ISignSettings.SerialNo => this.ServiceProviderSerialNo;
+        string ISignSettings.Key => this.ServiceProviderKey;
     }
 }

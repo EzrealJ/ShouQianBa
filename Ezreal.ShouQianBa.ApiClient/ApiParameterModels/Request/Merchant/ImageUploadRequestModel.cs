@@ -12,7 +12,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant
     ///https://doc.shouqianba.com/zh-cn/api/interface/merchantUpload.html
     /// </para>
     /// </summary>
-    public class ImageUploadRequestModel : RequestModel, Sign.IServiceSignable
+    public class ImageUploadRequestModel : RequestModel
     {
         /// <summary>
         /// *图片Base64编码

@@ -26,34 +26,26 @@ namespace Ezreal.ShouQianBa.ApiClient
         public static void InitializeDefaultConfig(Action<ShouQianBaGlobalConfig> action, ILoggerFactory loggerFactory = null)
         {
             action.Invoke(GlobalConfig);
-            HttpApiConfig.DefaultJsonFormatter = ShouQianBaGlobal.GlobalConfig.DefaultJsonFormatter;
+        
             Action<HttpApiConfig> configAction = config =>
              {
                  config.HttpHost = new Uri(GlobalConfig.ApiUri);
+                 config.FormatOptions.IgnoreNullProperty = true;
                  GlobalConfig.ApiActionFilters.ToList().ForEach(filter => config.GlobalFilters.Add(filter));
                  if (GlobalConfig.UseLog)
                  {
                      config.GlobalFilters.Add(new WebApiClient.Attributes.TraceFilterAttribute());
                  }
+                 config.GlobalFilters.Add(new Filter.SignFilter());
                  config.FormatOptions.DateTimeFormat = WebApiClient.DateTimeFormats.ISO8601_WithMillisecond;
                  config.LoggerFactory = loggerFactory;
              };
 
-            HttpApiFactory.Add<ApiContract.IMerchantContract>().ConfigureHttpApiConfig(configAction);
-            HttpApiFactory.Add<ApiContract.ITerminalContract>().ConfigureHttpApiConfig(configAction);
-            HttpApiFactory.Add<ApiContract.IPayContract>().ConfigureHttpApiConfig(configAction);
+            HttpApi.Register<ApiContract.IMerchantContract>().ConfigureHttpApiConfig(configAction);
+            HttpApi.Register<ApiContract.ITerminalContract>().ConfigureHttpApiConfig(configAction);
+            HttpApi.Register<ApiContract.IPayContract>().ConfigureHttpApiConfig(configAction);
 
 
-        }
-        /// <summary>
-        /// 创建一个发起请求的实例,也可以用于创建其它已定义的WebApiClient接口
-        /// </summary>
-        /// <typeparam name="TInterface"></typeparam>
-        /// <returns></returns>
-        [Obsolete("不太合理的方式,在没有DI环境的情况下，请考虑ApiFactory")]
-        public static TInterface Create<TInterface>() where TInterface : class, IHttpApi
-        {
-            return HttpApiFactory.Create<TInterface>();
         }
     }
 }

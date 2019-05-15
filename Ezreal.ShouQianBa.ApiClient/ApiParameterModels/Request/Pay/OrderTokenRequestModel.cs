@@ -13,7 +13,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay
     /// 可用于查询，撤单,手工扯单操作
     /// </para>
     /// </summary>
-    public class OrderTokenRequestModel : RequestModel, Sign.ITerminalSignable
+    public class OrderTokenRequestModel : RequestModel
     {
         /// <summary>
         /// *收钱吧终端ID

@@ -46,10 +46,15 @@
 <td>0.2.1</td>
 <td>release</td>
 </tr>
+<tr>
+<td>2019-05-15</td>
+<td>0.3.0</td>
+<td>release</td>
+</tr>
 </table>
 
 
-# 当前仓库代码版本 0.2.1
+# 当前仓库代码版本 0.3.0
 ## 使用前
 * 如果您觉得项目对您有帮助，请务必star支持一下
 * 项目曾经名为Ezreal.SDK.ShouQianBa,因项目不符合SDK的定位更名为Ezreal.ShouQianBa.ApiClient
