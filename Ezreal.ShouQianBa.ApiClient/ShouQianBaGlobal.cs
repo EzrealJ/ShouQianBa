@@ -23,7 +23,7 @@ namespace Ezreal.ShouQianBa.ApiClient
         /// </summary>
         /// <param name="action"></param>   
         /// <param name="loggerFactory">日志工厂</param>
-        public static void InitializeDefaultConfig(Action<ShouQianBaGlobalConfig> action, ILoggerFactory loggerFactory = null)
+        public static void InitializeDefaultConfig(Action<ShouQianBaGlobalConfig> action)
         {
             action.Invoke(GlobalConfig);
         
@@ -38,7 +38,7 @@ namespace Ezreal.ShouQianBa.ApiClient
                  }
                  config.GlobalFilters.Add(new Filter.SignFilter());
                  config.FormatOptions.DateTimeFormat = WebApiClient.DateTimeFormats.ISO8601_WithMillisecond;
-                 config.LoggerFactory = loggerFactory;
+           
              };
 
             HttpApi.Register<ApiContract.IMerchantContract>().ConfigureHttpApiConfig(configAction);

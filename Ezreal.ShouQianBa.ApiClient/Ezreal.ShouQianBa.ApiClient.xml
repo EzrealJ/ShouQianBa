@@ -1973,7 +1973,7 @@
             静态的全局配置信息
             </summary>
         </member>
-        <member name="M:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobal.InitializeDefaultConfig(System.Action{Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig},Microsoft.Extensions.Logging.ILoggerFactory)">
+        <member name="M:Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobal.InitializeDefaultConfig(System.Action{Ezreal.ShouQianBa.ApiClient.ShouQianBaGlobalConfig})">
             <summary>
             初始化全局配置
             <para>在没有DI的情况下可以使用它来初始化配置</para>
