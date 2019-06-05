@@ -8,7 +8,7 @@ using WebApiClient;
 
 namespace Ezreal.ShouQianBa.ApiClient.DependencyInjection
 {
-    public static class DependencyInjectionExtensions
+    public static class ServiceCollectionExtensions
     {
         /// <summary>
         /// 添加HttpApi
