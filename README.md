@@ -250,6 +250,6 @@
 
 
 # 捐赠
-### 如果觉得这个项目不错，可以扫描下方二维码进行捐赠以鼓励Ezreal。Ezreal希望你也参与到.NET开源生态建设中来
-
-<img src="https://raw.githubusercontent.com/EzrealJ/FileStorageForOtherProjects/master/Img/QR/wx%26alipay.png" height="435" width="650">
+### 如果觉得这个项目不错，请支持Ezreal。Ezreal希望你也参与到.NET开源生态建设中来
+# 联系
+QQ:997229225
