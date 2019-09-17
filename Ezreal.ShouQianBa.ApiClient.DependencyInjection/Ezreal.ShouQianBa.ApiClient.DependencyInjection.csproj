@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>0.3.0</Version>
+    <Version>0.3.2</Version>
     <Description>Ezreal.ShouQianBa.ApiClient.DependencyInjection是一个Ezreal.ShouQianBa.ApiClient的AspNetCore依赖注入扩展库</Description>
     <Copyright>Ezreal</Copyright>
     <PackageLicenseUrl>https://github.com/EzrealJ/ShouQianBa/blob/master/LICENSE</PackageLicenseUrl>

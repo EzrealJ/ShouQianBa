@@ -17,12 +17,12 @@ namespace Ezreal.ShouQianBa.ApiClient.DependencyInjection
         /// <typeparam name="TInterface">接口类型</typeparam>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static void AddShouQianBaApiClient(this IServiceCollection services, Action<ShouQianBaGlobalConfig> action, ILoggerFactory loggerFactory=null)
+        public static void AddShouQianBaApiClient(this IServiceCollection services, Action<ShouQianBaGlobalConfig> action = null)
 
         {
             services.AddSingleton(ShouQianBaGlobal.GlobalConfig);
-            action.Invoke(ShouQianBaGlobal.GlobalConfig);
-          
+            action?.Invoke(ShouQianBaGlobal.GlobalConfig);
+
             Action<HttpApiConfig> configAction = config =>
             {
                 config.HttpHost = new Uri(ShouQianBaGlobal.GlobalConfig.ApiUri);
@@ -34,7 +34,6 @@ namespace Ezreal.ShouQianBa.ApiClient.DependencyInjection
                 }
                 config.GlobalFilters.Add(new Filter.SignFilter());
                 config.FormatOptions.DateTimeFormat = DateTimeFormats.ISO8601_WithMillisecond;
-                config.LoggerFactory= loggerFactory;
             };
 
             services.AddHttpApiFactory<ApiContract.IMerchantContract>(configAction);
