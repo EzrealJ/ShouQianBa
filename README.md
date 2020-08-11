@@ -6,15 +6,19 @@
 
 ## NuGet 依赖项目
 #### 所有平台都必须的依赖项
-* [WebApiClient.AOT【0.3.2】](https://github.com/dotnetcore/WebApiClient)
+
+* [WebApiClient.AOT【1.1.4】](https://github.com/dotnetcore/WebApiClient/tree/WebApiClient.JITAOT)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/dotnetcore/WebApiClient/blob/master/LICENSE)  
 * [Newtonsoft.Json【12.0.1】](https://www.newtonsoft.com/json)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://licenses.nuget.org/MIT)  
+
 #### 仅.NET Standard需要的依赖项
+
 * [System.Drawing.Common【v4.5.1】](https://www.nuget.org/packages/System.Drawing.Common/)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/dotnet/corefx/blob/master/LICENSE.TXT) 
 
 #### 版本状态:
+
 <table>
 <tr>
 <th>Date</th>
@@ -51,11 +55,18 @@
 <td>0.3.0</td>
 <td>release</td>
 </tr>
+<tr>
+<td>2020-08-11</td>
+<td>0.3.2</td>
+<td>release</td>
+</tr>
 </table>
 
 
 # 当前仓库代码版本 0.3.0
+
 ## 使用前
+
 * 如果您觉得项目对您有帮助，请务必star支持一下
 * 项目曾经名为Ezreal.SDK.ShouQianBa,因项目不符合SDK的定位更名为Ezreal.ShouQianBa.ApiClient
 * 作者不是收钱吧的开发者,因此有问题请Issues.
@@ -66,6 +77,7 @@
 ## 使用-仅针对当前仓库
 
 * 配置
+
 ```C#
 
     ShouQianBaGlobal.InitializeDefaultConfig(config =>
@@ -86,7 +98,9 @@
 ```
 
 ### 以下演示简单使用,依赖注入请参照Demo项目适当更改代码
+
 * 开始使用
+
 ```C#
    BankRequestModel requestModel = new BankRequestModel() { BankCard = bankCardNo };
    var apiInstense = Global.Create<IMerchantContract>();
@@ -95,10 +109,11 @@
 ```
 
 * 当面付示例
+
 ```C#
         public static async void PayDemo()
         {
-           
+
              TerminalSignSettings terminalSignSettings = new TerminalSignSettings()
             {
                 TerminalKey = "设备Key(通过设备激活接口获得,或者通过设备签到接口刷新)",
@@ -115,141 +130,199 @@
             orderCreateRequestModel.Summary = $"扣款{0.01}元";
             orderCreateRequestModel.TotalAmount = 0.01m;
             Response<OrderGenericResponseModel> result = null;
+            ShouQianBaOrder shouQianBaOrder = null;
             try
             {
-                result = await ApiFactory.CreatePayClient().Pay(orderCreateRequestModel, terminalSignSettings, TimeSpan.FromSeconds(2))
+                result = await _wosaipayClient.Pay(orderCreateRequestModel, terminalSignSettings, TimeSpan.FromSeconds(5))
                 .Retry(3, TimeSpan.FromSeconds(5))
                 .WhenCatch<HttpStatusFailureException>(ex => ex.StatusCode == System.Net.HttpStatusCode.RequestTimeout);
             }
             //与支付宝/微信等支付服务直接提供商相比，此接口的流程存在差异，收钱吧方面这个请求是同步且持续阻塞的
             //当用户未支付时会一直pending，并不会返回等待支付的状态，因此Pay接口的预定义超时时间是50ms
-            //一般而言是等待可以直接得到最终的正确结果,但不建议使用此方式，示例仍设定2s超时时间，在其超时后通过轮询的方式轮询最终态来确定结果
-            catch (TaskCanceledException)
+            //一般而言是等待可以直接得到最终的正确结果,但不建议使用此方式，示例仍设定5s超时时间，在其超时后通过轮询的方式轮询最终态来确定结果
+            catch (HttpStatusFailureException ex)
             {
-                //此处消除 主动超时 异常使业务继续
+                _logger.LogError($"收钱吧服务商支付发起刷卡支付交易在指定时间内返回了Http协议的失败或错误 {ex}");
             }
-            catch (Exception)
+            catch (HttpApiException ex)
             {
-                throw;
+                if (ex.InnerException is TaskCanceledException)
+                {
+                    //此处消除 主动超时 异常使业务继续
+                    _logger.LogInformation($"收钱吧服务商支付发起刷卡支付交易在指定时间没有返回结果，主动取消等待转入轮询");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"收钱吧服务商支付发起刷卡支付交易发生了错误 {ex}");
             }
             if (result != null
                 && result.ExistsBusinessResponseContent
                 && result.BusinessResponseContent.IsEffectiveOrder
                 && result.BusinessResponseContent.Order.OrderStatus == OrderStatusEnum.PAID)
             {
-                //符合此条件不必轮询,直接认为成功
-            }
-            OrderTokenRequestModel orderTokenRequestModel = new OrderTokenRequestModel()
-            {
-                TerminalSerialNo = orderCreateRequestModel.TerminalSerialNo,
-                ClientSerialNo = orderCreateRequestModel.ClientSerialNo,
-                //由于Pay接口调用时无法确定拿到结果,因此收钱吧方面的订单号是不确定的,因此不建议使用此值。
-                SerialNo = null
-            };
-            CancellationTokenSource queryTaskCancelTokenSource = new CancellationTokenSource();
-            //创建一个取消轮询的任务
-            Task queryTimeoutTask = Task.Delay(TimeSpan.FromSeconds(50)).ContinueWith(task => queryTaskCancelTokenSource.Cancel());
-            try
-            {
-                result = await ApiFactory.CreatePayClient().Query(orderTokenRequestModel, terminalSignSettings, TimeSpan.FromSeconds(2), queryTaskCancelTokenSource.Token)
-                .Retry(30, TimeSpan.FromSeconds(2))//设定轮询等待为2s，轮询不超过30次
-                .WhenCatch<HttpStatusFailureException>(ex => ex.StatusCode == System.Net.HttpStatusCode.RequestTimeout)
-                .WhenResult(response =>
-                {
-                    if(!response.ExistsBusinessResponseContent)
-                    {
-                        return false;//请求异常中止重试
-                    }
-                    if(!response.BusinessResponseContent.IsEffectiveOrder)
-                    {
-                        return false;//业务异常中止重试
-                    }
-
-                    if (!response.BusinessResponseContent.Order.IsFinalOrderStatus)
-                    {
-                        //未达最终态继续重试
-                        Console.WriteLine("查询轮询" + response.BusinessResponseContent?.Order?.OrderStatus);
-                        return true;
-                    }
-                    return false;//订单到达最终态中止重试
-                }
-                );
-            }
-            catch (TaskCanceledException)
-            {
-                //此处消除异常使业务继续
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-            if (result != null
-                && result.ExistsBusinessResponseContent
-                && result.BusinessResponseContent.IsEffectiveOrder
-                && result.BusinessResponseContent.Order.IsFinalOrderStatus)
-            {
-                if (result.BusinessResponseContent.Order.OrderStatus == OrderStatusEnum.PAID)
-                {
-                    //符合此条件认为轮询到支付成功
-                   
-                }
-                else
-                {
-                    //符合此条件认为轮询到支付失败
-                   
-                }
+                _logger.LogInformation("收钱吧支付成功");
+                shouQianBaOrder = result.BusinessResponseContent.Order;
+                //直接认为支付成功
             }
             else
             {
-                //类似查询任务,轮询查询无法得到成功结果时，需要调用撤单接口
-
-                CancellationTokenSource cancelTaskCancelTokenSource = new CancellationTokenSource();
-                //创建一个取消轮询的任务
-                Task cancleTimeoutTask = Task.Delay(TimeSpan.FromSeconds(50)).ContinueWith(task => cancelTaskCancelTokenSource.Cancel());
-
-                try
+                OrderTokenRequestModel orderTokenRequestModel = new OrderTokenRequestModel()
                 {
-                    result = await ApiFactory.CreatePayClient().Cancel(orderTokenRequestModel, terminalSignSettings, TimeSpan.FromSeconds(2), cancelTaskCancelTokenSource.Token)
-                    .Retry(30, TimeSpan.FromSeconds(2))//设定轮询等待为2s，轮询不超过30次
-                    .WhenCatch<HttpStatusFailureException>(ex => ex.StatusCode == System.Net.HttpStatusCode.RequestTimeout)
-                    .WhenResult(response =>
+                    TerminalSerialNo = orderCreateRequestModel.TerminalSerialNo,
+                    ClientSerialNo = orderCreateRequestModel.ClientSerialNo,
+                    //由于Pay接口调用时无法确定拿到结果,因此收钱吧方面的订单号是不确定的,因此不建议使用此值。
+                    SerialNo = null
+                };
+                using (CancellationTokenSource queryTaskCancelTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(120)))
+                {
+                    try
                     {
-                        if (!response.ExistsBusinessResponseContent)
+                        result = await _wosaipayClient.Query(orderTokenRequestModel, terminalSignSettings, TimeSpan.FromSeconds(5), queryTaskCancelTokenSource.Token)
+                        .Retry(60, TimeSpan.FromSeconds(2))//设定轮询等待为2s，轮询不超过30次
+                        .WhenCatch<HttpStatusFailureException>(ex => ex.StatusCode == System.Net.HttpStatusCode.RequestTimeout)
+                        .WhenResult(response =>
                         {
-                            return false;//请求异常中止重试
+                            if (!response.ExistsBusinessResponseContent)
+                            {
+                                return false;//请求异常中止重试
+                            }
+                            if (!response.BusinessResponseContent.IsEffectiveOrder)
+                            {
+                                return false;//业务异常中止重试
+                            }
+
+                            if (!response.BusinessResponseContent.Order.IsFinalOrderStatus)
+                            {
+                                return true;
+                            }
+                            return false;//订单到达最终态中止重试
                         }
-                        if (!response.BusinessResponseContent.IsEffectiveOrder)
+                        );
+                    }
+                    catch (HttpStatusFailureException ex)
+                    {
+                        _logger.LogError($"收钱吧服务商刷卡支付查询在指定时间内返回了Http协议的失败或错误 {ex}");
+                    }
+                    catch (HttpApiException ex)
+                    {
+                        if (ex.InnerException is TaskCanceledException)
                         {
-                            return false;//业务异常中止重试
+                            //此处消除 主动超时 异常使业务继续
+                            _logger.LogInformation($"收钱吧服务商刷卡支付查询在指定时间没有返回结果，主动取消等待转入轮询");
                         }
 
-                        if (!response.BusinessResponseContent.Order.IsFinalOrderStatus)
-                        {
-                            //未达最终态继续重试
-                            Console.WriteLine("撤销轮询" + response.BusinessResponseContent?.Order?.OrderStatus);
-                            return true;
-                        }
-                        return false;//订单到达最终态中止重试
                     }
-                    );
+                    catch (Exception ex)
+                    {
+                        _logger.LogError($"收钱吧服务商刷卡支付查询发生了错误 {ex}");
+                    }
+                    finally
+                    {
+                        queryTaskCancelTokenSource.Cancel();
+                    }
                 }
-                catch (TaskCanceledException)
+
+
+                if (result != null
+                    && result.ExistsBusinessResponseContent
+                    && result.BusinessResponseContent.IsEffectiveOrder
+                    && result.BusinessResponseContent.Order.IsFinalOrderStatus)
                 {
-                    //此处消除异常使业务继续
+                    shouQianBaOrder = result.BusinessResponseContent.Order;
+                    if (result.BusinessResponseContent.Order.OrderStatus == OrderStatusEnum.PAID)
+                    {
+                        _logger.LogInformation("收钱吧轮询到成功");
+                        //直接认为支付成功
+
+                    }
+                    else
+                    {
+                        //符合此条件认为轮询到支付失败
+                        _logger.LogError("收钱吧订单轮询到失败{0}@{1}-{2}", result.BusinessResponseContent.ResultCode, result.BusinessResponseContent.ErrorCode, result.BusinessResponseContent.ErrorMessage);
+                    }
+
                 }
-                catch (Exception)
+                else
                 {
-                    throw;
+                    //类似查询任务,轮询查询无法得到最终态结果时，需要调用撤单接口
+
+                    using (CancellationTokenSource cancelTaskCancelTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(50)))
+                    {
+
+                        try
+                        {
+                            result = await _wosaipayClient.Cancel(orderTokenRequestModel, terminalSignSettings, TimeSpan.FromSeconds(5), cancelTaskCancelTokenSource.Token)
+                            .Retry(30, TimeSpan.FromSeconds(2))//设定轮询等待为2s，轮询不超过30次
+                            .WhenCatch<HttpStatusFailureException>(ex => ex.StatusCode == System.Net.HttpStatusCode.RequestTimeout)
+                            .WhenResult(response =>
+                            {
+                                if (!response.ExistsBusinessResponseContent)
+                                {
+                                    return false;//请求异常中止重试
+                                }
+                                if (!response.BusinessResponseContent.IsEffectiveOrder)
+                                {
+                                    return false;//业务异常中止重试
+                                }
+
+                                if (!response.BusinessResponseContent.Order.IsFinalOrderStatus)
+                                {
+                                    //未达最终态继续重试
+
+                                    return true;
+                                }
+                                return false;//订单到达最终态中止重试
+                            }
+                            );
+                        }
+
+                        catch (HttpStatusFailureException ex)
+                        {
+                            _logger.LogError($"收钱吧服务商刷卡支付撤单在指定时间内返回了Http协议的失败或错误 {ex}");
+                        }
+                        catch (HttpApiException ex)
+                        {
+                            if (ex.InnerException is TaskCanceledException)
+                            {
+                                //此处消除 主动超时 异常使业务继续
+                                _logger.LogInformation($"收钱吧服务商刷卡支付撤单在指定时间没有返回结果，主动取消等待转入轮询");
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError($"收钱吧服务商支付刷卡支付撤单发生了错误 {ex}");
+                        }
+                        finally
+                        {
+                            cancelTaskCancelTokenSource.Cancel();
+                        }
+                    }
+                    //判断撤单结果
+                    if (result != null
+                    && result.ExistsBusinessResponseContent
+                    && result.BusinessResponseContent.IsEffectiveOrder)
+                    {
+                        _logger.LogInformation("轮询到{0}", result.BusinessResponseContent.Order.OrderStatus);
+
+                    }
+                    else
+                    {
+                        _logger.LogInformation("未轮询到有效内容");
+                    }
                 }
             }
-            //判断撤单结果
-        }
 ```
+
 * 更多使用方式尽情期待
 
 
 # 捐赠
+
 ### 如果觉得这个项目不错，请支持Ezreal。Ezreal希望你也参与到.NET开源生态建设中来
+
 # 联系
+
 QQ:997229225
