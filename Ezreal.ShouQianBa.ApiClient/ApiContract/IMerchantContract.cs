@@ -13,8 +13,7 @@ namespace Ezreal.ShouQianBa.ApiClient.ApiContract
     /// <summary>
     /// 商户相关接口
     /// </summary>
-
-
+    [Obsolete("收钱吧收紧了相关权限,沟通后表示此接口可以删除,声明作废")]
     public interface IMerchantContract : IHttpApi
     {
         /// <summary>

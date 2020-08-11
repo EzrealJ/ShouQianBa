@@ -36,11 +36,11 @@ namespace Ezreal.ShouQianBa.ApiClient.DependencyInjection
                 config.FormatOptions.DateTimeFormat = DateTimeFormats.ISO8601_WithMillisecond;
             };
 
-            services.AddHttpApiFactory<ApiContract.IMerchantContract>(configAction);
+            //services.AddHttpApiFactory<ApiContract.IMerchantContract>(configAction);
             services.AddHttpApiFactory<ApiContract.ITerminalContract>(configAction);
             services.AddHttpApiFactory<ApiContract.IPayContract>(configAction);
 
-            services.AddTransient<Api.MerchantClient>();
+            //services.AddTransient<Api.MerchantClient>();
             services.AddTransient<Api.TerminalClient>();
             services.AddTransient<Api.PayClient>();
 

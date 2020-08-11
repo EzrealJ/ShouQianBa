@@ -40,7 +40,7 @@ namespace Ezreal.ShouQianBa.ApiClient
            
              };
 
-            HttpApi.Register<ApiContract.IMerchantContract>().ConfigureHttpApiConfig(configAction);
+            //HttpApi.Register<ApiContract.IMerchantContract>().ConfigureHttpApiConfig(configAction);
             HttpApi.Register<ApiContract.ITerminalContract>().ConfigureHttpApiConfig(configAction);
             HttpApi.Register<ApiContract.IPayContract>().ConfigureHttpApiConfig(configAction);
 

@@ -17,6 +17,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
     /// <summary>
     /// 商户请求
     /// </summary>
+    [Obsolete("收钱吧收紧了相关权限,沟通后表示此接口可以删除,声明作废")]
     public class MerchantClient
     {
         /// <summary>

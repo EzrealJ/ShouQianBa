@@ -15,6 +15,7 @@ using Xunit;
 
 namespace Ezreal.ShouQianBa.ApiClient.Test.ApiContract
 {
+    [Obsolete("收钱吧收紧了相关权限,沟通后表示此接口可以删除,声明作废")]
     public class MerchantContractTest : TestBase
     {
         [Theory]

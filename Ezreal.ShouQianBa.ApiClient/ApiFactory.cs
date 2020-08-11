@@ -17,6 +17,7 @@ namespace Ezreal.ShouQianBa.ApiClient
         /// 创建商户相关Client
         /// </summary>
         /// <returns></returns>
+        [Obsolete("收钱吧收紧了相关权限,沟通后表示此接口可以删除,声明作废")] 
         public static MerchantClient CreateMerchantClient() => new MerchantClient(null);
         /// <summary>
         /// 创建设备相关Client
