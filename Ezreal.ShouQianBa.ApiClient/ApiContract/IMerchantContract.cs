@@ -1,6 +1,6 @@
-﻿using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Merchant;
+﻿using Ezreal.ShouQianBa.ApiClient.ApiModels.Request.Merchant;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Response;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Response.Merchant;
 using Ezreal.ShouQianBa.ApiClient.Sign;
 using System;
 using System.Threading;

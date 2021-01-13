@@ -1,5 +1,5 @@
 ﻿using Ezreal.ShouQianBa.ApiClient.ApiContract;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels;
+using Ezreal.ShouQianBa.ApiClient.ApiModels;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;

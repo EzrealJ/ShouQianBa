@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using WebApiClient;
 using Ezreal.ShouQianBa.ApiClient.Sign;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Response;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Request.Pay;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Response.Pay;
 using System.Threading;
 using Ezreal.ShouQianBa.ApiClient.Extension;
 
@@ -23,6 +23,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
         /// 支付Client
         /// </summary>
         /// <param name="payContract">支付交互协议,可以从依赖注入环境获取,当无法获取到传入的实例时则调用<see cref="HttpApi.Resolve{IPayContract}()"/></param>
+        [Obsolete("建议仅在没有具备IOC容器的环境使用，并建议升级到有IOC容器的环境")]
         public PayClient(IPayContract payContract)
         {
             PayContract = payContract ?? HttpApi.Resolve<IPayContract>();

@@ -1,5 +1,5 @@
 ﻿
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Request;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;

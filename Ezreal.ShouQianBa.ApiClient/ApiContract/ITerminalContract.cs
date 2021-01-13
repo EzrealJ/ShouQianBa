@@ -1,4 +1,4 @@
-﻿using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response;
+﻿using Ezreal.ShouQianBa.ApiClient.ApiModels.Response;
 using Ezreal.ShouQianBa.ApiClient.Attributes;
 using System;
 using System.Collections.Generic;
@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using WebApiClient;
 using WebApiClient.Attributes;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Terminal;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Request.Terminal;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Response.Terminal;
 using Ezreal.ShouQianBa.ApiClient.Sign;
 using WebApiClient.Parameterables;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Request;
 using System.Threading;
 
 namespace Ezreal.ShouQianBa.ApiClient.ApiContract

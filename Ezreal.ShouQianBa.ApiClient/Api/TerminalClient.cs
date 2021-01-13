@@ -1,13 +1,13 @@
 ﻿using Ezreal.ShouQianBa.ApiClient.ApiContract;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebApiClient;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Terminal;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Request.Terminal;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Response.Terminal;
 using Ezreal.ShouQianBa.ApiClient.Extension;
 using Ezreal.ShouQianBa.ApiClient.Sign;
 using System.Threading;
@@ -23,6 +23,7 @@ namespace Ezreal.ShouQianBa.ApiClient.Api
         /// 设备Client
         /// </summary>
         /// <param name="terminalContract">设备交互协议，可以从依赖注入环境获取,当无法获取到传入的实例时则调用<see cref="HttpApi.Resolve{ITerminalContract}()"/></param>
+        [Obsolete("建议仅在没有具备IOC容器的环境使用，并建议升级到有IOC容器的环境")]
         public TerminalClient(ITerminalContract terminalContract)
         {
             TerminalContract = terminalContract ?? HttpApi.Resolve<ITerminalContract>();

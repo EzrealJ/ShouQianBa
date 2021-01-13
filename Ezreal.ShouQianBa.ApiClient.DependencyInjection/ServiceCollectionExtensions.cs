@@ -17,6 +17,7 @@ namespace Ezreal.ShouQianBa.ApiClient.DependencyInjection
         /// <typeparam name="TInterface">接口类型</typeparam>
         /// <param name="services"></param>
         /// <returns></returns>
+        [Obsolete("终止支持于0.3.2版本")]
         public static void AddShouQianBaApiClient(this IServiceCollection services, Action<ShouQianBaGlobalConfig> action = null)
 
         {
