@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2046
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ezreal.ShouQianBa.ApiClient", "Ezreal.ShouQianBa.ApiClient\Ezreal.ShouQianBa.ApiClient.csproj", "{359496E3-719D-4F95-BECD-4BB51C755609}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{16C843CD-E583-4FE1-9BBE-501C432FBC39}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple", "Demo\Simple\Simple.csproj", "{6DB0D127-EFC1-4362-A6A1-CCF8C94E0FC4}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ezreal.ShouQianBa.ApiClient.DependencyInjection", "Ezreal.ShouQianBa.ApiClient.DependencyInjection\Ezreal.ShouQianBa.ApiClient.DependencyInjection.csproj", "{CE4B6506-6693-45A7-9FA9-667CC49BF07D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreDemo", "Demo\AspNetCoreDemo\AspNetCoreDemo.csproj", "{63185B9B-6EE0-4215-9BC8-F6875BC6969A}"
 EndProject
@@ -33,10 +31,6 @@ Global
 		{6DB0D127-EFC1-4362-A6A1-CCF8C94E0FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DB0D127-EFC1-4362-A6A1-CCF8C94E0FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DB0D127-EFC1-4362-A6A1-CCF8C94E0FC4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CE4B6506-6693-45A7-9FA9-667CC49BF07D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE4B6506-6693-45A7-9FA9-667CC49BF07D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE4B6506-6693-45A7-9FA9-667CC49BF07D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE4B6506-6693-45A7-9FA9-667CC49BF07D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{63185B9B-6EE0-4215-9BC8-F6875BC6969A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{63185B9B-6EE0-4215-9BC8-F6875BC6969A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63185B9B-6EE0-4215-9BC8-F6875BC6969A}.Release|Any CPU.ActiveCfg = Release|Any CPU

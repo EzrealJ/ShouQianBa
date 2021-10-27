@@ -1,15 +1,14 @@
-﻿using Ezreal.ShouQianBa.ApiClient.Api;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Terminal;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Terminal;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
+using Ezreal.ShouQianBa.ApiClient.Api;
+using Ezreal.ShouQianBa.ApiClient.ApiContract;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Request.Terminal;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Response;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Response.Terminal;
 using Ezreal.ShouQianBa.ApiClient.Sign;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AspNetCoreDemo.Controllers
 {
@@ -19,12 +18,12 @@ namespace AspNetCoreDemo.Controllers
     [Route("[controller]")]
     public class TerminalClientController : Controller
     {
-        public TerminalClientController(TerminalClient terminalClient)
+        public TerminalClientController(ITerminalContract terminalClient)
         {
             TerminalClient = terminalClient;
         }
 
-        public TerminalClient TerminalClient { get; }
+        public ITerminalContract TerminalClient { get; }
 
         /// <summary>
         /// 激活
@@ -33,9 +32,9 @@ namespace AspNetCoreDemo.Controllers
         /// <param name="serviceProviderSignSettings"></param>
         /// <returns></returns>
         [HttpPost(nameof(Activate))]
-        public async Task<Response<TerminalActivateResponseModel>> Activate([FromBody]TerminalActivateRequestModel requestModel, [FromQuery]ServiceProviderSignSettings serviceProviderSignSettings)
+        public async Task<Response<TerminalActivateResponseModel>> Activate([FromBody] TerminalActivateRequestModel requestModel, [FromQuery] ServiceProviderSignSettings serviceProviderSignSettings)
         {
-            return await TerminalClient.Activate(requestModel, serviceProviderSignSettings);
+            return await TerminalClient.Activate(serviceProviderSignSettings, requestModel);
         }
         /// <summary>
         /// 签到
@@ -46,7 +45,7 @@ namespace AspNetCoreDemo.Controllers
         [HttpPost(nameof(Checkin))]
         public async Task<Response<TerminalCheckinResponseModel>> Checkin(TerminalCheckinRequestModel requestModel, TerminalSignSettings terminalSignSettings)
         {
-            return await TerminalClient.Checkin(requestModel, terminalSignSettings);
+            return await TerminalClient.Checkin(terminalSignSettings, requestModel);
         }
 
         /// <summary>
@@ -54,14 +53,19 @@ namespace AspNetCoreDemo.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet(nameof(RefreshDefaultTerminalSignSettings))]
-        public async Task<bool> RefreshDefaultTerminalSignSettings([FromServices]TerminalSignSettings terminalSignSettings)
+        public async Task<bool> RefreshDefaultTerminalSignSettings([FromServices] TerminalSignSettings terminalSignSettings)
         {
             if (terminalSignSettings == null)
             {
                 throw new ArgumentNullException(nameof(terminalSignSettings), "The TerminalSignSettings.json file must be provided in the root directory as the default terminal signature configuration!");
             }
-            Response<TerminalCheckinResponseModel> checkinResult = await TerminalClient.Checkin(new TerminalCheckinRequestModel() { DeviceID = DefaultTerminalInfo.DeviceID, TerminalSerialNo = terminalSignSettings.TerminalSerialNo }, terminalSignSettings);
-            if(checkinResult.ExistsBusinessResponseContent)
+            Response<TerminalCheckinResponseModel> checkinResult = await TerminalClient.Checkin(
+                terminalSignSettings, new TerminalCheckinRequestModel()
+                {
+                    DeviceID = DefaultTerminalInfo.DeviceID,
+                    TerminalSerialNo = terminalSignSettings.TerminalSerialNo
+                });
+            if (checkinResult.ExistsBusinessResponseContent)
             {
                 terminalSignSettings.TerminalSerialNo = checkinResult.BusinessResponseContent.TerminalSerialNo;
                 terminalSignSettings.TerminalKey = checkinResult.BusinessResponseContent.TerminalKey;

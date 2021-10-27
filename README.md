@@ -1,10 +1,11 @@
-#  <img src="https://raw.githubusercontent.com/EzrealJ/ShouQianBa/master/Ezreal.ShouQianBa.ApiClient/WoSaipay.ico" height="25"/>Ezreal.ShouQianBa[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/EzrealJ/ShouQianBa/blob/master/LICENSE)  
-
+#  <img src="https://raw.githubusercontent.com/EzrealJ/ShouQianBa/master/Ezreal.ShouQianBa.ApiClient/WoSaipay.ico" height="25"/>Ezreal.ShouQianBa.ApiClient[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/EzrealJ/ShouQianBa/blob/master/LICENSE)
+* 【重要】这应该是最后一次支持.NET Framework4.5+的更新,接下来的1.x版本将会放弃NET Framework的支持,从.NET Core3.1开始支持
 * Ezreal.ShouQianBa.ApiClient是一个.NET实现的收钱吧WebApi连接库，旨在让您编写简单且可读性强代码快速接入收钱吧的WebApi
 * 同时支持 .NET Framework 4.5/.NET Standard 2.0+
 * 您可以直接通过nuget引用项目
 
 ## NuGet 依赖项目
+
 #### 所有平台都必须的依赖项
 
 * [WebApiClient.AOT【1.1.4】](https://github.com/dotnetcore/WebApiClient/tree/WebApiClient.JITAOT)
@@ -60,7 +61,13 @@
 <td>0.3.2</td>
 <td>release</td>
 </tr>
+<tr>
+<td>2021-10-27</td>
+<td>0.4.2</td>
+<td>release</td>
+</tr>
 </table>
+
 
 
 # 当前仓库代码版本 0.3.2
@@ -98,15 +105,6 @@
 ```
 
 ### 以下演示简单使用,依赖注入请参照Demo项目适当更改代码
-
-* 开始使用
-
-```C#
-   BankRequestModel requestModel = new BankRequestModel() { BankCard = bankCardNo };
-   var apiInstense = Global.Create<IMerchantContract>();
-   var sign = ServiceProviderSignProvider.CreateFromServiceProviderSettings().Sign(requestModel);          
-   Response<BankResponseModel> result = await apiInstense.Banks(sign, requestModel);
-```
 
 * 当面付示例
 
@@ -317,7 +315,6 @@
 ```
 
 * 更多使用方式尽情期待
-
 
 # 捐赠
 

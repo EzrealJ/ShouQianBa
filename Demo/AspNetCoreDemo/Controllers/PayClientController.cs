@@ -1,17 +1,16 @@
-﻿using Ezreal.ShouQianBa.ApiClient.Api;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Generic;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay;
-using Ezreal.ShouQianBa.ApiClient.Enums;
-using Ezreal.ShouQianBa.ApiClient.Sign;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Ezreal.ShouQianBa.ApiClient.Api;
+using Ezreal.ShouQianBa.ApiClient.ApiContract;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Generic;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Request.Pay;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Response;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Response.Pay;
+using Ezreal.ShouQianBa.ApiClient.Enums;
+using Ezreal.ShouQianBa.ApiClient.Sign;
+using Microsoft.AspNetCore.Mvc;
 using WebApiClient;
 
 namespace AspNetCoreDemo.Controllers
@@ -22,13 +21,13 @@ namespace AspNetCoreDemo.Controllers
     [Route("[controller]")]
     public class PayClientController : Controller
     {
-        public PayClientController(PayClient payClient, TerminalSignSettings terminalSignSettings)
+        public PayClientController(IPayContract payClient, TerminalSignSettings terminalSignSettings)
         {
             PayClient = payClient;
             TerminalSignSettings = terminalSignSettings;
         }
 
-        public PayClient PayClient { get; }
+        public IPayContract PayClient { get; }
         public TerminalSignSettings TerminalSignSettings { get; }
 
 
@@ -44,7 +43,7 @@ namespace AspNetCoreDemo.Controllers
         {
             terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
             requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
-            return await PayClient.Pay(requestModel, terminalSignSettings);
+            return await PayClient.Pay(terminalSignSettings,requestModel);
         }
         /// <summary>
         /// 预创建订单
@@ -57,7 +56,7 @@ namespace AspNetCoreDemo.Controllers
         {
             terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
             requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
-            return await PayClient.Precreate(requestModel, terminalSignSettings);
+            return await PayClient.Precreate(terminalSignSettings, requestModel);
         }
         /// <summary>
         /// 查询订单
@@ -70,7 +69,7 @@ namespace AspNetCoreDemo.Controllers
         {
             terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
             requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
-            return await PayClient.Query(requestModel, terminalSignSettings);
+            return await PayClient.Query(terminalSignSettings, requestModel);
         }
         /// <summary>
         /// 取消订单
@@ -83,7 +82,7 @@ namespace AspNetCoreDemo.Controllers
         {
             terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
             requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
-            return await PayClient.Cancel(requestModel, terminalSignSettings);
+            return await PayClient.Cancel(terminalSignSettings, requestModel);
         }
         /// <summary>
         /// 手动撤单
@@ -96,7 +95,7 @@ namespace AspNetCoreDemo.Controllers
         {
             terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
             requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
-            return await PayClient.Revoke(requestModel, terminalSignSettings);
+            return await PayClient.Revoke(terminalSignSettings, requestModel);
         }
         /// <summary>
         /// 退款
@@ -109,7 +108,7 @@ namespace AspNetCoreDemo.Controllers
         {
             terminalSignSettings = string.IsNullOrWhiteSpace(terminalSignSettings.TerminalKey + terminalSignSettings.TerminalSerialNo) ? TerminalSignSettings : terminalSignSettings;
             requestModel.TerminalSerialNo = string.IsNullOrWhiteSpace(requestModel.TerminalSerialNo) ? terminalSignSettings.TerminalSerialNo : requestModel.TerminalSerialNo;
-            return await PayClient.Refund(requestModel, terminalSignSettings);
+            return await PayClient.Refund(terminalSignSettings, requestModel);
         }
 
 
@@ -145,7 +144,7 @@ namespace AspNetCoreDemo.Controllers
             Response<OrderGenericResponseModel> result = null;
             try
             {
-                result = await PayClient.Pay(orderCreateRequestModel, terminalSignSettings, TimeSpan.FromSeconds(2))
+                result = await PayClient.Pay(terminalSignSettings, orderCreateRequestModel, TimeSpan.FromSeconds(2))
                 .Retry(3, TimeSpan.FromSeconds(5))
                 .WhenCatch<HttpStatusFailureException>(ex => ex.StatusCode == System.Net.HttpStatusCode.RequestTimeout);
             }
@@ -179,7 +178,7 @@ namespace AspNetCoreDemo.Controllers
             Task queryTimeoutTask = Task.Delay(TimeSpan.FromSeconds(60)).ContinueWith(task => queryTaskCancelTokenSource.Cancel());
             try
             {
-                result = await PayClient.Query(orderTokenRequestModel, terminalSignSettings, TimeSpan.FromSeconds(2), queryTaskCancelTokenSource.Token)
+                result = await PayClient.Query( terminalSignSettings, orderTokenRequestModel, TimeSpan.FromSeconds(2), queryTaskCancelTokenSource.Token)
                 .Retry(30, TimeSpan.FromSeconds(2))//设定轮询等待为2s，轮询不超过30次
                 .WhenCatch<HttpStatusFailureException>(ex => ex.StatusCode == System.Net.HttpStatusCode.RequestTimeout)
                 .WhenResult(response =>
@@ -238,7 +237,7 @@ namespace AspNetCoreDemo.Controllers
 
                 try
                 {
-                    result = await PayClient.Cancel(orderTokenRequestModel, terminalSignSettings, TimeSpan.FromSeconds(2), cancelTaskCancelTokenSource.Token)
+                    result = await PayClient.Cancel( terminalSignSettings, orderTokenRequestModel, TimeSpan.FromSeconds(2), cancelTaskCancelTokenSource.Token)
                     .Retry(30, TimeSpan.FromSeconds(2))//设定轮询等待为2s，轮询不超过30次
                     .WhenCatch<HttpStatusFailureException>(ex => ex.StatusCode == System.Net.HttpStatusCode.RequestTimeout)
                     .WhenResult(response =>

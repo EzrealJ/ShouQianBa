@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
+using Ezreal.ShouQianBa.ApiClient.Sign;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Ezreal.ShouQianBa.ApiClient.DependencyInjection;
-using Ezreal.ShouQianBa.ApiClient;
-using Swashbuckle.AspNetCore.Swagger;
-using System.IO;
 using Microsoft.Extensions.Logging;
-using Ezreal.ShouQianBa.ApiClient.Sign;
 using Newtonsoft.Json;
+using Swashbuckle.AspNetCore.Swagger;
+using Ezreal.ShouQianBa.ApiClient.Extension;
+using Ezreal.ShouQianBa.ApiClient;
 
 namespace AspNetCoreDemo
 {
@@ -35,36 +32,9 @@ namespace AspNetCoreDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAll",
-                    p => p.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials()
-                    .SetPreflightMaxAge(TimeSpan.FromSeconds(60))
-                    );
-            });
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddShouQianBaApiClient(config =>
-            {
-                //config.DefaultShouQianBaServiceProviderSettings = new ServiceProviderSettings()
-                //{
-                //    ServiceProviderSerialNo = "@vendor_sn",
-                //    ServiceProviderKey = "@vendor_key",
-                //};
-                //config.UseSandbox = true;
-                config.UseLog = true;
-
-            }, new LoggerFactory().AddConsole());
+            services.AddShouqianbaApiClient();
             services.AddTransient(serviceProvider =>
             {
                 string path = Path.Combine(ApplicationPath, "TerminalSignSettings.json");
@@ -108,7 +78,7 @@ namespace AspNetCoreDemo
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            app.UseCors("AllowAll");
+
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
@@ -126,6 +96,14 @@ namespace AspNetCoreDemo
             {
                 option.SwaggerEndpoint("/swagger/Ezreal/swagger.json", "Ezreal");
             });
+
+            var shouqianbaGlobalConfig = app.ApplicationServices.GetRequiredService<ShouQianBaGlobalConfig>();
+            shouqianbaGlobalConfig.UseLog = true;
+            shouqianbaGlobalConfig.DefaultShouQianBaServiceProviderSettings = new ServiceProviderSettings()
+            {
+                //由于收钱吧封闭了代理商Api开户，事实上现在服务商参数只有在激活设备的时候需要用到了,激活设备的接口可以显式传入，因此无需提前配置
+                //非要配置目前也还能用,后续会删除这个
+            };
         }
     }
 }

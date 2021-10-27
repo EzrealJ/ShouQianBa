@@ -18,12 +18,12 @@ namespace Ezreal.ShouQianBa.ApiClient.Extension
         public static IServiceCollection AddShouqianbaApiClient(this IServiceCollection services, Action<HttpApiConfig, IServiceProvider> configOptionsSetter = null)
         {
             services.TryAddSingleton<ShouQianBaGlobalConfig>();
-            Action<HttpApiConfig, IServiceProvider> x = (HttpApiConfig c, IServiceProvider sp) =>
+            void x(HttpApiConfig c, IServiceProvider sp)
             {
                 configOptionsSetter?.Invoke(c, sp);
                 c.GlobalFilters.Add(new Filter.SignFilter());
-                c.FormatOptions.DateTimeFormat = WebApiClient.DateTimeFormats.ISO8601_WithMillisecond;
-                ShouQianBaGlobalConfig shouQianBaGlobalConfig = sp?.GetService<ShouQianBaGlobalConfig>() as ShouQianBaGlobalConfig;
+                c.FormatOptions.DateTimeFormat = DateTimeFormats.ISO8601_WithMillisecond;
+                ShouQianBaGlobalConfig shouQianBaGlobalConfig = sp?.GetService<ShouQianBaGlobalConfig>();
                 if (shouQianBaGlobalConfig != null)
                 {
                     c.HttpHost = shouQianBaGlobalConfig.UseSandbox ? new Uri(shouQianBaGlobalConfig.SandboxEnvironmentApiUri) : new Uri(shouQianBaGlobalConfig.ProductionEnvironmentApiUri);
@@ -37,9 +37,9 @@ namespace Ezreal.ShouQianBa.ApiClient.Extension
                 c.FormatOptions.IgnoreNullProperty = true;
 
 
-            };
-            services.AddHttpApi<ITerminalContract>().ConfigureHttpApiConfig((c, sp) => x(c, sp));
-            services.AddHttpApi<IPayContract>().ConfigureHttpApiConfig((c, sp) => x(c, sp));
+            }
+            services.AddHttpApi<ITerminalContract>().ConfigureHttpApiConfig(x);
+            services.AddHttpApi<IPayContract>().ConfigureHttpApiConfig(x);
             return services;
         }
     }

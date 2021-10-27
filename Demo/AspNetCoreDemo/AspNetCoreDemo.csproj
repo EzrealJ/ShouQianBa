@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Ezreal.ShouQianBa.ApiClient.DependencyInjection\Ezreal.ShouQianBa.ApiClient.DependencyInjection.csproj" />
     <ProjectReference Include="..\..\Ezreal.ShouQianBa.ApiClient\Ezreal.ShouQianBa.ApiClient.csproj" />
   </ItemGroup>
 

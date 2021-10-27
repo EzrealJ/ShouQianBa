@@ -1,7 +1,7 @@
 ﻿using Ezreal.ShouQianBa.ApiClient;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Pay;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response;
-using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Response.Pay;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Request.Pay;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Response;
+using Ezreal.ShouQianBa.ApiClient.ApiModels.Response.Pay;
 using Ezreal.ShouQianBa.ApiClient.Enums;
 using Ezreal.ShouQianBa.ApiClient.Sign;
 using System;

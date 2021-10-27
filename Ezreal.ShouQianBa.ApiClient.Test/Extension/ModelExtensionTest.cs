@@ -1,7 +1,4 @@
-﻿using Ezreal.ShouQianBa.ApiClient.ApiParameterModels.Request.Merchant;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Ezreal.ShouQianBa.ApiClient.ApiModels.Request.Pay;
 using Ezreal.ShouQianBa.ApiClient.Extension;
 using Xunit;
 
@@ -12,8 +9,8 @@ namespace Ezreal.ShouQianBa.ApiClient.Test.Extension
         [Fact]
         public void NameOfApiParameter()
         {
-            ImageUploadRequestModel imageUploadRequestModel = new ImageUploadRequestModel();
-            string apiParameterName = imageUploadRequestModel.NameOfApiParameter(t => t.ImageBase64String);
+            OrderCreateRequestModel orderCreateRequestModel = new OrderCreateRequestModel();
+            string apiParameterName = orderCreateRequestModel.NameOfApiParameter(t => t.ClientSerialNo);
             Assert.True(apiParameterName == "file");
         }
 
