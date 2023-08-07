@@ -1,3 +1,5 @@
+# 因精力有限，停止维护此repo 【2023-08-07】
+
 #  <img src="https://raw.githubusercontent.com/EzrealJ/ShouQianBa/master/Ezreal.ShouQianBa.ApiClient/WoSaipay.ico" height="25"/>Ezreal.ShouQianBa[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/EzrealJ/ShouQianBa/blob/master/LICENSE)  
 
 * Ezreal.ShouQianBa.ApiClient是一个.NET实现的收钱吧WebApi连接库，旨在让您编写简单且可读性强代码快速接入收钱吧的WebApi
